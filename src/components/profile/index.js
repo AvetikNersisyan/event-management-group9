@@ -1,9 +1,19 @@
-const Profile = ()=> {
+import {useSelector} from "react-redux";
+
+const Profile = () => {
+    const loggedUser = useSelector(({UserDuck}) => UserDuck.loggedInUser);
+    console.log(loggedUser);
     return (
         <>
-            Profile ... to be ...
+            <br/>
+            fake User <br/>
+            {loggedUser.name}
+            <br/>
+            {loggedUser.email}
+            <br/>
+            {loggedUser.phone}
         </>
-    )
-}
+    );
+};
 
 export default Profile;
