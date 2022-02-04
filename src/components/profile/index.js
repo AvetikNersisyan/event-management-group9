@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { NavLink, Route, Routes } from 'react-router-dom';
+import React, {useEffect, useRef, useState} from 'react';
+import {NavLink, Route, Routes} from 'react-router-dom';
 import './index.css';
 import LogIn from './login';
 import ProfileInfo from './profile';
@@ -46,38 +46,36 @@ const users = [
         "password": "444",
         "phone": "000-11-22-33"
     }
-]
+];
 
 const Profile = () => {
-    const [loggedIn, setLoggedIn] = useState(false)
-    const [activeUser, setActiveUser] = useState(null)
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [activeUser, setActiveUser] = useState(null);
 
-    
 
     return (
         <div className="profilePage">
             {
                 !loggedIn ?
-                    <LogIn 
-                    users={users}
-                    loggedIn={loggedIn}
-                    setLoggedIn={setLoggedIn}
-                    setActiveUser={setActiveUser}
+                    <LogIn
+                        users={users}
+                        loggedIn={loggedIn}
+                        setLoggedIn={setLoggedIn}
+                        setActiveUser={setActiveUser}
                     />
                     :
-                    <ProfileInfo 
-                    activeUser={activeUser} 
+                    <ProfileInfo
+                        activeUser={activeUser}
                     />
             }
 
             <Routes>
-                <Route 
-                    path={"/signup"}
-                    element={<SignUp users={users} />} />
+
             </Routes>
-            
+
+
         </div>
-    )
-}
+    );
+};
 
 export default Profile;
