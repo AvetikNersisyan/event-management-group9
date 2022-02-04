@@ -69,9 +69,10 @@ const Profile = () => {
                     />
             }
 
-            <Routes>
 
-            </Routes>
+            {/*<Routes>*/}
+            {/*    <Route path={"/signup"} element={<SignUp/>} users={users}/>*/}
+            {/*</Routes>*/}
 
 
         </div>
