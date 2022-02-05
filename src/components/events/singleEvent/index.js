@@ -6,7 +6,7 @@ import Sidebar from "./sidebar";
 
 const SingleEvent = () => {
     // const events = useSelector(({EventDuck}) => EventDuck.events);
-    const events = useSelector((state) => state);
+    const events = useSelector(({EventDuck}) => EventDuck.events);
     const path = useParams();
 
     console.log(events, "events");
