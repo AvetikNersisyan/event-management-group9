@@ -1,7 +1,9 @@
 const Sidebar = ({start_date, start_time, end_date, end_time, location, address}) => {
-    console.log(start_time);
+
+
     return (
         <div className={"sidebar"}>
+            <button> ATTEND </button>
             <div className={"event-details"}>
                 <h3> Event detail</h3>
                 <div className={"event-detail-info"}>
