@@ -3,9 +3,10 @@
     flex-direction: column;
     padding: 10px;
     width: 50vw;
+    min-width: 250px;
     border: 1px solid black;
     margin: 2em;
-    margin-left: 10em
+    margin-left: 5vw;
 
 }
 
@@ -68,11 +69,13 @@
 .single-event-page {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .sidebar {
-    width: 20vw;
-    margin: 2em;
+    margin: 2em 0;
+    width: 25vw;
+    min-width: 250px;
 }
 
 .event-details {
@@ -82,3 +85,11 @@
     padding: 1em;
     border: 1px solid black;
 }
+
+.event-detail-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+

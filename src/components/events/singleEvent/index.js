@@ -8,13 +8,14 @@ const SingleEvent = () => {
     // const events = useSelector(({EventDuck}) => EventDuck.events);
     const events = useSelector(({EventDuck}) => EventDuck.events);
     const path = useParams();
+    const event = events[path.eventId-1]
 
-    console.log(events, "events");
+    console.log(event, "events");
 
     return (
         <div className={"single-event-page"}>
-            <EventCard {...events[path.eventId - 1]} />
-            <Sidebar  {...events[path.eventId - 1]} />
+            <EventCard {...event} />
+            <Sidebar {...event.event_details}/>
         </div>
     );
 };
