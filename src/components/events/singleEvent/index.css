@@ -52,7 +52,6 @@
 
 .event-tags a:hover {
     color: blue;
-
 }
 
 .social-share {
@@ -64,4 +63,22 @@
 
 .social-share p {
     padding-right: 15px;
+}
+
+.single-event-page {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 20vw;
+    margin: 2em;
+}
+
+.event-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1em;
+    border: 1px solid black;
 }

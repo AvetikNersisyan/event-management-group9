@@ -1,15 +1,10 @@
 import {createAction} from "../../../helper/redux-helper";
 
-
-// const FETCH = "eventDuck/FETCH";
 const SET_EVENTS = "eventDuck/SET_EVENTS";
-
 
 export const setEvents = createAction(SET_EVENTS);
 
-
 const initialState = {
-
     events: [{event_detail: {}}]
 };
 

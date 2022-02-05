@@ -1,10 +1,7 @@
-
-import React, {useEffect, useRef, useState} from 'react';
-import {NavLink, Route, Routes} from 'react-router-dom';
+import React, {useState} from 'react';
 import './index.css';
 import LogIn from './login';
 import ProfileInfo from './profile';
-import SignUp from './signUp';
 
 const users = [
     {
@@ -70,8 +67,6 @@ const Profile = () => {
                     />
             }
 
-
-    
 
         </div>
 
