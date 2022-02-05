@@ -1,6 +1,6 @@
 const Select = ({ name, item }) => {
-  console.log("props_name", name);
-  console.log("props_item", item);
+
+
   return (
     <select id={name} name={name}>
       <option value="" disabled selected hidden>

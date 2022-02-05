@@ -111,10 +111,11 @@
     background: #f53f7b;
     color: white;
 }
-.sidebar button:hover{
+
+.sidebar button:hover {
     cursor: pointer;
     background: rgba(245, 63, 123, 0.71);
- }
+}
 
 .event-details {
     display: flex;
@@ -194,3 +195,32 @@
     cursor: pointer;
 }
 
+#fbIcon {
+    background: url("../../../assets/img/facebook-app-symbol.png") no-repeat center;
+    width: 32px;
+    height: 32px;
+    transition: 0.4s;
+
+}
+
+#fbIcon:hover {
+    background: url("../../../assets/img/facebook-hover.png");
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+#twitterIcon {
+    background: url("../../../assets/img/twitter.png") no-repeat center;
+    width: 32px;
+    height: 32px;
+    transition: 0.4s;
+
+}
+
+#twitterIcon:hover {
+    background: url("../../../assets/img/twitter-hover.png");
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    transition: 0.4s;
+}

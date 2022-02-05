@@ -45,8 +45,9 @@ const EventCard = ({title, description, img_url, tags}) => {
                         <p> Share </p>
 
 
-                        <img src={fbIcon}/>
-                        <img src={twitterIcon}/>
+                        <div id={"fbIcon"}></div>
+                        <div id={"twitterIcon"}></div>
+                        {/*<img src={twitterIcon}/>*/}
                     </div>
                 </div>
 
