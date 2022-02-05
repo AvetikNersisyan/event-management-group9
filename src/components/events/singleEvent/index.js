@@ -13,8 +13,6 @@ const SingleEvent = () => {
     const path = useParams();
     const event = events[path.eventId - 1];
 
-    console.log(event, "events");
-
     return (
         <div className={"single-event-page"}>
 
