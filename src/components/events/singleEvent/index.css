@@ -54,3 +54,14 @@
     color: blue;
 
 }
+
+.social-share {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2px;
+}
+
+.social-share p {
+    padding-right: 15px;
+}

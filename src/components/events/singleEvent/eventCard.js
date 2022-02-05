@@ -1,10 +1,10 @@
 import {NavLink} from "react-router-dom";
-import fbIcon from "../../../assets/img/facebook-app-symbol.png"
+import fbIcon from "../../../assets/img/facebook-app-symbol.png";
+import twitterIcon from "../../../assets/img/twitter.png";
 
 const EventCard = ({title, description, img_url, tags}) => {
 
 
-    console.log(tags);
     return (
         <div className={"event-card"}>
 
@@ -32,7 +32,10 @@ const EventCard = ({title, description, img_url, tags}) => {
                 </div>
 
                 <div className={"social-share"}>
-                    share via <img src={fbIcon}/>
+                    <p> share via </p>
+
+                    <img src={fbIcon}/>
+                    <img src={twitterIcon}/>
                 </div>
             </div>
 
