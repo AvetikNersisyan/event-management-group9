@@ -1,0 +1,56 @@
+.event-card {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 50vw;
+    border: 1px solid black;
+    margin: 2em;
+    margin-left: 10em
+
+}
+
+.gallery img {
+    width: 100%;
+
+}
+
+.divider {
+    border-top: 3px solid #544f4f;
+    width: 100%;
+    margin: 0.5em 0;
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+
+.description {
+    text-align: left;
+    padding: 1em 0;
+}
+
+.event-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.event-tags a {
+    text-decoration: none;
+    color: black;
+}
+
+.tags p {
+    font-family: "Britannic Bold";
+}
+
+.event-tags a:hover {
+    color: blue;
+
+}

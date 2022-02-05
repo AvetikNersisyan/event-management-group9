@@ -1,6 +1,6 @@
 import {combineReducers} from "redux";
 import EventDuck from "./eventDuck";
-import {UserDuck} from "../userDuck";
+import {UserDuck} from "./userDuck";
 
 const rootReducer = combineReducers({
     EventDuck, UserDuck
