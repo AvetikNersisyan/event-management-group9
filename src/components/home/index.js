@@ -1,5 +1,6 @@
+import Search from "./search/index";
 const Home = () => {
-  return <div>Homepage1</div>;
+  return <Search />;
 };
 
 export default Home;
