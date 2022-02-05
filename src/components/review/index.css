@@ -1,0 +1,12 @@
+.review_wrapper {
+  background-image: url(../../Home_img/review.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 300px;
+}
+
+.review_wrapper .section {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+}

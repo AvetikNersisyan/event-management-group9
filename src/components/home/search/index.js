@@ -33,7 +33,7 @@ const selectCategori = {
 
 const Search = () => {
   return (
-    <div className="search_wrapper">
+    <div className="search">
       <h2>Find Nearby Location</h2>
       <h3>Explore top-rated attractions, activities and more!</h3>
       <div className="search_form">
@@ -44,6 +44,7 @@ const Search = () => {
           <Select {...selectVenue} />
           <Select {...selectTime} />
           <Select {...selectCategori} />
+          <input type="submit" name="" id="" />
         </form>
       </div>
     </div>
