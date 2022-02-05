@@ -1,0 +1,10 @@
+.featured_content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.featured_cart {
+  border: 1px solid black;
+  width: 33%;
+  height: 500px;
+}

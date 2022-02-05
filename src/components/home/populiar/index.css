@@ -1,0 +1,12 @@
+.popular_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popular_cart {
+  width: 24%;
+  height: 200px;
+  border: 1px solid black;
+  font-size: 50px;
+}
