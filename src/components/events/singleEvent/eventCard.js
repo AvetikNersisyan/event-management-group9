@@ -2,16 +2,21 @@ import {NavLink} from "react-router-dom";
 import fbIcon from "../../../assets/img/facebook-app-symbol.png";
 import twitterIcon from "../../../assets/img/twitter.png";
 
+
 const EventCard = ({title, description, img_url, tags}) => {
 
 
     return (
         <div className={"event-card"}>
+            <div className={"event-head"}>
 
-            <div>
                 <h1>
                     {title}
                 </h1>
+                <span>
+
+
+                </span>
             </div>
 
             <div className={"gallery"}>

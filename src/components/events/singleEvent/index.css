@@ -86,10 +86,47 @@
     border: 1px solid black;
 }
 
-.event-detail-info{
+.event-detail-info {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 100%;
 }
+
+.event-detail-info label {
+    width: 40%;
+    text-align: left;
+}
+
+.event-head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.event-head span {
+    margin-left: auto;
+
+}
+
+
+.event-head span {
+    background-size: cover;
+    width: 32px;
+    height: 32px;
+    background:  url("../../../assets/img/favourite.png");
+
+
+}
+
+.event-head span:hover {
+    cursor: pointer;
+    background:  url("../../../assets/img/favourite1.png");
+
+
+
+
+}
+
 
