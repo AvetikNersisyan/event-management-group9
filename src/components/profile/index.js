@@ -1,3 +1,4 @@
+
 import React, {useEffect, useRef, useState} from 'react';
 import {NavLink, Route, Routes} from 'react-router-dom';
 import './index.css';
@@ -70,12 +71,10 @@ const Profile = () => {
             }
 
 
-            {/*<Routes>*/}
-            {/*    <Route path={"/signup"} element={<SignUp/>} users={users}/>*/}
-            {/*</Routes>*/}
-
+    
 
         </div>
+
     );
 };
 

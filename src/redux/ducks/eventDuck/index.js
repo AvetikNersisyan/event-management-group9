@@ -1,14 +1,25 @@
-const FETCH = "eventDuck/FETCH";
+import {createAction} from "../../../helper/redux-helper";
+
+
+// const FETCH = "eventDuck/FETCH";
+const SET_EVENTS = "eventDuck/SET_EVENTS";
+
+
+export const setEvents = createAction(SET_EVENTS);
 
 
 const initialState = {
-    events: []
+
+    events: [{event_detail: {}}]
 };
+
 
 const EventDuck = (state = initialState, {type, payload}) => {
     switch (type) {
-        case FETCH:
+        case SET_EVENTS:
             return {...state, events: payload};
+        default:
+            return state;
     }
 };
 
