@@ -12,7 +12,8 @@
       "end_date": "01/01/01",
       "start_time": "15:00",
       "end_time": "18:00",
-      "location": "Yerevan"
+      "location": "Yerevan",
+      "address": "Baghramyan 26"
     },
     "price": 10.99,
     "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg"

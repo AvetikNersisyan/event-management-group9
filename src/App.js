@@ -24,7 +24,6 @@ function App() {
             .then(res => res.json())
             .then(res => dispatch(setLoggedInUser(res)));
 
-
         fetch("/events.json")
             .then(res => res.json())
             .then(res => dispatch(setEvents(res)));
