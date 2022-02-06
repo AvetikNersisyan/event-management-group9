@@ -1,9 +1,16 @@
-import './App.css';
-import {Routes, Route} from "react-router-dom";
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
 import Home from "./components/home";
 import Profile from "./components/profile";
 import Events from "./components/events";
 import Header from "./components/header/header";
+
+
+import Categories from "./components/categories";
+import { useEffect } from "react";
+import { fetchData } from "./redux/ducks/eventDuck";
+import { useDispatch } from "react-redux";
+import { setLoggedInUser } from "./redux/userDuck";
 
 import SignUp from "./components/profile/signUp";
 import React from "react";
@@ -35,19 +42,22 @@ function App() {
         <div className="App">
             <Header/>
             <Routes>
-                <Route path={"/"} element={<Home/>}/>
-
-                <Route path={"/events"} element={<Events/>}/>
-                <Route path={"*"} element={<div> error 404</div>}/>
+      
+             <Route path={"/"} element={<Home />} />
+             <Route path={"/profile"} element={<Profile />} />
+             <Route path={"/categories"} element={<Categories />} />
+      
                 <Route path={"profile/signup"} element={<SignUp/>}/>
                 <Route path={"/profile//*"} element={<Profile/>}/>
 
                 <Route path={"/events/:eventId"} element={<SingleEvent/>}/>
                 <Route path={"/events"} exact={true} element={<Events/>}/>
+                <Route path={"*"} element={<div> error 404</div>}/>
 
             </Routes>
         </div>
     );
+
 }
 
 export default App;
