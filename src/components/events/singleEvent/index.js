@@ -1,6 +1,6 @@
 import {useSelector} from "react-redux";
 import EventCard from "./eventCard";
-import "./index.css";
+import './index.css';
 import {useParams} from "react-router-dom";
 import Sidebar from "./sidebar";
 
@@ -13,14 +13,9 @@ const SingleEvent = () => {
 
 
     const path = useParams();
-    // const event = events[path.eventId - 1];
-    const event = events[0];
+    const event = events[path.eventId - 1];
 
-    console.log()
-
-
-    console.log(event.event_details, "event details");
-    console.log(path["eventId"]);
+    console.log(events);
 
     return (
         <div className={"single-event-page"}>
