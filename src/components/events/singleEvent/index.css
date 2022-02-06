@@ -1,0 +1,226 @@
+.event-card {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 50vw;
+    min-width: 250px;
+    border: 1px solid black;
+    margin: 2em;
+    margin-left: 5vw;
+    background: #ffffff;
+
+
+}
+
+.gallery img {
+    width: 100%;
+
+}
+
+.divider {
+    border-top: 3px solid #544f4f;
+    width: 100%;
+    margin: 0.5em 0;
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+
+.description {
+    text-align: left;
+    padding: 1em 0;
+}
+
+.event-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.event-tags a {
+    text-decoration: none;
+    color: black;
+}
+
+.tags p {
+    font-family: "Britannic Bold";
+}
+
+.event-tags a:hover {
+    color: blue;
+}
+
+.social-share {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2px;
+}
+
+.social-share p {
+    padding-right: 15px;
+}
+
+.social-share img {
+    padding-right: 10px;
+}
+
+.single-event-page {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.bgImage {
+    /*background-color: rgba(0, 0, 0, 0.8);*/
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+
+}
+
+.bg {
+    background-color: rgba(0, 0, 0, 0.8);
+
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+}
+
+.sidebar {
+    margin: 2em 0;
+    width: 25vw;
+    min-width: 250px;
+    margin-top: -100px;
+    z-index: 1;
+}
+
+.sidebar button {
+    width: 100%;
+    height: 3em;
+    margin-bottom: 2em;
+    border-radius: 8px;
+    background: #f53f7b;
+    color: white;
+}
+
+.sidebar button:hover {
+    cursor: pointer;
+    background: rgba(245, 63, 123, 0.71);
+}
+
+.event-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1em;
+    border: 1px solid black;
+    background: #ffffff;
+}
+
+.event-detail-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.event-detail-info label {
+    width: 40%;
+    text-align: left;
+}
+
+.event-head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.event-head span {
+    margin-left: auto;
+
+}
+
+
+.event-head span {
+    background-size: cover;
+    width: 32px;
+    height: 32px;
+    background: url("../../../assets/img/favourite.png");
+
+
+}
+
+.event-head span:hover {
+    cursor: pointer;
+    background: url("../../../assets/img/favourite1.png");
+}
+
+.event-vertical {
+    display: flex;
+    flex-direction: column;
+    margin-top: -130px;
+    z-index: 1;
+}
+
+.event-footer {
+    border: 1px solid black;
+    margin: 1em;
+    margin-left: 5vw;
+    width: 50vw;
+    padding: 10px;
+    background: #ffffff;
+
+}
+
+
+.head {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+.head:hover {
+    cursor: pointer;
+}
+
+#fbIcon {
+    background: url("../../../assets/img/facebook-app-symbol.png") no-repeat center;
+    width: 32px;
+    height: 32px;
+    transition: 0.4s;
+
+}
+
+#fbIcon:hover {
+    background: url("../../../assets/img/facebook-hover.png");
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+#twitterIcon {
+    background: url("../../../assets/img/twitter.png") no-repeat center;
+    width: 32px;
+    height: 32px;
+    transition: 0.4s;
+
+}
+
+#twitterIcon:hover {
+    background: url("../../../assets/img/twitter-hover.png");
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    transition: 0.4s;
+}
