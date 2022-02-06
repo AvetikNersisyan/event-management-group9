@@ -10,8 +10,17 @@ const backGroundImage = "https://ovatheme.com/em4u/wp-content/themes/em4u/assets
 const SingleEvent = () => {
 
     const events = useSelector(({EventDuck}) => EventDuck.events);
+
+
     const path = useParams();
-    const event = events[path.eventId - 1];
+    // const event = events[path.eventId - 1];
+    const event = events[0];
+
+    console.log()
+
+
+    console.log(event.event_details, "event details");
+    console.log(path["eventId"]);
 
     return (
         <div className={"single-event-page"}>
@@ -24,7 +33,7 @@ const SingleEvent = () => {
 
 
             <EventCard {...event} />
-            <Sidebar {...event.event_details}/>
+            <Sidebar {...event["event_details"]}/>
 
         </div>
     );

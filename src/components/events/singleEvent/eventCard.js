@@ -23,7 +23,7 @@ const EventCard = ({title, description, img_url, tags}) => {
                 </div>
 
                 <div className={"gallery"}>
-                    <img src={img_url}/>
+                    <img src={img_url} alt={"Event image"}/>
                 </div>
 
 
