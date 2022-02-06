@@ -1,0 +1,32 @@
+.scroll-fixed {
+    /*position: fixed;*/
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgb(0, 0, 0);
+}
+
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+}
+
+
+
+.navbar > a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 10px;
+
+}
+
+.navbar a.active  {
+    color: black;
+    background: white;
+}
+
+
+

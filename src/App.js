@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './components/home';
 import Profile from './components/profile';
 import Events from './components/events';
-import Header from './components/header/header';
+import Index from './components/header';
 import Categories from './components/categories';
 
 import { useEffect } from 'react';
@@ -35,18 +35,17 @@ function App() {
 
 	return (
 		<div className='App'>
-			<Header />
+			<Index />
 
 			<Routes>
 				<Route path={'/'} element={<Home />} />
 				<Route path={'/profile'} element={<Profile />} />
 				<Route path={'/categories'} element={<Categories />} />
 				<Route path={'profile/signup'} element={<SignUp />} />
-				<Route path={'/profile//*'} element={<Profile />} />
+				<Route path={'/profile/'} element={<Profile />} />
 				<Route path={'/events/:eventId'} element={<SingleEvent />} />
 				<Route path={'/events'} exact={true} element={<Events />} />
 				<Route path={'*'} element={<Error404 />} />
-				{/*առանձին կոմպոնենտ կավելացնենք էռորի համար*/}
 			</Routes>
 		</div>
 	);
