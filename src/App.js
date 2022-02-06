@@ -17,7 +17,6 @@ import {setEvents} from './redux/ducks/eventDuck';
 function App() {
     const dispatch = useDispatch();
 
-    console.log(api);
 
     // fake info, to be deleted later
     useEffect(() => {
@@ -34,20 +33,6 @@ function App() {
     return (
         <div className="App">
             <Header/>
-            {/*<Routes>*/}
-            {/*    */}
-            {/*    <Route path={'/'} element={<Home/>}/>*/}
-            {/*    <Route path={'/profile'} element={<Profile/>}/>*/}
-            {/*    <Route path={'/categories'} element={<Categories/>}/>*/}
-
-            {/*    <Route path={'profile/signup'} element={<SignUp/>}/>*/}
-            {/*    <Route path={'/profile//*'} element={<Profile/>}/>*/}
-
-            {/*    <Route path={'/events/:eventId'} element={<SingleEvent/>}/>*/}
-            {/*    <Route path={'/events'} exact={true} element={<Events/>}/>*/}
-            {/*    <Route path={'*'} element={<div> error 404</div>}/>*/}
-
-            {/*    */}
 
             <Routes>
                 <Route path={'/'} element={<Home/>}/>
@@ -56,7 +41,7 @@ function App() {
                 <Route path={'profile/signup'} element={<SignUp/>}/>
                 <Route path={'/profile//*'} element={<Profile/>}/>
                 <Route path={'/events/:eventId'} element={<SingleEvent/>}/>
-				<Route path={'/events'} exact={true} element={<Events />} />
+                <Route path={'/events'} exact={true} element={<Events/>}/>
                 <Route path={'*'} element={<div> error 404</div>}/> {/*առանձին կոմպոնենտ կավելացնենք*/}
 
             </Routes>
