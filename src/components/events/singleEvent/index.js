@@ -20,6 +20,7 @@ const SingleEvent = () => {
 		() => events.length >= path.eventId && path.eventId >= 1,
 		[events.length, path.eventId]
 	);
+
 	return (
 		<>
 			{validateEventPath() ? (

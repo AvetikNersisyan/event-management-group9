@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import fbIcon from '../../../assets/img/facebook-app-symbol.png';
 import twitterIcon from '../../../assets/img/twitter.png';
 import shareIcon from '../../../assets/img/share.png';
+import favoriteIcon from '../../../assets/img/favourite.png';
 import EventFooter from './eventFooter';
 
 const EventCard = ({ title, description, img_url, tags }) => {
@@ -10,6 +11,9 @@ const EventCard = ({ title, description, img_url, tags }) => {
 			<div className={'event-card'}>
 				<div className={'event-head'}>
 					<h1>{title}</h1>
+					<span>
+						<img src={favoriteIcon} alt={'favorite'} />
+					</span>
 				</div>
 
 				<div className={'gallery'}>
