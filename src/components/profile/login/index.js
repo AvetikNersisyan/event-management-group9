@@ -1,13 +1,12 @@
 import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActiveUser } from '../../../redux/ducks/userDuck';
+import { setActiveUser, setLoggedIn } from '../../../redux/ducks/userDuck';
 import { NavLink } from 'react-router-dom';
 
-const LogIn = ({ loggedIn, setLoggedIn }) => {
+const LogIn = () => {
     const users = useSelector((state) => state.UserDuck.users);
-    const asd = useSelector((state) => state.UserDuck.activeUser)
+
     const dispatch = useDispatch();
-    console.log(asd);
 
     const emailElement = useRef(null);
     const passwordElement = useRef(null);
@@ -19,7 +18,7 @@ const LogIn = ({ loggedIn, setLoggedIn }) => {
         } else {
             if (users[index].password === passwordElement.current.value) {
                 dispatch(setActiveUser(users[index]));
-                setLoggedIn(!loggedIn);
+                dispatch(setLoggedIn(true))
             } else {
                 alert('incorrect password');
             }

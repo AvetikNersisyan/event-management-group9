@@ -20,7 +20,6 @@ import NewEvent from './components/events/newEvent';
 function App() {
 	const dispatch = useDispatch();
 
-	const [loggedIn, setLoggedIn] = useState(false);
 
 	// fake info, to be deleted later
 	useEffect(() => {
@@ -48,10 +47,7 @@ function App() {
 				<Route path={'/'} element={<Home />} />
 				<Route path={'/categories'} element={<Categories />} />
 				<Route path={'profile/signup'} element={<SignUp />} />
-
-				<Route path={'/profile/'} element={<Profile
-					loggedIn={loggedIn}
-					setLoggedIn={setLoggedIn} />} />
+				<Route path={'/profile/'} element={<Profile />} />
 
 				<Route path={'/events/:eventId'} element={<SingleEvent />} />
 				<Route path={'/events'} exact={true} element={<Events />} />
