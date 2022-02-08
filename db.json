@@ -54,5 +54,134 @@
         }
       ]
     }
+  ],
+  "users": [
+    {
+      "id": 0,
+      "firstname": "Hayk",
+      "lastname": "Keshishyan",
+      "email": "Hayk@gmail.com",
+      "password": "000",
+      "phone": "000-11-22-33",
+      "interests": [
+        "sport",
+        "music"
+      ],
+      "interestedEvents": [
+        "0002",
+        "0003"
+      ],
+      "allreadyGone": [
+        "0000",
+        "0001"
+      ],
+      "going": [
+        "0004",
+        "0005"
+      ]
+    },
+    {
+      "id": 1,
+      "firstname": "Lilit",
+      "lastname": "Madoyan",
+      "email": "Lilit@gmail.com",
+      "password": "111",
+      "phone": "000-11-22-33",
+      "interests": [
+        "business"
+      ],
+      "interestedEvents": [
+        "0002",
+        "0003"
+      ],
+      "allreadyGone": [
+        "0000",
+        "0001"
+      ],
+      "going": [
+        "0004",
+        "0005"
+      ]
+    },
+    {
+      "id": 2,
+      "firstname": "Avetik",
+      "lastname": "Nersisyan",
+      "email": "Avetik@gmail.com",
+      "password": "222",
+      "phone": "000-11-22-33",
+      "interests": [
+        "sport",
+        "business"
+      ],
+      "interestedEvents": [
+        "0002",
+        "0003"
+      ],
+      "allreadyGone": [
+        "0000",
+        "0001"
+      ],
+      "going": [
+        "0004",
+        "0005"
+      ]
+    },
+    {
+      "id": 3,
+      "firstname": "Arsen",
+      "lastname": "Aghasaryan",
+      "email": "Arsen@gmail.com",
+      "password": "333",
+      "phone": "000-11-22-33",
+      "interests": [
+        "sport"
+      ],
+      "interestedEvents": [
+        "0002",
+        "0003"
+      ],
+      "allreadyGone": [
+        "0000",
+        "0001"
+      ],
+      "going": [
+        "0004",
+        "0005"
+      ]
+    },
+    {
+      "id": 4,
+      "firstname": "Tatev",
+      "lastname": "Harutyunyan",
+      "email": "Tatev@gmail.com",
+      "password": "444",
+      "phone": "000-11-22-33",
+      "interests": [
+        "music"
+      ],
+      "interestedEvents": [
+        "0002",
+        "0003"
+      ],
+      "allreadyGone": [
+        "0000",
+        "0001"
+      ],
+      "going": [
+        "0004",
+        "0005"
+      ]
+    }
+  ],
+  "admins": [
+    {
+      "id": 0,
+      "firstname": "admin",
+      "lastname": "admin",
+      "email": "admin@gmail.com",
+      "password": "admin",
+      "phone": "000-11-22-33"
+    }
   ]
 }
