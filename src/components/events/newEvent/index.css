@@ -1,0 +1,49 @@
+.new-event-container {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    min-width: 300px;
+    margin: 0 auto;
+    gap: 5vw;
+}
+
+
+.new-event-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.file {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 1em;
+
+}
+
+.file button {
+    width: 30%;
+    height: 54px;
+    align-content: center;
+}
+
+.event-title {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em;
+    width: 50vw;
+    margin-top: 1em;
+}
+
+.start-end-date {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.start-end-date * {
+    width: 45%;
+}

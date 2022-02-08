@@ -1,9 +1,11 @@
+
 import { createAction } from "../../../helper/redux-helper";
 
 const SET_USERS = "userDuck/SET_USER";
 const ADD_USER = "userDuck/ADD_USER";
 const SET_ACTIVE_USER = "userDuck/SET_ACTIVE_USER"
 const SET_LOGGED_IN = "userDuck/SET_LOGGED_IN"
+
 
 export const setUsers = createAction(SET_USERS);
 export const addUser = createAction(ADD_USER);
@@ -32,3 +34,4 @@ export const UserDuck = (state = initialState, { type, payload }) => {
             return state;
     }
 };
+
