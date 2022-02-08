@@ -32,6 +32,7 @@ const ProfileInfo = ({ activeUser }) => {
 			</div>
 		</div>
 	);
+
 };
 
 export default ProfileInfo;
