@@ -547,3 +547,19 @@ code {
 /*  margin: 80px 20%;*/
 /*}*/
 
+
+
+
+.primary {
+    width: 100%;
+    height: 3em;
+    margin-bottom: 2em;
+    border-radius: 8px;
+    background: #f53f7b;
+    color: white;
+}
+
+.primary:hover {
+    cursor: pointer;
+    background: rgba(245, 63, 123, 0.71);
+}

@@ -15,12 +15,13 @@ import SingleEvent from './components/events/singleEvent';
 import { setEvents } from './redux/ducks/eventDuck';
 import { api } from './api';
 import Error404 from './components/error404';
+import NewEvent from './components/events/newEvent';
 
 function App() {
 	const dispatch = useDispatch();
 
-	// before redux 
-	const [users, setUsers] = useState([])
+	// before redux
+	const [users, setUsers] = useState([]);
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [activeUser, setActiveUser] = useState(null);
 
@@ -30,12 +31,11 @@ function App() {
 			.then((res) => res.json())
 			.then((res) => dispatch(setLoggedInUser(res)));
 
-
 		fetch(`${api}/users`)
 			.then((res) => res.json())
 			.then((res) => {
 				console.log(res);
-				setUsers(res)
+				setUsers(res);
 			});
 
 		fetch(`${api}/events`)
@@ -54,14 +54,21 @@ function App() {
 				<Route path={'/'} element={<Home />} />
 				<Route path={'/categories'} element={<Categories />} />
 				<Route path={'profile/signup'} element={<SignUp />} />
-				<Route path={'/profile/'} element={<Profile
-					users={users}
-					loggedIn={loggedIn}
-					setLoggedIn={setLoggedIn}
-					activeUser={activeUser}
-					setActiveUser={setActiveUser} />} />
+				<Route
+					path={'/profile/'}
+					element={
+						<Profile
+							users={users}
+							loggedIn={loggedIn}
+							setLoggedIn={setLoggedIn}
+							activeUser={activeUser}
+							setActiveUser={setActiveUser}
+						/>
+					}
+				/>
 				<Route path={'/events/:eventId'} element={<SingleEvent />} />
 				<Route path={'/events'} exact={true} element={<Events />} />
+				{true && <Route path={'/new-event'} element={<NewEvent />} />}
 				<Route path={'*'} element={<Error404 />} />
 			</Routes>
 		</div>
