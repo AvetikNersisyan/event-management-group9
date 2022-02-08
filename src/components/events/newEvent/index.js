@@ -1,5 +1,8 @@
 import './index.css';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { api } from '../../../api';
+import { addEvent } from '../../../redux/ducks/eventDuck';
 
 const NewEvent = () => {
 	const [title, setTitle] = useState('');
@@ -12,9 +15,53 @@ const NewEvent = () => {
 	const [address, setAddress] = useState('');
 	const [ticketCount, setTicketCount] = useState(0);
 
+	const dispatch = useDispatch();
+
+	const newEvent = {
+		title,
+		description: text,
+		price: 10.99,
+		img_url:
+			'https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg',
+		tags: [tag],
+		event_details: {
+			start_date: start,
+			end_date: end,
+			start_time: '00:00',
+			end_time: '00:00',
+			location,
+			address,
+			guest_quantity: ticketCount,
+			available_seats: ticketCount,
+		},
+		speakers: [
+			{
+				name: 'Poghos Petrosyan',
+				rating: 4.9,
+			},
+		],
+	};
+
+	const submitHandler = (e) => {
+		e.preventDefault();
+		fetch(`${api}/events/`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(newEvent),
+		})
+			.then((res) => res.json())
+			.then((res) => {
+				console.log(res, 'res');
+				dispatch(addEvent(newEvent));
+			})
+			.catch((err) => console.log(err));
+	};
+
 	return (
 		<div className={'new-event-container'}>
-			<form className={'new-event-form'}>
+			<form className={'new-event-form'} onSubmit={submitHandler}>
 				<fieldset className={'event-title'}>
 					<input
 						value={title}

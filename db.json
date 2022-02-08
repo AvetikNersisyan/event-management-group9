@@ -80,6 +80,110 @@
           "rating": 4.9
         }
       ]
+    },
+    {
+      "title": "sdfa",
+      "description": "asdf",
+      "price": 10.99,
+      "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
+      "tags": [
+        "asdf"
+      ],
+      "event_details": {
+        "start_date": "2022-02-08",
+        "end_date": "2022-02-09",
+        "start_time": "00:00",
+        "end_time": "00:00",
+        "location": "London",
+        "address": "Masht",
+        "guest_quantity": "99",
+        "available_seats": "99"
+      },
+      "speakers": [
+        {
+          "name": "Poghos Petrosyan",
+          "rating": 4.9
+        }
+      ],
+      "id": 4
+    },
+    {
+      "title": "sdfa",
+      "description": "asdf",
+      "price": 10.99,
+      "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
+      "tags": [
+        "asdf"
+      ],
+      "event_details": {
+        "start_date": "2022-02-08",
+        "end_date": "2022-02-09",
+        "start_time": "00:00",
+        "end_time": "00:00",
+        "location": "London",
+        "address": "Masht",
+        "guest_quantity": "99",
+        "available_seats": "99"
+      },
+      "speakers": [
+        {
+          "name": "Poghos Petrosyan",
+          "rating": 4.9
+        }
+      ],
+      "id": 5
+    },
+    {
+      "title": "asdf",
+      "description": "asdf",
+      "price": 10.99,
+      "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
+      "tags": [
+        "asdf"
+      ],
+      "event_details": {
+        "start_date": "",
+        "end_date": "",
+        "start_time": "00:00",
+        "end_time": "00:00",
+        "location": "asf",
+        "address": "asdf",
+        "guest_quantity": 0,
+        "available_seats": 0
+      },
+      "speakers": [
+        {
+          "name": "Poghos Petrosyan",
+          "rating": 4.9
+        }
+      ],
+      "id": 6
+    },
+    {
+      "title": "hello this is me",
+      "description": "es em",
+      "price": 10.99,
+      "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
+      "tags": [
+        "dls"
+      ],
+      "event_details": {
+        "start_date": "",
+        "end_date": "",
+        "start_time": "00:00",
+        "end_time": "00:00",
+        "location": "",
+        "address": "",
+        "guest_quantity": "200",
+        "available_seats": "200"
+      },
+      "speakers": [
+        {
+          "name": "Poghos Petrosyan",
+          "rating": 4.9
+        }
+      ],
+      "id": 7
     }
   ],
   "users": [
