@@ -15,16 +15,20 @@ import SingleEvent from './components/events/singleEvent';
 import { setEvents } from './redux/ducks/eventDuck';
 import { api } from './api';
 import Error404 from './components/error404';
+import NewEvent from './components/events/newEvent';
 
 function App() {
 	const dispatch = useDispatch();
 
+
 	// fake info, to be deleted later
 	useEffect(() => {
+
 		fetch(`${api}/users`)
 			.then((res) => res.json())
 			.then((res) => {
 				dispatch(setUsers(res))
+
 			});
 
 		fetch(`${api}/events`)
@@ -44,8 +48,10 @@ function App() {
 				<Route path={'/categories'} element={<Categories />} />
 				<Route path={'profile/signup'} element={<SignUp />} />
 				<Route path={'/profile/'} element={<Profile />} />
+
 				<Route path={'/events/:eventId'} element={<SingleEvent />} />
 				<Route path={'/events'} exact={true} element={<Events />} />
+				{true && <Route path={'/new-event'} element={<NewEvent />} />}
 				<Route path={'*'} element={<Error404 />} />
 			</Routes>
 		</div>
