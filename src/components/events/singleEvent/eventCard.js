@@ -40,7 +40,6 @@ const EventCard = ({ title, description, img_url, tags }) => {
 
 						<div id={'fbIcon'}></div>
 						<div id={'twitterIcon'}></div>
-						{/*<img src={twitterIcon}/>*/}
 					</div>
 				</div>
 			</div>
