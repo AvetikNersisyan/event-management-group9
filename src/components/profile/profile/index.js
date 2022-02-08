@@ -1,14 +1,14 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setActiveUser } from '../../../redux/ducks/userDuck';
+import { setActiveUser, setLoggedIn } from '../../../redux/ducks/userDuck';
 import AvatarURL from '../../../assets/img/avatar.png';
 
-const ProfileInfo = ({ loggedIn, setLoggedIn }) => {
+const ProfileInfo = () => {
 	const activeUser = useSelector((state) => state.UserDuck.activeUser)
 	const dispatch = useDispatch();
 
 	const handleLogOut = () => {
-		setLoggedIn(!loggedIn)
+		dispatch(setLoggedIn(false))
 		dispatch(setActiveUser(null));
 	};
 	return (
@@ -23,7 +23,7 @@ const ProfileInfo = ({ loggedIn, setLoggedIn }) => {
 				<div className='interests'>
 					<p className='interests'>Interestes</p>
 					<div className='interestsItems'>
-						{activeUser.interests.map((e) => (
+						{activeUser.interests?.map((e) => (
 							<span className='interestsItem'>{e}</span>
 						))}
 					</div>
@@ -31,19 +31,19 @@ const ProfileInfo = ({ loggedIn, setLoggedIn }) => {
 			</div>
 			<div className='events'>
 				<p>Interested</p>
-				{activeUser.interestedEvents.map((e) => (
+				{activeUser.interestedEvents?.map((e) => (
 					<div className='event'>{e}</div>
 				))}
 			</div>
 			<div className='going'>
 				<p>Going</p>
-				{activeUser.going.map((e) => (
+				{activeUser.going?.map((e) => (
 					<div className='event'>{e}</div>
 				))}
 			</div>
 			<div className='going'>
 				<p>Allready gone</p>
-				{activeUser.allreadyGone.map((e) => (
+				{activeUser.allreadyGone?.map((e) => (
 					<div className='event'>{e}</div>
 				))}
 			</div>

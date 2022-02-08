@@ -1,25 +1,20 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
+import { useSelector } from 'react-redux';
 import './index.css';
 import LogIn from './login';
 import ProfileInfo from './profile';
 
-const Profile = ({ loggedIn, setLoggedIn, activeUser, setActiveUser }) => {
+const Profile = () => {
+    const loggedIn = useSelector((state) => state.UserDuck.activeUser)
 
     return (
         <div className='profilePage'>
             {!loggedIn ? (
                 <LogIn
-                    loggedIn={loggedIn}
-                    setLoggedIn={setLoggedIn}
-                    setActiveUser={setActiveUser}
                 />
             ) : (
                 <ProfileInfo
-                    loggedIn={loggedIn}
-                    setLoggedIn={setLoggedIn}
-                    activeUser={activeUser}
-                    setActiveUser={setActiveUser}
                 />
             )}
         </div>
