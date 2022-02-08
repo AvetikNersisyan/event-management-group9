@@ -1,7 +1,13 @@
 import React, { useRef, useState } from 'react';
-import InterestComp from './interestComp';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUser } from '../../../redux/ducks/userDuck';
+import { api } from '../../../api'
 
-const SignUp = ({ users }) => {
+const SignUp = () => {
+    const users = useSelector((state) => state.UserDuck.users)
+
+    const dispatch = useDispatch()
+
     const [interests, setInterests] = useState([]);
 
     const regFirstnameElement = useRef(null);
@@ -27,8 +33,15 @@ const SignUp = ({ users }) => {
                 password: regPassElement.current.value,
                 phone: regPhoneElement.current.value,
             };
-            users.push(newUser);
-            console.log(users);
+            dispatch(addUser(newUser))
+            fetch(`${api}/users`, {
+                method: "POST",
+                body: JSON.stringify(newUser), headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+                .then(response => response.json())
+                .then(json => console.log(json));
         }
     };
 
@@ -72,7 +85,7 @@ const SignUp = ({ users }) => {
                     placeholder='Password confirmation'
                 />
             </div>
-            <div>
+            {/* <div>
                 <p className='interests'>Interestes</p>
                 <div className='interestsItems'>
                     {interests.map((item) => (
@@ -81,7 +94,7 @@ const SignUp = ({ users }) => {
                 </div>
                 <input ref={interestElement} placeholder='type your interests' />
                 <button onClick={addInterest}>Add</button>
-            </div>
+            </div> */}
             <div>
                 <button className='logBtn' onClick={handleRegistration}>
                     Sign Up

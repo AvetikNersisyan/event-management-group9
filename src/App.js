@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import SignUp from './components/profile/signUp';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setLoggedInUser } from './redux/ducks/userDuck';
+import { setUsers } from './redux/ducks/userDuck';
 import SingleEvent from './components/events/singleEvent';
 import { setEvents } from './redux/ducks/eventDuck';
 import { api } from './api';
@@ -20,22 +20,16 @@ import NewEvent from './components/events/newEvent';
 function App() {
 	const dispatch = useDispatch();
 
-	// before redux
-	const [users, setUsers] = useState([]);
 	const [loggedIn, setLoggedIn] = useState(false);
-	const [activeUser, setActiveUser] = useState(null);
 
 	// fake info, to be deleted later
 	useEffect(() => {
-		fetch('https://jsonplaceholder.typicode.com/users/1')
-			.then((res) => res.json())
-			.then((res) => dispatch(setLoggedInUser(res)));
 
 		fetch(`${api}/users`)
 			.then((res) => res.json())
 			.then((res) => {
-				console.log(res);
-				setUsers(res);
+				dispatch(setUsers(res))
+
 			});
 
 		fetch(`${api}/events`)
@@ -54,18 +48,11 @@ function App() {
 				<Route path={'/'} element={<Home />} />
 				<Route path={'/categories'} element={<Categories />} />
 				<Route path={'profile/signup'} element={<SignUp />} />
-				<Route
-					path={'/profile/'}
-					element={
-						<Profile
-							users={users}
-							loggedIn={loggedIn}
-							setLoggedIn={setLoggedIn}
-							activeUser={activeUser}
-							setActiveUser={setActiveUser}
-						/>
-					}
-				/>
+
+				<Route path={'/profile/'} element={<Profile
+					loggedIn={loggedIn}
+					setLoggedIn={setLoggedIn} />} />
+
 				<Route path={'/events/:eventId'} element={<SingleEvent />} />
 				<Route path={'/events'} exact={true} element={<Events />} />
 				{true && <Route path={'/new-event'} element={<NewEvent />} />}

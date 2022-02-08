@@ -1,9 +1,15 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setActiveUser } from '../../../redux/ducks/userDuck';
 import AvatarURL from '../../../assets/img/avatar.png';
 
-const ProfileInfo = ({ activeUser, setActiveUser }) => {
+const ProfileInfo = ({ loggedIn, setLoggedIn }) => {
+	const activeUser = useSelector((state) => state.UserDuck.activeUser)
+	const dispatch = useDispatch();
+
 	const handleLogOut = () => {
-		setActiveUser(null);
+		setLoggedIn(!loggedIn)
+		dispatch(setActiveUser(null));
 	};
 	return (
 		<div className='myProfile'>
