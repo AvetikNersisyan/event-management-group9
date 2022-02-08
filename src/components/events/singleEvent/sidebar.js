@@ -2,9 +2,10 @@ import { api } from '../../../api';
 import { useDispatch } from 'react-redux';
 import { addEvent } from '../../../redux/ducks/eventDuck';
 
+// fake event
 const ev = {
 	id: 3,
-	title: 'Lorem Ipsum esim',
+	title: 'Lorem Ipsum esim Lorem Ipsum esim Lorem Ipsum esim ',
 	description:
 		'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n \n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
 	price: 10.99,
