@@ -5,6 +5,8 @@ const ADD_USER = 'userDuck/ADD_USER';
 const SET_ACTIVE_USER = 'userDuck/SET_ACTIVE_USER';
 const SET_LOGGED_IN = 'userDuck/SET_LOGGED_IN';
 const SET_PROFILE_PIC = 'userDuck/SET_PROFILE_PIC';
+const SET_IS_USER_LOGGED_IN = 'userDuck/SET_IS_USER_LOGGED_IN'
+const SET_IS_ADMIN_LOGGED_IN = 'userDuck/SET_IS_ADMIN_LOGGED_IN'
 
 export const setUsers = createAction(SET_USERS);
 export const addUser = createAction(ADD_USER);

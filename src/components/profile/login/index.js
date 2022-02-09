@@ -18,7 +18,7 @@ const LogIn = () => {
         } else {
             if (users[index].password === passwordElement.current.value) {
                 dispatch(setActiveUser(users[index]));
-                dispatch(setLoggedIn(true))
+                dispatch(setLoggedIn(true));
             } else {
                 alert('incorrect password');
             }

@@ -59,57 +59,60 @@ const ProfileInfo = () => {
 		dispatch(setLoggedIn(false));
 		dispatch(setActiveUser(null));
 	};
+
 	return (
 		<div className='myProfile'>
-			<div className='profilePhoto'>
-				{/* {
-					!activeUser.profilePic ?
-						<div className='initials' >{activeUser?.firstname[0] + activeUser?.lastname[0]}</div>
-						: */}
-				<img
-					className='photo'
-					// src={!!activeUser.profilePic ? baseImage : activeUser.profilePic}
-					src={activeUser.profilePic}
-					alt={'#'}
-				/>
-				{/* } */}
-			</div>
-			<div className='about'>
-				<input type='file' onChange={(e) => choosePhoto(e)}></input>
-				<button onClick={uploadPhoto}>Upload</button>
+			{
+				activeUser.firstname === "admin" ?
+					<div>Hello our admin</div>
+					:
+					<>
+						<div className='profilePhoto'>
+							<img
+								className='photo'
+								src={!baseImage ? activeUser.profilePic : baseImage}
+								alt={'#'}
+							/>
+						</div>
+						<div className='about'>
+							<input type='file' onChange={(e) => choosePhoto(e)}></input>
+							<button onClick={uploadPhoto}>Upload</button>
 
-				<p>
-					{activeUser.firstname} {activeUser.lastname}
-				</p>
-				<div className='interests'>
-					<p className='interests'>Interestes</p>
-					<div className='interestsItems'>
-						{activeUser.interests?.map((e) => (
-							<span className='interestsItem'>{e}</span>
-						))}
-					</div>
-				</div>
-			</div>
-			<div className='events'>
-				<p>Interested</p>
-				{activeUser.interestedEvents?.map((e) => (
-					<div className='event'>{e}</div>
-				))}
-			</div>
-			<div className='going'>
-				<p>Going</p>
-				{activeUser.going?.map((e) => (
-					<div className='event'>{e}</div>
-				))}
-			</div>
-			<div className='going'>
-				<p>Allready gone</p>
-				{activeUser.allreadyGone?.map((e) => (
-					<div className='event'>{e}</div>
-				))}
-			</div>
+							<p>
+								{activeUser.firstname} {activeUser.lastname}
+							</p>
+							<div className='interests'>
+								<p className='interests'>Interestes</p>
+								<div className='interestsItems'>
+									{activeUser.interests?.map((e) => (
+										<span className='interestsItem'>{e}</span>
+									))}
+								</div>
+							</div>
+						</div>
+						<div className='events'>
+							<p>Interested</p>
+							{activeUser.interestedEvents?.map((e) => (
+								<div className='event'>{e}</div>
+							))}
+						</div>
+						<div className='going'>
+							<p>Going</p>
+							{activeUser.going?.map((e) => (
+								<div className='event'>{e}</div>
+							))}
+						</div>
+						<div className='going'>
+							<p>Allready gone</p>
+							{activeUser.allreadyGone?.map((e) => (
+								<div className='event'>{e}</div>
+							))}
+						</div>
+					</>
+			}
 			<button onClick={handleLogOut}>LogOut</button>
 		</div>
 	);
 };
+
 export default ProfileInfo;
