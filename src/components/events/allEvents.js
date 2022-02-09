@@ -13,8 +13,8 @@ const AllEvents = () => {
 		<div className={'events'}>
 			{events.map(({ title, description, id, img_url }) => (
 				<div
-					onClick={() => handleEventClick(id)}
 					key={id}
+					onClick={() => handleEventClick(id)}
 					className={'single-event-container'}
 				>
 					<div className={'event-title'}>
