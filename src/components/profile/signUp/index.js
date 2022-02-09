@@ -19,7 +19,8 @@ const SignUp = () => {
     const interestElement = useRef(null);
 
     const addInterest = () => {
-        setInterests((prev) => [...prev, interestElement.current.value]);
+        let int = interestElement.current.value
+        setInterests([...interests, int]);
         interestElement.current.value = '';
     };
 
@@ -44,6 +45,12 @@ const SignUp = () => {
                 .then(json => console.log(json));
         }
     };
+
+    const removeInt = (e) => {
+        let id = e.item
+        const newInt = interests.filter((item) => item !== id)
+        setInterests(newInt);
+    }
 
     return (
         <div className='signIn'>
@@ -85,16 +92,19 @@ const SignUp = () => {
                     placeholder='Password confirmation'
                 />
             </div>
-            {/* <div>
+            <div>
                 <p className='interests'>Interestes</p>
                 <div className='interestsItems'>
                     {interests.map((item) => (
-                        <InterestComp key={item.index} interest={item.interest} />
+                        <span className='interestsItem'>
+                            <span>{item}</span>
+                            <button onClick={() => removeInt({ item })}>Remove</button>
+                        </span>
                     ))}
                 </div>
-                <input ref={interestElement} placeholder='type your interests' />
+                <input type="search" ref={interestElement} placeholder='type your interests' />
                 <button onClick={addInterest}>Add</button>
-            </div> */}
+            </div>
             <div>
                 <button className='logBtn' onClick={handleRegistration}>
                     Sign Up

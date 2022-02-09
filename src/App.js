@@ -24,8 +24,6 @@ function App() {
 		fetch(`${api}/users`)
 			.then((res) => res.json())
 			.then((res) => {
-				console.log(res);
-				dispatch(setUsers(res))
 				dispatch(setUsers(res));
 			});
 
