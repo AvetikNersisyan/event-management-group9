@@ -12,7 +12,7 @@ import { deleteEvent } from '../../../redux/ducks/eventDuck';
 const EventCard = ({ title, description, img_url, tags, id }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const activeUser = useSelector(({ UserDuck }) => UserDuck);
+	const activeUser = useSelector(({ UserDuck }) => UserDuck); //TODO: get active user to show delete button
 
 	const deleteHandler = (id) => {
 		fetch(`${api}/events/${id}`, {
