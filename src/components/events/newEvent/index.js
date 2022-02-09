@@ -14,7 +14,7 @@ const NewEvent = () => {
 
 	const [location, setLocation] = useState('');
 	const [address, setAddress] = useState('');
-	const [ticketCount, setTicketCount] = useState(0);
+	const [ticketCount, setTicketCount] = useState(null);
 	const [image, setImage] = useState('');
 
 	const dispatch = useDispatch();
