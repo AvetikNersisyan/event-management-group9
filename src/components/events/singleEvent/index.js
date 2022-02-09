@@ -4,7 +4,7 @@ import './index.css';
 import { useParams } from 'react-router-dom';
 import './index.css';
 import Sidebar from './sidebar';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Index from '../../error404';
 
 const backGroundImage =
@@ -12,18 +12,21 @@ const backGroundImage =
 
 const SingleEvent = () => {
 	const events = useSelector(({ EventDuck }) => EventDuck.events);
+	const [isValidUrl, setIsValidUrl] = useState(false);
+	const [event, setEvent] = useState(null);
 
 	const path = useParams();
-	const event = events[path.eventId - 1];
 
-	const validateEventPath = useCallback(
-		() => events.length >= path.eventId && path.eventId >= 1,
-		[events.length, path.eventId]
-	);
+	useEffect(() => {
+		events.forEach((item, idx) => {
+			item.id === +path.eventId && setIsValidUrl(true);
+			item.id === +path.eventId && setEvent(item);
+		});
+	});
 
 	return (
 		<>
-			{validateEventPath() ? (
+			{isValidUrl ? (
 				<div className={'single-event-page'}>
 					<img className={'bgImage'} src={backGroundImage} />
 
