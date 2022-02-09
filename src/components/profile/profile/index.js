@@ -5,7 +5,6 @@ import { api } from '../../../api'
 
 const ProfileInfo = () => {
 	const [baseImage, setBaseImage] = useState("")
-	console.log(baseImage);
 
 	const activeUser = useSelector((state) => state.UserDuck.activeUser)
 	const dispatch = useDispatch();
