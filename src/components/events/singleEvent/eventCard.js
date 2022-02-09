@@ -12,7 +12,7 @@ const EventCard = ({ title, description, img_url, tags, id }) => {
 	const dispatch = useDispatch();
 
 	const deleteHandler = (id) => {
-		fetch(`${api}/events/`, {
+		fetch(`${api}/events/${id}`, {
 			method: 'DELETE',
 			headers: {
 				'Content-Type': 'application/json',
