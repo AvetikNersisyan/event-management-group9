@@ -68,8 +68,8 @@ const ProfileInfo = () => {
 						: */}
 				<img
 					className='photo'
-					src={!!activeUser.profilePic ? baseImage : activeUser.profilePic}
-					// src={activeUser.profilePic}
+					// src={!!activeUser.profilePic ? baseImage : activeUser.profilePic}
+					src={activeUser.profilePic}
 					alt={'#'}
 				/>
 				{/* } */}
