@@ -4,14 +4,33 @@ import twitterIcon from '../../../assets/img/twitter.png';
 import shareIcon from '../../../assets/img/share.png';
 import favoriteIcon from '../../../assets/img/favourite.png';
 import EventFooter from './eventFooter';
+import { api } from '../../../api';
+import { useDispatch } from 'react-redux';
+import { deleteEvent } from '../../../redux/ducks/eventDuck';
 
-const EventCard = ({ title, description, img_url, tags }) => {
+const EventCard = ({ title, description, img_url, tags, id }) => {
+	const dispatch = useDispatch();
+
+	const deleteHandler = (id) => {
+		fetch(`${api}/events/${id}`, {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+			.then((res) => res.json())
+			.then(() => {
+				dispatch(deleteEvent(id));
+			});
+	};
+
 	return (
 		<div className={'event-vertical'}>
 			<div className={'event-card'}>
 				<div className={'event-head'}>
 					<h1>{title}</h1>
 					<span>
+						<button onClick={(e) => deleteHandler(id)}> delete </button>
 						<img src={favoriteIcon} alt={'favorite'} />
 					</span>
 				</div>
