@@ -39,29 +39,9 @@ const Sidebar = ({
 }) => {
 	const dispatch = useDispatch();
 
-	// Testing POST method
-	const newEventHandler = (newEvent) => {
-		fetch(`${api}/events/`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			// body: JSON.stringify({ id: Math.random(), name: 'Avet' + Math.random() }),
-			body: JSON.stringify({ ...ev }),
-		})
-			.then((res) => res.json())
-			.then((res) => {
-				console.log(res, 'res');
-				dispatch(addEvent(newEvent));
-			})
-			.catch((err) => console.log(err));
-	};
-
 	return (
 		<div className={'sidebar'}>
 			<button> ATTEND </button>
-
-			<button onClick={() => newEventHandler(ev)}> Add New Event </button>
 
 			<div className={'event-details'}>
 				<h3> Event detail</h3>

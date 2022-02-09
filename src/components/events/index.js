@@ -1,11 +1,12 @@
+import AllEvents from './allEvents';
+import './index.css';
 
-const Events = ()=> {
-
-    return (
-        <>
-            Events ... to be ...
-        </>
-    )
-}
+const Events = () => {
+	return (
+		<>
+			<AllEvents />
+		</>
+	);
+};
 
 export default Events;

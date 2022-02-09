@@ -20,21 +20,18 @@ import NewEvent from './components/events/newEvent';
 function App() {
 	const dispatch = useDispatch();
 
-
-	// fake info, to be deleted later
 	useEffect(() => {
-
 		fetch(`${api}/users`)
 			.then((res) => res.json())
 			.then((res) => {
 				console.log(res);
 				dispatch(setUsers(res))
+				dispatch(setUsers(res));
 			});
 
 		fetch(`${api}/events`)
 			.then((res) => res.json())
 			.then((res) => {
-				console.log(res, 'res');
 				dispatch(setEvents(res));
 			});
 	}, []);

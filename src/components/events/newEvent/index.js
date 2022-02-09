@@ -1,5 +1,9 @@
 import './index.css';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { api } from '../../../api';
+import { addEvent } from '../../../redux/ducks/eventDuck';
+import { toBase64 } from '../../../helper/utils';
 
 const NewEvent = () => {
 	const [title, setTitle] = useState('');
@@ -11,10 +15,62 @@ const NewEvent = () => {
 	const [location, setLocation] = useState('');
 	const [address, setAddress] = useState('');
 	const [ticketCount, setTicketCount] = useState(0);
+	const [image, setImage] = useState('');
+
+	const dispatch = useDispatch();
+
+	const imageRef = useRef(null);
+
+	const imageSelectHandler = (ref) => {
+		toBase64(ref)
+			.then((resp) => setImage(resp))
+			.catch((err) => console.error(err));
+	};
+
+	const newEvent = {
+		title,
+		description: text,
+		price: 10.99,
+		img_url: image,
+		tags: [tag],
+		event_details: {
+			start_date: start,
+			end_date: end,
+			start_time: '00:00',
+			end_time: '00:00',
+			location,
+			address,
+			guest_quantity: ticketCount,
+			available_seats: ticketCount,
+		},
+		speakers: [
+			{
+				name: 'Poghos Petrosyan',
+				rating: 4.9,
+			},
+		],
+	};
+
+	const submitHandler = (e) => {
+		e.preventDefault();
+		fetch(`${api}/events/`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(newEvent),
+		})
+			.then((res) => res.json())
+			.then((res) => {
+				console.log(res, 'res');
+				dispatch(addEvent(newEvent));
+			})
+			.catch((err) => console.warn(err));
+	};
 
 	return (
 		<div className={'new-event-container'}>
-			<form className={'new-event-form'}>
+			<form className={'new-event-form'} onSubmit={submitHandler}>
 				<fieldset className={'event-title'}>
 					<input
 						value={title}
@@ -69,11 +125,15 @@ const NewEvent = () => {
 				/>
 
 				<div className={'file'}>
-					<input type={'file'} />
-
+					<input
+						onChange={(e) => imageSelectHandler(e.target.files[0])}
+						ref={imageRef}
+						type={'file'}
+					/>
 					<button className={'btn primary'} type={'submit'}>
 						Add event
 					</button>
+					<img src={image} />
 				</div>
 			</form>
 		</div>
