@@ -1,15 +1,18 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import fbIcon from '../../../assets/img/facebook-app-symbol.png';
 import twitterIcon from '../../../assets/img/twitter.png';
 import shareIcon from '../../../assets/img/share.png';
 import favoriteIcon from '../../../assets/img/favourite.png';
+import deleteIcon from '../../../assets/img/delete.png';
 import EventFooter from './eventFooter';
 import { api } from '../../../api';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteEvent } from '../../../redux/ducks/eventDuck';
 
 const EventCard = ({ title, description, img_url, tags, id }) => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const activeUser = useSelector(({ UserDuck }) => UserDuck);
 
 	const deleteHandler = (id) => {
 		fetch(`${api}/events/${id}`, {
@@ -21,6 +24,7 @@ const EventCard = ({ title, description, img_url, tags, id }) => {
 			.then((res) => res.json())
 			.then(() => {
 				dispatch(deleteEvent(id));
+				navigate('/events');
 			});
 	};
 
@@ -29,9 +33,14 @@ const EventCard = ({ title, description, img_url, tags, id }) => {
 			<div className={'event-card'}>
 				<div className={'event-head'}>
 					<h1>{title}</h1>
-					<span>
-						<button onClick={(e) => deleteHandler(id)}> delete </button>
-						<img src={favoriteIcon} alt={'favorite'} />
+					<span className={'user-options'}>
+						<img
+							onClick={() => deleteHandler(id)}
+							id={'deleteBtn'}
+							src={deleteIcon}
+							alt={'delete'}
+						/>
+						<img id={'favoriteBtn'} src={favoriteIcon} alt={'favorite'} />
 					</span>
 				</div>
 

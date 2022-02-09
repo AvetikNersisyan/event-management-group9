@@ -145,13 +145,13 @@
 
 }
 
-.event-head span {
+.user-options {
     margin-left: auto;
 
 }
 
 
-.event-head span {
+.user-options {
     background-size: cover;
     width: 32px;
     height: 32px;
@@ -160,9 +160,13 @@
 
 }
 
-.event-head span:hover {
+#favoriteBtn:hover {
     cursor: pointer;
     background: url("../../../assets/img/favourite1.png");
+}
+
+#deleteBtn {
+    cursor: pointer;
 }
 
 .event-vertical {
@@ -223,4 +227,11 @@
     width: 32px;
     height: 32px;
     transition: 0.4s;
+}
+
+.user-options {
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end
+
 }
