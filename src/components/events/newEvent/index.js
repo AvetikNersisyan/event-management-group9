@@ -1,8 +1,9 @@
 import './index.css';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { api } from '../../../api';
 import { addEvent } from '../../../redux/ducks/eventDuck';
+import { toBase64 } from '../../../helper/utils';
 
 const NewEvent = () => {
 	const [title, setTitle] = useState('');
@@ -14,15 +15,23 @@ const NewEvent = () => {
 	const [location, setLocation] = useState('');
 	const [address, setAddress] = useState('');
 	const [ticketCount, setTicketCount] = useState(0);
+	const [image, setImage] = useState('');
 
 	const dispatch = useDispatch();
+
+	const imageRef = useRef(null);
+
+	const imageSelectHandler = (ref) => {
+		toBase64(ref)
+			.then((resp) => setImage(resp))
+			.catch((err) => console.error(err));
+	};
 
 	const newEvent = {
 		title,
 		description: text,
 		price: 10.99,
-		img_url:
-			'https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg',
+		img_url: image,
 		tags: [tag],
 		event_details: {
 			start_date: start,
@@ -56,7 +65,7 @@ const NewEvent = () => {
 				console.log(res, 'res');
 				dispatch(addEvent(newEvent));
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => console.warn(err));
 	};
 
 	return (
@@ -116,11 +125,15 @@ const NewEvent = () => {
 				/>
 
 				<div className={'file'}>
-					<input type={'file'} />
-
+					<input
+						onChange={(e) => imageSelectHandler(e.target.files[0])}
+						ref={imageRef}
+						type={'file'}
+					/>
 					<button className={'btn primary'} type={'submit'}>
 						Add event
 					</button>
+					<img src={image} />
 				</div>
 			</form>
 		</div>
