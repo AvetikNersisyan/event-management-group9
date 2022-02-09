@@ -85,6 +85,7 @@
   "users": [
     {
       "id": 0,
+      "profilePic": "",
       "firstname": "Hayk",
       "lastname": "Keshishyan",
       "email": "Hayk@gmail.com",
@@ -109,6 +110,7 @@
     },
     {
       "id": 1,
+      "profilePic": "",
       "firstname": "Lilit",
       "lastname": "Madoyan",
       "email": "Lilit@gmail.com",
@@ -132,6 +134,7 @@
     },
     {
       "id": 2,
+      "profilePic": "",
       "firstname": "Avetik",
       "lastname": "Nersisyan",
       "email": "Avetik@gmail.com",
@@ -156,6 +159,7 @@
     },
     {
       "id": 3,
+      "profilePic": "",
       "firstname": "Arsen",
       "lastname": "Aghasaryan",
       "email": "Arsen@gmail.com",
@@ -179,6 +183,7 @@
     },
     {
       "id": 4,
+      "profilePic": "",
       "firstname": "Tatev",
       "lastname": "Harutyunyan",
       "email": "Tatev@gmail.com",
