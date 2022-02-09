@@ -9,7 +9,6 @@ import { api } from '../../../api';
 
 const ProfileInfo = () => {
 	const [baseImage, setBaseImage] = useState('');
-	console.log(baseImage);
 
 	const activeUser = useSelector((state) => state.UserDuck.activeUser);
 	const dispatch = useDispatch();
@@ -51,7 +50,6 @@ const ProfileInfo = () => {
 		})
 			.then((res) => res.json())
 			.then((res) => {
-				console.log(res);
 				dispatch(setProfilePic(res));
 			})
 			.catch((err) => console.log(err));
@@ -70,7 +68,8 @@ const ProfileInfo = () => {
 						: */}
 				<img
 					className='photo'
-					src={!baseImage ? activeUser.profilePic : baseImage}
+					src={!!activeUser.profilePic ? baseImage : activeUser.profilePic}
+					// src={activeUser.profilePic}
 					alt={'#'}
 				/>
 				{/* } */}
