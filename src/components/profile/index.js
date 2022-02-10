@@ -7,7 +7,6 @@ import ProfileInfo from './profile';
 
 const Profile = () => {
     const loggedIn = useSelector((state) => state.UserDuck.activeUser)
-    console.log(loggedIn);
 
     return (
         <div className='profilePage'>

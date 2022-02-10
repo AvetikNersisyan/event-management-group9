@@ -6,15 +6,18 @@ import {
 	setProfilePic,
 } from '../../../redux/ducks/userDuck';
 import { api } from '../../../api';
+import ProfileEvent from './profileEvent';
+import { NavLink } from 'react-router-dom';
 
 const ProfileInfo = () => {
 	const [baseImage, setBaseImage] = useState('');
-
 	const activeUser = useSelector((state) => state.UserDuck.activeUser);
 
 	const dispatch = useDispatch();
 
-	console.log(activeUser);
+	console.log(activeUser.interestedEvents.length);
+
+
 	const choosePhoto = async (e) => {
 		const file = e.target.files[0];
 		const base64 = await convertBase64(file);
@@ -62,6 +65,7 @@ const ProfileInfo = () => {
 		dispatch(setActiveUser(null));
 	};
 
+
 	return (
 		<div className='myProfile'>
 			{activeUser.firstname === 'admin' ? (
@@ -91,23 +95,45 @@ const ProfileInfo = () => {
 							</div>
 						</div>
 					</div>
-					<div className='events'>
+					<div className='going'>
 						<p>Interested</p>
-						{activeUser.interestedEvents?.map((e) => (
-							<div className='event'>{e.title}</div>
-						))}
+
+						{activeUser.interestedEvents.length > 0 ? (
+							<div>
+								{activeUser.interestedEvents?.map((item) => (
+									<ProfileEvent event={item} />
+								))}
+							</div>
+						) : (
+							<h3>You dont't interested in some event, but you can <NavLink to={'/events'}>ADD</NavLink> it</h3>
+						)}
+
 					</div>
 					<div className='going'>
 						<p>Going</p>
-						{activeUser.going?.map((e) => (
-							<div className='event'>{e}</div>
-						))}
+						{activeUser.going.length > 0 ? (
+							<>
+								{activeUser.going?.map((item) => (
+									<ProfileEvent event={item} />
+								))}
+							</>
+						) : (
+							<h3>You dont't have any event for going, but you can <NavLink to={'/events'}>ADD</NavLink> it</h3>
+						)}
 					</div>
 					<div className='going'>
 						<p>Allready gone</p>
-						{activeUser.allreadyGone?.map((e) => (
-							<div className='event'>{e}</div>
-						))}
+						{activeUser.allreadyGone.length > 0 ? (
+							<>
+								{activeUser.allreadyGone?.map((item) => (
+									<ProfileEvent event={item} />
+								))}
+							</>
+						) : (
+							<h3>
+								You never gone at any event with this platform, but you can <NavLink to={'/events'}>ADD</NavLink> it
+							</h3>
+						)}
 					</div>
 				</>
 			)}
