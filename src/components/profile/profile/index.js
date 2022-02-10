@@ -12,8 +12,11 @@ import { NavLink } from 'react-router-dom';
 const ProfileInfo = () => {
 	const [baseImage, setBaseImage] = useState('');
 	const activeUser = useSelector((state) => state.UserDuck.activeUser);
+
 	const dispatch = useDispatch();
+
 	console.log(activeUser.interestedEvents.length);
+
 
 	const choosePhoto = async (e) => {
 		const file = e.target.files[0];
@@ -94,6 +97,7 @@ const ProfileInfo = () => {
 					</div>
 					<div className='going'>
 						<p>Interested</p>
+
 						{activeUser.interestedEvents.length > 0 ? (
 							<div>
 								{activeUser.interestedEvents?.map((item) => (
@@ -103,6 +107,7 @@ const ProfileInfo = () => {
 						) : (
 							<h3>You dont't interested in some event, but you can <NavLink to={'/events'}>ADD</NavLink> it</h3>
 						)}
+
 					</div>
 					<div className='going'>
 						<p>Going</p>

@@ -140,8 +140,10 @@
         "business"
       ],
       "interestedEvents": [],
+
       "allreadyGone": [],
       "going": []
+
     },
     {
       "id": 2,
@@ -153,12 +155,12 @@
       "password": "222",
       "phone": "000-11-22-33",
       "interests": [
-        "sport",
         "business"
       ],
       "interestedEvents": [],
       "allreadyGone": [],
       "going": []
+
     },
     {
       "id": 3,
@@ -173,8 +175,10 @@
         "sport"
       ],
       "interestedEvents": [],
+
       "allreadyGone": [],
       "going": []
+
     },
     {
       "id": 4,
@@ -189,8 +193,10 @@
         "music"
       ],
       "interestedEvents": [],
+
       "allreadyGone": [],
       "going": []
+
     },
     {
       "id": 0,
