@@ -8,12 +8,34 @@ import EventFooter from './eventFooter';
 import { api } from '../../../api';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteEvent } from '../../../redux/ducks/eventDuck';
+import { setLikedEvent } from '../../../redux/ducks/userDuck';
+import { useEffect, useState } from 'react';
 
 const EventCard = ({ title, description, img_url, tags, id }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const activeUser = useSelector(({ UserDuck }) => UserDuck); //TODO: get active user to show delete button
+	const activeUser = useSelector(({ UserDuck }) => UserDuck.activeUser); //TODO: get active user to show delete button
 
+	const [favBtnId, setFavBtnId] = useState('');
+
+	const likeEvenetHandler = () => {
+		if (!activeUser) {
+			navigate('/profile');
+		} else {
+			dispatch(setLikedEvent(activeUser.id));
+			setFavBtnId('likedBtn');
+		}
+	};
+
+	useEffect(() => {
+		activeUser &&
+			activeUser.interestedEvents.some((evId) => evId == id) &&
+			setFavBtnId('likedBtn');
+
+		console.log(activeUser?.interestedEvents.some((evId) => evId == id));
+	}, [activeUser]);
+
+	console.log(favBtnId, 'fav btn');
 	const deleteHandler = (id) => {
 		fetch(`${api}/events/${id}`, {
 			method: 'DELETE',
@@ -40,7 +62,12 @@ const EventCard = ({ title, description, img_url, tags, id }) => {
 							src={deleteIcon}
 							alt={'delete'}
 						/>
-						<img id={'favoriteBtn'} src={favoriteIcon} alt={'favorite'} />
+						<img
+							onClick={() => likeEvenetHandler()}
+							id={`${favBtnId}`}
+							src={favoriteIcon}
+							alt={'favorite'}
+						/>
 					</span>
 				</div>
 
@@ -56,7 +83,7 @@ const EventCard = ({ title, description, img_url, tags, id }) => {
 					<div className={'event-tags tags'}>
 						<p> Tags: </p>{' '}
 						{tags?.map((item, idx) => (
-							<NavLink to={`/events/}`} key={idx}>
+							<NavLink to={'/events/'} key={idx}>
 								{item}
 							</NavLink>
 						))}

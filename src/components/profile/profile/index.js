@@ -13,6 +13,8 @@ const ProfileInfo = () => {
 	const activeUser = useSelector((state) => state.UserDuck.activeUser);
 	const dispatch = useDispatch();
 
+	console.log(activeUser);
+
 	const choosePhoto = async (e) => {
 		const file = e.target.files[0];
 		const base64 = await convertBase64(file);
@@ -62,54 +64,53 @@ const ProfileInfo = () => {
 
 	return (
 		<div className='myProfile'>
-			{
-				activeUser.firstname === "admin" ?
-					<div>Hello our admin</div>
-					:
-					<>
-						<div className='profilePhoto'>
-							<img
-								className='photo'
-								src={!baseImage ? activeUser.profilePic : baseImage}
-								alt={'#'}
-							/>
-						</div>
-						<div className='about'>
-							<input type='file' onChange={(e) => choosePhoto(e)}></input>
-							<button onClick={uploadPhoto}>Upload</button>
+			{activeUser.firstname === 'admin' ? (
+				<div>Hello our admin</div>
+			) : (
+				<>
+					<div className='profilePhoto'>
+						<img
+							className='photo'
+							src={!baseImage ? activeUser.profilePic : baseImage}
+							alt={'#'}
+						/>
+					</div>
+					<div className='about'>
+						<input type='file' onChange={(e) => choosePhoto(e)}></input>
+						<button onClick={uploadPhoto}>Upload</button>
 
-							<p>
-								{activeUser.firstname} {activeUser.lastname}
-							</p>
-							<div className='interests'>
-								<p className='interests'>Interestes</p>
-								<div className='interestsItems'>
-									{activeUser.interests?.map((e) => (
-										<span className='interestsItem'>{e}</span>
-									))}
-								</div>
+						<p>
+							{activeUser.firstname} {activeUser.lastname}
+						</p>
+						<div className='interests'>
+							<p className='interests'>Interestes</p>
+							<div className='interestsItems'>
+								{activeUser.interests?.map((e) => (
+									<span className='interestsItem'>{e}</span>
+								))}
 							</div>
 						</div>
-						<div className='events'>
-							<p>Interested</p>
-							{activeUser.interestedEvents?.map((e) => (
-								<div className='event'>{e}</div>
-							))}
-						</div>
-						<div className='going'>
-							<p>Going</p>
-							{activeUser.going?.map((e) => (
-								<div className='event'>{e}</div>
-							))}
-						</div>
-						<div className='going'>
-							<p>Allready gone</p>
-							{activeUser.allreadyGone?.map((e) => (
-								<div className='event'>{e}</div>
-							))}
-						</div>
-					</>
-			}
+					</div>
+					<div className='events'>
+						<p>Interested</p>
+						{activeUser.interestedEvents?.map((e) => (
+							<div className='event'>{e}</div>
+						))}
+					</div>
+					<div className='going'>
+						<p>Going</p>
+						{activeUser.going?.map((e) => (
+							<div className='event'>{e}</div>
+						))}
+					</div>
+					<div className='going'>
+						<p>Allready gone</p>
+						{activeUser.allreadyGone?.map((e) => (
+							<div className='event'>{e}</div>
+						))}
+					</div>
+				</>
+			)}
 			<button onClick={handleLogOut}>LogOut</button>
 		</div>
 	);
