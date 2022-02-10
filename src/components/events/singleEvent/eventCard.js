@@ -16,19 +16,39 @@ const EventCard = ({ ev, title, description, img_url, tags, id }) => {
 	const navigate = useNavigate();
 	const activeUser = useSelector(({ UserDuck }) => UserDuck.activeUser); //TODO: get active user to show delete button
 
-	const [favBtnId, setFavBtnId] = useState('');
+	const [favBtnId, setFavBtnId] = useState('favouriteBtn');
 
 	const likeEvenetHandler = () => {
 		if (!activeUser) {
 			navigate('/profile');
 		} else {
-			dispatch(setLikedEvent({ activeUser, ev }));
+			console.log(activeUser.id);
+			fetch(`${api}/users/${activeUser.id}`, {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					...activeUser,
+					interestedEvents: [...activeUser.interestedEvents, ev],
+				}),
+			})
+				.then((res) => res.json())
+				.then((res) => {
+					dispatch(setLikedEvent({ activeUser, ev }));
+
+					console.log(res);
+				})
+				.catch((err) => console.log(err));
 			setFavBtnId('likedBtn');
 		}
 	};
 
 	useEffect(() => {
-		if (activeUser && activeUser.interestedEvents.some((evId) => evId === id)) {
+		if (
+			activeUser &&
+			activeUser.interestedEvents.some((event) => event.id === id)
+		) {
 			setFavBtnId('likedBtn');
 		}
 	}, []);
