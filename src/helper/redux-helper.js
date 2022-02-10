@@ -1,3 +1,3 @@
 export const createAction = (type) => {
-    return (payload) => ({type: type, payload});
+    return (payload) => ({ type: type, payload });
 };
