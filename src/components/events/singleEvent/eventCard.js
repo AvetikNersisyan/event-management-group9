@@ -32,10 +32,10 @@ const EventCard = ({ title, description, img_url, tags, id }) => {
 			activeUser.interestedEvents.some((evId) => evId == id) &&
 			setFavBtnId('likedBtn');
 
-		console.log(activeUser?.interestedEvents.some((evId) => evId == id));
+		// console.log(activeUser?.interestedEvents.some((evId) => evId == id));
 	}, [activeUser]);
 
-	console.log(favBtnId, 'fav btn');
+	// console.log(favBtnId, 'fav btn');
 	const deleteHandler = (id) => {
 		fetch(`${api}/events/${id}`, {
 			method: 'DELETE',

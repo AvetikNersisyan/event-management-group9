@@ -67,10 +67,16 @@
 }
 
 .event{
+  overflow: hidden;
   border: 2px solid black;
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  height: 300px;
   margin: 20px;
+  border-radius: 30px;
+}
+
+.event:hover {
+  cursor: pointer;
 }
 
 .initials { 
