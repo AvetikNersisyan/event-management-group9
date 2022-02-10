@@ -11,7 +11,7 @@ import { deleteEvent } from '../../../redux/ducks/eventDuck';
 import { setLikedEvent } from '../../../redux/ducks/userDuck';
 import { useEffect, useState } from 'react';
 
-const EventCard = ({ title, description, img_url, tags, id }) => {
+const EventCard = ({ ev, title, description, img_url, tags, id }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const activeUser = useSelector(({ UserDuck }) => UserDuck.activeUser); //TODO: get active user to show delete button
@@ -22,20 +22,17 @@ const EventCard = ({ title, description, img_url, tags, id }) => {
 		if (!activeUser) {
 			navigate('/profile');
 		} else {
-			dispatch(setLikedEvent(activeUser.id));
+			dispatch(setLikedEvent({ activeUser, ev }));
 			setFavBtnId('likedBtn');
 		}
 	};
 
 	useEffect(() => {
-		activeUser &&
-			activeUser.interestedEvents.some((evId) => evId == id) &&
+		if (activeUser && activeUser.interestedEvents.some((evId) => evId === id)) {
 			setFavBtnId('likedBtn');
+		}
+	}, []);
 
-		console.log(activeUser?.interestedEvents.some((evId) => evId == id));
-	}, [activeUser]);
-
-	console.log(favBtnId, 'fav btn');
 	const deleteHandler = (id) => {
 		fetch(`${api}/events/${id}`, {
 			method: 'DELETE',

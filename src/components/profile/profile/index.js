@@ -11,9 +11,12 @@ const ProfileInfo = () => {
 	const [baseImage, setBaseImage] = useState('');
 
 	const activeUser = useSelector((state) => state.UserDuck.activeUser);
+
+	const users = useSelector((state) => state.UserDuck.users);
+
 	const dispatch = useDispatch();
 
-	console.log(activeUser);
+	console.log(users[0].interestedEvents);
 
 	const choosePhoto = async (e) => {
 		const file = e.target.files[0];
@@ -94,7 +97,7 @@ const ProfileInfo = () => {
 					<div className='events'>
 						<p>Interested</p>
 						{activeUser.interestedEvents?.map((e) => (
-							<div className='event'>{e}</div>
+							<div className='event'>{e.title}</div>
 						))}
 					</div>
 					<div className='going'>
