@@ -96,8 +96,7 @@
         "music"
       ],
       "interestedEvents": [
-        "0002",
-        "0003"
+        {}
       ],
       "allreadyGone": [
         "0000",
@@ -121,8 +120,7 @@
         "business"
       ],
       "interestedEvents": [
-        "0002",
-        "0003"
+
       ],
       "allreadyGone": [
         "0000",
@@ -147,8 +145,8 @@
         "business"
       ],
       "interestedEvents": [
-        "0002",
-        "0003"
+
+
       ],
       "allreadyGone": [
         "0000",
@@ -172,8 +170,7 @@
         "sport"
       ],
       "interestedEvents": [
-        "0002",
-        "0003"
+
       ],
       "allreadyGone": [
         "0000",
@@ -197,8 +194,6 @@
         "music"
       ],
       "interestedEvents": [
-        "0002",
-        "0003"
       ],
       "allreadyGone": [
         "0000",

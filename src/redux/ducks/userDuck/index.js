@@ -35,18 +35,26 @@ export const UserDuck = (state = initialState, { type, payload }) => {
 		case SET_PROFILE_PIC:
 			return { ...state, profilePic: payload };
 		case SET_LIKED_EVENT:
-			console.log(payload);
-			state.users.forEach((user) => {
-				if (user.id === payload && user.type !== 'admin') {
-					if (user.interestedEvents.every((eventId) => eventId !== payload)) {
-						user.interestedEvents = [...user.interestedEvents, payload];
+			console.log(payload, 'payload');
+			const changedUsers = state.users.map((user) => {
+				if (user.id === payload.activeUser.id && user.type !== 'admin') {
+					if (
+						user.interestedEvents.every((event) => event.id !== payload.ev.id)
+					) {
+						console.log('something ');
+						user = {
+							...user,
+							interestedEvents: [...user.interestedEvents, payload.ev],
+						};
+						setActiveUser({ ...user });
+						return user;
 					} else console.log('already liked');
-					console.log(user.interestedEvents, 'single interest');
 				}
+				return user;
 			});
 
-			// console.log(state.users, 'users');
-			return { ...state, users: [...state.users] };
+			console.log(state.users, 'users');
+			return { ...state, users: [...changedUsers] };
 		default:
 			return state;
 	}

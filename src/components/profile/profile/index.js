@@ -11,10 +11,10 @@ const ProfileInfo = () => {
 	const [baseImage, setBaseImage] = useState('');
 
 	const activeUser = useSelector((state) => state.UserDuck.activeUser);
+
 	const dispatch = useDispatch();
 
 	console.log(activeUser);
-
 	const choosePhoto = async (e) => {
 		const file = e.target.files[0];
 		const base64 = await convertBase64(file);
@@ -94,7 +94,7 @@ const ProfileInfo = () => {
 					<div className='events'>
 						<p>Interested</p>
 						{activeUser.interestedEvents?.map((e) => (
-							<div className='event'>{e}</div>
+							<div className='event'>{e.title}</div>
 						))}
 					</div>
 					<div className='going'>
