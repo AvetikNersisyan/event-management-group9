@@ -8,7 +8,7 @@ import EventFooter from './eventFooter';
 import { api } from '../../../api';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteEvent } from '../../../redux/ducks/eventDuck';
-import { setLikedEvent } from '../../../redux/ducks/userDuck';
+import { setActiveUser, setLikedEvent } from '../../../redux/ducks/userDuck';
 import { useEffect, useState } from 'react';
 
 const EventCard = ({ ev, title, description, img_url, tags, id }) => {
@@ -36,7 +36,12 @@ const EventCard = ({ ev, title, description, img_url, tags, id }) => {
 				.then((res) => res.json())
 				.then((res) => {
 					dispatch(setLikedEvent({ activeUser, ev }));
-
+					dispatch(
+						setActiveUser({
+							...activeUser,
+							interestedEvents: [...activeUser.interestedEvents, ev],
+						})
+					);
 					console.log(res);
 				})
 				.catch((err) => console.log(err));
