@@ -12,12 +12,9 @@ const ProfileInfo = () => {
 
 	const activeUser = useSelector((state) => state.UserDuck.activeUser);
 
-	const users = useSelector((state) => state.UserDuck.users);
-
 	const dispatch = useDispatch();
 
-	console.log(users[0].interestedEvents);
-
+	console.log(activeUser);
 	const choosePhoto = async (e) => {
 		const file = e.target.files[0];
 		const base64 = await convertBase64(file);
