@@ -53,12 +53,6 @@ const EventCard = ({ ev, title, description, img_url, tags, id }) => {
 		}
 	}, []);
 
-
-		// console.log(activeUser?.interestedEvents.some((evId) => evId == id));
-	}, [activeUser]);
-
-	// console.log(favBtnId, 'fav btn');
-
 	const deleteHandler = (id) => {
 		fetch(`${api}/events/${id}`, {
 			method: 'DELETE',
