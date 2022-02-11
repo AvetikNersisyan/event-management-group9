@@ -1,9 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import './index.css';
+
 // eslint-disable-next-line no-unused-vars
 import Dropdown from './Dropdown';
 import { useState } from 'react';
 import Logo from '../../assets/img/logo.png';
+
 
 const Index = () => {
 	const [click, setClick] = useState(false);
@@ -25,6 +27,7 @@ const Index = () => {
 	};
 
 	return (
+
 		<div className='container'>
 			<div className={'scroll-fixed'}>
 				<div className={'navbar'}>
@@ -84,6 +87,21 @@ const Index = () => {
 						</li>
 					</ul>
 				</div>
+
+		<div className={'scroll-fixed'}>
+			<div className={'navbar'}>
+				<NavLink to={'/'}> Home </NavLink>
+				<NavLink to={'/events'}> Events </NavLink>
+				<NavLink to={'/profile'}> Profile </NavLink>
+				<NavLink to={'/categories'}> Categories </NavLink>
+
+				{true && (
+					<NavLink to={'/new-event'} className={'addEvent-btn btn'}>
+						{' '}
+						ADD EVENT{' '}
+					</NavLink>
+				)}
+
 			</div>
 		</div>
 	);

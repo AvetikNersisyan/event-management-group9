@@ -145,24 +145,33 @@
 
 }
 
-.event-head span {
+.user-options {
     margin-left: auto;
 
 }
 
 
-.event-head span {
+.user-options {
     background-size: cover;
     width: 32px;
     height: 32px;
     background: url("../../../assets/img/favourite.png");
+    cursor: pointer;
 
 
 }
 
-.event-head span:hover {
+#likedBtn {
     cursor: pointer;
     background: url("../../../assets/img/favourite1.png");
+}
+/*#favoriteBtn:hover {*/
+/*    cursor: pointer;*/
+/*    background: url("../../../assets/img/favourite1.png");*/
+/*}*/
+
+#deleteBtn {
+    cursor: pointer;
 }
 
 .event-vertical {
@@ -223,4 +232,11 @@
     width: 32px;
     height: 32px;
     transition: 0.4s;
+}
+
+.user-options {
+    display: flex;
+    gap: 1em;
+    justify-content: flex-end
+
 }

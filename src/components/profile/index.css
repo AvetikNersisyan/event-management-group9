@@ -45,12 +45,13 @@
 }
 
 .interestsItem{
-    background-color: rgb(172, 159, 140);
-    border: 1px solid rgb(185, 185, 185);
-    padding: 5px;
-    margin: 5px;
-    border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid rgb(148, 148, 148);
+  border-radius: 10px;
 }
+
+
 
 .profilePhoto{
   border: 1px solid rgb(68, 68, 68);
@@ -66,8 +67,20 @@
 }
 
 .event{
+  overflow: hidden;
   border: 2px solid black;
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  height: 300px;
   margin: 20px;
+  border-radius: 30px;
+}
+
+.event:hover {
+  cursor: pointer;
+}
+
+.initials { 
+  background-color: chartreuse;
+  height: 100%;
+  font-size: 100px;
 }

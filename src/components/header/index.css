@@ -214,5 +214,11 @@ img{
     background: white;
 } */
 
+.addEvent-btn {
+   margin-left: auto;
+    margin-right: 2em;
+    cursor: pointer ;
+}
+
 
 
