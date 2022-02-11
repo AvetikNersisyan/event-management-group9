@@ -6,7 +6,6 @@ import Dropdown from './Dropdown';
 import { useState } from 'react';
 import Logo from '../../assets/img/logo.png';
 
-
 const Index = () => {
 	const [click, setClick] = useState(false);
 	const [dropdown, setDropdown] = useState(false);
@@ -27,7 +26,6 @@ const Index = () => {
 	};
 
 	return (
-
 		<div className='container'>
 			<div className={'scroll-fixed'}>
 				<div className={'navbar'}>
@@ -85,23 +83,34 @@ const Index = () => {
 								Pages <i className='fas fa-caret-down' />
 							</NavLink>
 						</li>
+
+						{true && (
+							<li className='nav-item'>
+								<NavLink
+									to={'/new-event'}
+									className='nav-links'
+									onClick={closeMobileMenu}
+								>
+									Add new Event <i className='fas fa-caret-down' />
+								</NavLink>
+							</li>
+						)}
 					</ul>
 				</div>
 
-		<div className={'scroll-fixed'}>
-			<div className={'navbar'}>
-				<NavLink to={'/'}> Home </NavLink>
-				<NavLink to={'/events'}> Events </NavLink>
-				<NavLink to={'/profile'}> Profile </NavLink>
-				<NavLink to={'/categories'}> Categories </NavLink>
+				{/*<div className={'scroll-fixed'}>*/}
+				{/*	<div className={'navbar'}>*/}
+				{/*		<NavLink to={'/'}> Home </NavLink>*/}
+				{/*		<NavLink to={'/events'}> Events </NavLink>*/}
+				{/*		<NavLink to={'/profile'}> Profile </NavLink>*/}
+				{/*		<NavLink to={'/categories'}> Categories </NavLink>*/}
 
-				{true && (
-					<NavLink to={'/new-event'} className={'addEvent-btn btn'}>
-						{' '}
-						ADD EVENT{' '}
-					</NavLink>
-				)}
-
+				{/*		{true && (*/}
+				{/*			<NavLink to={'/new-event'} className={'addEvent-btn btn'}>*/}
+				{/*				{' '}*/}
+				{/*				ADD EVENT{' '}*/}
+				{/*			</NavLink>*/}
+				{/*		)}*/}
 			</div>
 		</div>
 	);
