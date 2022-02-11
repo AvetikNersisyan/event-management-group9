@@ -40,6 +40,7 @@ function App() {
 
 			<Routes>
 				<Route path={'/'} element={<Home />} />
+
 				<Route path={'/categories'} element={<Categories />} />
 				<Route path={'profile/signup'} element={<SignUp />} />
 				<Route path={'/profile/'} element={<Profile />} />
