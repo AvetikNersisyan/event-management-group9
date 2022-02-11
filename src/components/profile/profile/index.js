@@ -12,11 +12,7 @@ import { NavLink } from 'react-router-dom';
 const ProfileInfo = () => {
 	const [baseImage, setBaseImage] = useState('');
 	const activeUser = useSelector((state) => state.UserDuck.activeUser);
-
 	const dispatch = useDispatch();
-
-	console.log(activeUser.interestedEvents.length);
-
 
 	const choosePhoto = async (e) => {
 		const file = e.target.files[0];

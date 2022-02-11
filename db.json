@@ -219,6 +219,32 @@
               "rating": 4.9
             }
           ]
+        },
+        {
+          "id": 3,
+          "title": "sdfa",
+          "description": "asdf",
+          "price": 10.99,
+          "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
+          "tags": [
+            "asdf"
+          ],
+          "event_details": {
+            "start_date": "2022-02-08",
+            "end_date": "2022-02-09",
+            "start_time": "00:00",
+            "end_time": "00:00",
+            "location": "London",
+            "address": "Masht",
+            "guest_quantity": "99",
+            "available_seats": "99"
+          },
+          "speakers": [
+            {
+              "name": "Poghos Petrosyan",
+              "rating": 4.9
+            }
+          ]
         }
       ],
       "allreadyGone": [],

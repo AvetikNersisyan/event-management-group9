@@ -1,12 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUser } from '../../../redux/ducks/userDuck';
+import { addUser, setActiveUser, setLoggedIn } from '../../../redux/ducks/userDuck';
 import { api } from '../../../api'
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
     const users = useSelector((state) => state.UserDuck.users)
-
-    const dispatch = useDispatch()
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [interests, setInterests] = useState([]);
 
@@ -24,15 +25,26 @@ const SignUp = () => {
         interestElement.current.value = '';
     };
 
+    const removeInt = (e) => {
+        let id = e.item
+        const newInt = interests.filter((item) => item !== id)
+        setInterests(newInt);
+    }
+
     const handleRegistration = () => {
         if (regPassElement.current.value === regPasConfElement.current.value) {
             let newUser = {
                 id: users.length,
+                type: "user",
                 firstname: regFirstnameElement.current.value,
                 lastname: regLastnameElement.current.value,
                 email: regEmailElement.current.value,
                 password: regPassElement.current.value,
                 phone: regPhoneElement.current.value,
+                interests: interests,
+                interestedEvents: [],
+                allreadyGone: [],
+                going: []
             };
             dispatch(addUser(newUser))
             fetch(`${api}/users`, {
@@ -42,15 +54,13 @@ const SignUp = () => {
                 }
             })
                 .then(response => response.json())
-                .then(json => console.log(json));
+                .then(json => {
+                    dispatch(setActiveUser(json));
+                    dispatch(setLoggedIn(true))
+                })
+                .then(navigate('/profile'))
         }
     };
-
-    const removeInt = (e) => {
-        let id = e.item
-        const newInt = interests.filter((item) => item !== id)
-        setInterests(newInt);
-    }
 
     return (
         <div className='signIn'>
