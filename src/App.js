@@ -16,6 +16,7 @@ import { setEvents } from './redux/ducks/eventDuck';
 import { api } from './api';
 import Error404 from './components/error404';
 import NewEvent from './components/events/newEvent';
+import Footer from './components/footer';
 
 function App() {
 	const dispatch = useDispatch();
@@ -49,6 +50,8 @@ function App() {
 				{true && <Route path={'/new-event'} element={<NewEvent />} />}
 				<Route path={'*'} element={<Error404 />} />
 			</Routes>
+
+			<Footer />
 		</div>
 	);
 }
