@@ -29,8 +29,8 @@ const Index = () => {
 		<div className='container'>
 			<div className={'scroll-fixed'}>
 				<div className={'navbar'}>
-					<NavLink to='/' className='navbar-logo' onClick={closeMobileMenu}>
-						<img src={Logo} />
+					<NavLink to='/' className='header-logo' onClick={closeMobileMenu}>
+						<img className='header-logo' src={Logo} />
 					</NavLink>
 					<div className='menu-icon' onClick={handleClick}>
 						<i className={click ? 'fas fa-times' : 'fas fa-bars'} />

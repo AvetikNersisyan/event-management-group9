@@ -40,8 +40,8 @@
     text-decoration:none;
 } 
 
-img{
-    width: 140px;
+.header-logo{
+    width: 100px;
 }
 .nav-menu{
     display: flex;
