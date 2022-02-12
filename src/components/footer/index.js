@@ -12,6 +12,7 @@ const Footer = () => {
         <div className="footer">
             <div>
                 <img src={logo} width={180} />
+
                 <span>Company Name</span>
             </div>
             <div>
