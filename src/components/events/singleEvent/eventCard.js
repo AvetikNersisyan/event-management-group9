@@ -9,20 +9,37 @@ import { api } from '../../../api';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteEvent } from '../../../redux/ducks/eventDuck';
 import { setActiveUser, setLikedEvent } from '../../../redux/ducks/userDuck';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
-const EventCard = ({ ev, title, description, img_url, tags, id }) => {
+const EventCard = ({ ev }) => {
+	const { title, description, img_url, tags, id } = ev;
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const activeUser = useSelector(({ UserDuck }) => UserDuck.activeUser); //TODO: get active user to show delete button
 
 	const [favBtnId, setFavBtnId] = useState('favouriteBtn');
 
-	const likeEvenetHandler = () => {
+	const isLiked = () => favBtnId === 'likedBtn';
+
+	const dislikeEvent = () => {
+		setFavBtnId('favouriteBtn');
+
+		fetch(`${api}/users/${activeUser.id}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				...activeUser,
+				interestedEvents: [...activeUser.interestedEvents, ev],
+			}),
+		}).then();
+	};
+
+	const likeEvent = () => {
 		if (!activeUser) {
 			navigate('/profile');
 		} else {
-			console.log(activeUser.id);
 			fetch(`${api}/users/${activeUser.id}`, {
 				method: 'PUT',
 				headers: {
@@ -47,6 +64,10 @@ const EventCard = ({ ev, title, description, img_url, tags, id }) => {
 				.catch((err) => console.log(err));
 			setFavBtnId('likedBtn');
 		}
+	};
+
+	const likeEvenetHandler = () => {
+		!isLiked() ? likeEvent() : dislikeEvent();
 	};
 
 	useEffect(() => {
