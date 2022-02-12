@@ -30,7 +30,7 @@ const SingleEvent = () => {
 				<div className={'single-event-page'}>
 					<img className={'bgImage'} src={backGroundImage} />
 
-					<EventCard ev={event} {...event} />
+					<EventCard ev={event} />
 					<Sidebar {...event?.event_details} />
 				</div>
 			) : (

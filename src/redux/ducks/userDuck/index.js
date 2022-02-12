@@ -8,6 +8,7 @@ const SET_PROFILE_PIC = 'userDuck/SET_PROFILE_PIC';
 const SET_IS_USER_LOGGED_IN = 'userDuck/SET_IS_USER_LOGGED_IN';
 const SET_IS_ADMIN_LOGGED_IN = 'userDuck/SET_IS_ADMIN_LOGGED_IN';
 const SET_LIKED_EVENT = 'userDuck/SET_LIKED_EVENT';
+const REMOVE_LIKED_EVENT = 'userDuck/REMOVE_LIKED_EVENT';
 
 export const setUsers = createAction(SET_USERS);
 export const addUser = createAction(ADD_USER);
@@ -34,14 +35,15 @@ export const UserDuck = (state = initialState, { type, payload }) => {
 			return { ...state, loggedIn: payload };
 		case SET_PROFILE_PIC:
 			return { ...state, profilePic: payload };
+		case REMOVE_LIKED_EVENT:
+			const removedEventUsers = [];
+			return { ...state, users: [...removedEventUsers] };
 		case SET_LIKED_EVENT:
-			console.log(payload, 'payload');
 			const changedUsers = state.users.map((user) => {
 				if (user.id === payload.activeUser.id && user.type !== 'admin') {
 					if (
 						user.interestedEvents.every((event) => event.id !== payload.ev.id)
 					) {
-						console.log('something ');
 						user = {
 							...user,
 							interestedEvents: [...user.interestedEvents, payload.ev],
