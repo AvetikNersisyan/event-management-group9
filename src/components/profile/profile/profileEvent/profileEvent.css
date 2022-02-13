@@ -1,5 +1,25 @@
-.eventImg{
-    position:relative;
-    width: 100%;
+.profile-event-card{
+    background-color: rgb(238, 236, 236);
+    border: 1px solid rgb(212, 212, 212);
+    padding: 30px;
+    margin-top: 20px;
+    border-radius: 40px;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
+.profile-event-card:hover {
+    box-shadow: 0px 20px 30px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
+  }
+
+.profile-card-content {
+    display: grid;
+    gap: 28px;
+    grid-template-columns: 10fr 10fr;
+}
+
+.profile-event-img {
+    border: 2px solid rgb(207, 207, 207);
+    margin: 20px;
+    height: 250px;
+}

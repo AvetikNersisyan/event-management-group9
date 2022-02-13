@@ -28,7 +28,7 @@ const Index = () => {
 	return (
 		<div className='container'>
 			<div className={'scroll-fixed'}>
-				<div className={'navbar'}>
+				<div className='navbar global-container'>
 					<NavLink to='/' className='header-logo' onClick={closeMobileMenu}>
 						<img className='header-logo' src={Logo} />
 					</NavLink>

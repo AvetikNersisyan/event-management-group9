@@ -9,10 +9,14 @@ const ProfileEvent = ({ event: { id, img_url, title, description } }) => {
     };
 
     return (
-        <div className="event" onClick={() => handleEventClick(id)}>
-            <img className="eventImg" src={img_url} />
-            <h2>{title}</h2>
-            <p>{description}</p>
+        <div className="profile-event-card" onClick={() => handleEventClick(id)}>
+            <div className='profile-card-content'>
+                <img className="profile-event-img" src={img_url} />
+                <div className='profile-about-event'>
+                    <h2>{title}</h2>
+                    <p>{description}</p>
+                </div>
+            </div>
         </div>
     )
 }
