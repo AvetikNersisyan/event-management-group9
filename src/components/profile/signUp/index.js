@@ -63,54 +63,63 @@ const SignUp = () => {
     };
 
     return (
-        <div className='signIn'>
-            <input
-                ref={regFirstnameElement}
-                className='signInInputs'
-                placeholder='Firstname'
-            />
-            <input
-                ref={regLastnameElement}
-                className='signInInputs'
-                placeholder='Lastname'
-            />
-            <input
-                ref={regEmailElement}
-                className='signInInputs'
-                placeholder='Email'
-            />
-            <input
-                ref={regPhoneElement}
-                className='signInInputs'
-                placeholder='Phone'
-            />
-            <input
-                ref={regPassElement}
-                className='signInInputs'
-                type='password'
-                placeholder='Password'
-            />
-            <input
-                ref={regPasConfElement}
-                className='signInInputs'
-                type='password'
-                placeholder='Password confirmation'
-            />
-            <div>
-                <p className='interests'>Interestes</p>
-                <div className='interestsItems'>
-                    {interests.map((item) => (
-                        <span className='interestsItem'>
-                            <span>{item}</span>
-                            <button onClick={() => removeInt({ item })}>Remove</button>
-                        </span>
-                    ))}
+        <div className='sign-in-page'>
+            <div className='sign-in-conteiner'>
+                <h1>Sign In</h1>
+                <div className='sign-in-strocks'>
+                    <input
+                        ref={regFirstnameElement}
+                        className='sign-in-inputs'
+                        placeholder='Firstname'
+                    />
+                    <input
+                        ref={regLastnameElement}
+                        className='sign-in-inputs'
+                        placeholder='Lastname'
+                    />
                 </div>
-                <input type="search" ref={interestElement} placeholder='type your interests' />
-                <button onClick={addInterest}>Add</button>
-            </div>
-            <div>
-                <button className='logBtn' onClick={handleRegistration}>
+                <div className='sign-in-strocks'>
+                    <input
+                        ref={regPhoneElement}
+                        className='sign-in-inputs'
+                        placeholder='Phone'
+                    />
+                    <input
+                        ref={regEmailElement}
+                        className='sign-in-inputs'
+                        placeholder='Email'
+                    />
+                </div>
+                <div className='sign-in-strocks'>
+                    <input
+                        ref={regPassElement}
+                        className='sign-in-inputs'
+                        type='password'
+                        placeholder='Password'
+                    />
+                    <input
+                        ref={regPasConfElement}
+                        className='sign-in-inputs'
+                        type='password'
+                        placeholder='Password confirmation'
+                    />
+                </div>
+                <div className='sign-in-interests'>
+                    <h2 className='interests'>Interestes</h2>
+                    <div className='interests-items'>
+                        {interests.map((item) => (
+                            <span className='interests-item'>
+                                <span>{item}</span>
+                                <button className='button' onClick={() => removeInt({ item })}>Remove</button>
+                            </span>
+                        ))}
+                    </div>
+                    <div className='interest-stroke'>
+                        <input className='sign-in-inputs' type="search" ref={interestElement} placeholder='type your interests' />
+                        <button className='button' onClick={addInterest}>Add</button>
+                    </div>
+                </div>
+                <button className='button' onClick={handleRegistration}>
                     Sign Up
                 </button>
             </div>

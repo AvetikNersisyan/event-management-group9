@@ -1,18 +1,35 @@
-.profilePage {
-    background-color: bisque;
+.profile-page {
+    background-color: rgb(255, 255, 255);
     padding: 20px;
 }
   
-.logIn {
-  display: grid;
+.profile-log-in {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.logInInputs{
+.log-in-conteiner{
+  padding: 20px;
+  width: 500px;
+  height: 500px;
+}
+
+.log-in-inputs{
+  width: 100%;
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.sign-in-btn {
   margin: 10px;
 }
 
-.logBtn {
-  margin: 10px;
+.interest-stroke{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .or{
@@ -28,33 +45,64 @@
   cursor: pointer;
 }
 
-.signIn {
-  display: grid;
+.sign-in-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in-conteiner{
+  width: 1000px;
+  height: 500px;
+}
+
+.sign-in-strocks{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sign-in-inputs{
+  width: 100%;
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: white;
+  margin: 10px;
+}
+
+.sign-in-strocks {
+
 }
 
 .signInInputs {
     margin: 10px;
 }
 
-.interests{
+.detaile-classes{
     font-weight: bold;
+    border-bottom: 1px solid rgb(156, 156, 156);
+    padding: 10px;
 }
 
-.interestsItems{
-    margin: 10px;
+.interests-items{
+  padding: 10px;
+  margin: 10px;
 }
 
-.interestsItem{
+.interests-item{
   margin: 10px;
   padding: 10px;
-  border: 1px solid rgb(148, 148, 148);
+  border: 1px solid rgb(207, 207, 207);
   border-radius: 10px;
 }
 
-
+.profile-event-list{
+  display: grid;
+}
 
 .profilePhoto{
-  border: 1px solid rgb(68, 68, 68);
+  border: 5px solid rgb(207, 207, 207);
+  margin: 10px;
   width: 150px;
   height: 150px;
   border-radius: 75px;
@@ -66,21 +114,42 @@
   height: 100%;
 }
 
-.event{
-  overflow: hidden;
-  border: 2px solid black;
-  width: 300px;
-  height: 300px;
-  margin: 20px;
-  border-radius: 30px;
-}
-
-.event:hover {
-  cursor: pointer;
-}
-
 .initials { 
   background-color: chartreuse;
   height: 100%;
   font-size: 100px;
 }
+
+.button {
+  width: 150px;
+  padding: 10px;
+  margin: 10px;
+  background: none;
+  border-radius: 10px;
+  font-weight: bolder;
+  font-size: 15px;
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.button:hover {
+  cursor: pointer;
+  box-shadow: 0px 20px 30px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+.photo-info{
+  display: grid;
+}
+
+.profile-head{
+  display: grid;
+  grid-template-columns: 1fr 9fr;
+}
+
+.profile-list-name{
+  margin-top: 10px;
+  border-bottom: 1px solid rgb(156, 156, 156);
+  padding: 10px;
+}
+
+

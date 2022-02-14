@@ -9,7 +9,7 @@ const Profile = () => {
     const loggedIn = useSelector((state) => state.UserDuck.activeUser)
 
     return (
-        <div className='profilePage'>
+        <div className='profile-page global-container'>
             {!loggedIn ? (
                 <LogIn
                 />

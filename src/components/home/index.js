@@ -5,14 +5,14 @@ import Featured from './featured';
 import Review from '../review';
 const Home = () => {
   return (
-    <>
+    <div className='global-container'>
       <div className='search_wrapper'>
         <Search />;
       </div>
       <Populiar />
       <Featured />
       <Review />
-    </>
+    </div>
   );
 };
 
