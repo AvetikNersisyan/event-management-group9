@@ -3,9 +3,9 @@ import './index.css';
 
 const Events = () => {
 	return (
-		<>
+		<div className='global-container'>
 			<AllEvents />
-		</>
+		</div>
 	);
 };
 

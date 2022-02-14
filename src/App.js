@@ -22,11 +22,11 @@ function App() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		fetch(`${api}/users`)
-			.then((res) => res.json())
-			.then((res) => {
-				dispatch(setUsers(res));
-			});
+		// fetch(`${api}/users`)
+		// 	.then((res) => res.json())
+		// 	.then((res) => {
+		// 		dispatch(setUsers(res));
+		// 	});
 
 		fetch(`${api}/events`)
 			.then((res) => res.json())

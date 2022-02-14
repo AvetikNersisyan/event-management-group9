@@ -2,28 +2,33 @@ import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveUser, setLoggedIn } from '../../../redux/ducks/userDuck';
 import { NavLink } from 'react-router-dom';
+import { api } from '../../../api';
 
 const LogIn = () => {
-	const users = useSelector((state) => state.UserDuck.users);
-
 	const dispatch = useDispatch();
 
 	const emailElement = useRef(null);
 	const passwordElement = useRef(null);
 
 	const handleLogIn = () => {
-		let index = users.findIndex((i) => i.email === emailElement.current.value);
-		if (index < 0) {
-			alert('User not found');
-		} else {
-			if (users[index].password === passwordElement.current.value) {
-				dispatch(setActiveUser(users[index]));
-				dispatch(setLoggedIn(true));
-			} else {
-				alert('incorrect password');
-			}
-		}
-	};
+		fetch(`${api}/users`)
+			.then((res) => res.json())
+			.then((res) => {
+				let index = res.findIndex((i) => i.email === emailElement.current.value);
+				if (index < 0) {
+					alert('User not found');
+				} else {
+					if (res[index].password === passwordElement.current.value) {
+						dispatch(setActiveUser(res[index]));
+						dispatch(setLoggedIn(true));
+					} else {
+						alert('incorrect password');
+					}
+				};
+			});
+
+	}
+
 
 	return (
 		<div className='profile-log-in'>
