@@ -36,6 +36,8 @@ const EventCard = ({ ev }) => {
 		}).then();
 	};
 
+	const isAdminLogged = activeUser && activeUser.type === 'admin';
+
 	const likeEvent = () => {
 		if (!activeUser) {
 			navigate('/profile');
@@ -73,7 +75,7 @@ const EventCard = ({ ev }) => {
 	useEffect(() => {
 		if (
 			activeUser &&
-			activeUser.interestedEvents.some((event) => event.id === id)
+			activeUser?.interestedEvents?.some((event) => event.id === id)
 		) {
 			setFavBtnId('likedBtn');
 		}
@@ -99,18 +101,21 @@ const EventCard = ({ ev }) => {
 				<div className={'event-head'}>
 					<h1>{title}</h1>
 					<span className={'user-options'}>
-						<img
-							onClick={() => deleteHandler(id)}
-							id={'deleteBtn'}
-							src={deleteIcon}
-							alt={'delete'}
-						/>
-						<img
-							onClick={() => likeEvenetHandler()}
-							id={`${favBtnId}`}
-							src={favoriteIcon}
-							alt={'favorite'}
-						/>
+						{isAdminLogged ? (
+							<img
+								onClick={() => deleteHandler(id)}
+								id={'deleteBtn'}
+								src={deleteIcon}
+								alt={'delete'}
+							/>
+						) : (
+							<img
+								onClick={() => likeEvenetHandler()}
+								id={`${favBtnId}`}
+								src={favoriteIcon}
+								alt={'favorite'}
+							/>
+						)}
 					</span>
 				</div>
 
