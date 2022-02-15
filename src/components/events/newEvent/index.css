@@ -1,49 +1,77 @@
-.new-event-container {
+.new-event-page {
     display: flex;
-    flex-direction: column;
-    width: 50vw;
-    min-width: 300px;
-    margin: 0 auto;
-    gap: 5vw;
+    justify-content: center;
+    align-items: center;
 }
-
-
-.new-event-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
+  
+.new-event-conteiner{
+    width: 1000px;
+    height: 100%;
+    padding: 10px;
 }
-
-.file {
-    display: flex;
-    flex-direction: row;
+.new-event-title-inputs{
     width: 100%;
-    gap: 1em;
-
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.file button {
-    width: 30%;
-    height: 54px;
-    align-content: center;
+
+.new-event-inputs{
+    width: 100%;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: white;
+    margin: 10px;
 }
 
-.event-title {
+.event-title{
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.tag-stroke{
+    display: grid;
+    grid-template-columns: 3fr 3fr;
+}
+
+.tag-item{
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid rgb(207, 207, 207);
+  border-radius: 10px;
+}
+
+.new-event-stroks{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.tag-input{
     display: flex;
-    flex-direction: column;
-    gap: 1em;
-    padding: 1em;
-    width: 50vw;
-    margin-top: 1em;
-}
-
-.start-end-date {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
-.start-end-date * {
-    width: 45%;
-}
+.remove-button {
+    padding: 10px;
+    margin: 10px;
+    background: none;
+    border: none;
+    font-weight: bolder;
+    font-size: 15px;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .remove-button:hover {
+    cursor: pointer;
+    box-shadow: 0px 20px 30px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }

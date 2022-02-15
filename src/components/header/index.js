@@ -5,11 +5,12 @@ import './index.css';
 import Dropdown from './Dropdown';
 import { useState } from 'react';
 import Logo from '../../assets/img/logo.png';
+import { useSelector } from 'react-redux';
 
 const Index = () => {
+	const activeUser = useSelector((state) => state.UserDuck.activeUser);
 	const [click, setClick] = useState(false);
 	const [dropdown, setDropdown] = useState(false);
-
 	const handleClick = () => {
 		setClick(!click);
 	};
@@ -84,7 +85,7 @@ const Index = () => {
 							</NavLink>
 						</li>
 
-						{true && (
+						{activeUser?.type === 'admin' ? (
 							<li className='nav-item'>
 								<NavLink
 									to={'/new-event'}
@@ -94,7 +95,7 @@ const Index = () => {
 									Add new Event <i className='fas fa-caret-down' />
 								</NavLink>
 							</li>
-						)}
+						) : ''}
 					</ul>
 				</div>
 
