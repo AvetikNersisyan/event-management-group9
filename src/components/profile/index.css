@@ -53,7 +53,7 @@
 
 .sign-in-conteiner{
   width: 1000px;
-  height: 500px;
+  height: 100%;
 }
 
 .sign-in-strocks{
@@ -68,10 +68,6 @@
   border-radius: 10px;
   background-color: white;
   margin: 10px;
-}
-
-.sign-in-strocks {
-
 }
 
 .signInInputs {

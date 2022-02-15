@@ -8,6 +8,7 @@ import {
 import { api } from '../../../api';
 import ProfileEvent from './profileEvent';
 import { NavLink } from 'react-router-dom';
+import { toBase64 } from '../../../helper/utils';
 
 const ProfileInfo = () => {
 	const [baseImage, setBaseImage] = useState('');
@@ -17,23 +18,8 @@ const ProfileInfo = () => {
 
 	const choosePhoto = async (e) => {
 		const file = e.target.files[0];
-		const base64 = await convertBase64(file);
+		const base64 = await toBase64(file);
 		setBaseImage(base64);
-	};
-
-	const convertBase64 = (file) => {
-		return new Promise((res, rej) => {
-			const fileReader = new FileReader();
-			fileReader.readAsDataURL(file);
-
-			fileReader.onload = () => {
-				res(fileReader.result);
-			};
-
-			fileReader.onerror = (error) => {
-				rej(error);
-			};
-		});
 	};
 
 	const updatedUser = {
