@@ -9,8 +9,7 @@ import Categories from './components/categories';
 import { useEffect, useState } from 'react';
 import SignUp from './components/profile/signUp';
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { setUsers } from './redux/ducks/userDuck';
+import { useDispatch, useSelector } from 'react-redux';
 import SingleEvent from './components/events/singleEvent';
 import { setEvents } from './redux/ducks/eventDuck';
 import { api } from './api';
@@ -22,18 +21,16 @@ function App() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		// fetch(`${api}/users`)
-		// 	.then((res) => res.json())
-		// 	.then((res) => {
-		// 		dispatch(setUsers(res));
-		// 	});
-
 		fetch(`${api}/events`)
 			.then((res) => res.json())
 			.then((res) => {
 				dispatch(setEvents(res));
 			});
 	}, []);
+
+	const activeUser = useSelector(({ UserDuck }) => UserDuck.activeUser); //TODO: get active user to show delete button
+
+	const isAdminLogged = activeUser && activeUser.type === 'admin';
 
 	return (
 		<div className='App'>
@@ -48,7 +45,8 @@ function App() {
 
 				<Route path={'/events/:eventId'} element={<SingleEvent />} />
 				<Route path={'/events'} exact={true} element={<Events />} />
-				{true && <Route path={'/new-event'} element={<NewEvent />} />}
+				{isAdminLogged && <Route path={'/new-event'} element={<NewEvent />} />}
+				<Route path={'/checkout'} element={<div> checkout</div>} />
 				<Route path={'*'} element={<Error404 />} />
 			</Routes>
 

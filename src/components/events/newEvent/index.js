@@ -20,8 +20,7 @@ const NewEvent = () => {
 	const dispatch = useDispatch();
 
 	const imageRef = useRef(null);
-	const tagElement = useRef(null)
-
+	const tagElement = useRef(null);
 
 	const imageSelectHandler = (ref) => {
 		toBase64(ref)
@@ -54,8 +53,8 @@ const NewEvent = () => {
 	};
 
 	const inputFile = () => {
-		imageRef.current.click()
-	}
+		imageRef.current.click();
+	};
 
 	const submitHandler = (e) => {
 		e.preventDefault();
@@ -75,9 +74,9 @@ const NewEvent = () => {
 	};
 
 	const addTag = () => {
-		let newTag = tagElement.current.value
+		let newTag = tagElement.current.value;
 		if (newTag === '') {
-			alert('Please type some tag')
+			alert('Please type some tag');
 		} else {
 			setTag([...tag, newTag]);
 			tagElement.current.value = '';
@@ -85,10 +84,10 @@ const NewEvent = () => {
 	};
 
 	const removeTag = (e) => {
-		let id = e.item
-		const newInt = tag.filter((item) => item !== id)
+		let id = e.item;
+		const newInt = tag.filter((item) => item !== id);
 		setTag(newInt);
-	}
+	};
 
 	return (
 		<div className={'new-event-page global-conteiner'}>
@@ -116,13 +115,25 @@ const NewEvent = () => {
 						{tag?.map((item) => (
 							<span className='tag-item'>
 								<span>{item}</span>
-								<button className='remove-button' onClick={() => removeTag({ item })}>X</button>
+								<button
+									className='remove-button'
+									onClick={() => removeTag({ item })}
+								>
+									X
+								</button>
 							</span>
 						))}
 					</div>
 					<div className='tag-input'>
-						<input className='new-event-inputs' type="search" ref={tagElement} placeholder='tags..' />
-						<button className='button' onClick={addTag}>Add</button>
+						<input
+							className='new-event-inputs'
+							type='search'
+							ref={tagElement}
+							placeholder='tags..'
+						/>
+						<button className='button' onClick={addTag}>
+							Add
+						</button>
 					</div>
 				</div>
 

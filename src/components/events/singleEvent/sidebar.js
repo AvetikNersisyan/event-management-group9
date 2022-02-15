@@ -37,7 +37,7 @@ const Sidebar = ({
 	location,
 	address,
 }) => {
-	const dispatch = useDispatch();
+	const onAttend = () => {};
 
 	return (
 		<div className={'sidebar'}>
