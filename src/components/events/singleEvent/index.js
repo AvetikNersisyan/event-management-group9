@@ -31,7 +31,7 @@ const SingleEvent = () => {
 					<img className={'bgImage'} src={backGroundImage} />
 
 					<EventCard ev={event} />
-					<Sidebar {...event?.event_details} />
+					<Sidebar ev={event} {...event?.event_details} />
 				</div>
 			) : (
 				<Index />
