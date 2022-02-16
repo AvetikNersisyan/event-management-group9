@@ -84,7 +84,6 @@ const NewEvent = () => {
 		})
 			.then((res) => res.json())
 			.then((res) => {
-				console.log(res, 'res');
 				dispatch(addEvent(newEvent));
 			})
 			.catch((err) => console.warn(err));
@@ -124,16 +123,16 @@ const NewEvent = () => {
 			about: personBio,
 		};
 		console.log(newPerson);
-		// fetch(`${api}/persons`, {
-		// 	method: 'POST',
-		// 	body: JSON.stringify(newPerson),
-		// 	headers: {
-		// 		"Content-type": "application/json; charset=UTF-8"
-		// 	}
-		// })
-		// 	.then((response) => response.json())
-		// 	.then((json) => setNewEventSpeakers([...newEventSpeakers, json]))
-		// 	.then(() => setAddPerson(false));
+		fetch(`${api}/persons/`, {
+			method: 'POST',
+			body: JSON.stringify(newPerson),
+			headers: {
+				'Content-type': 'application/json',
+			},
+		})
+			.then((response) => response.json())
+			.then((json) => setNewEventSpeakers([...newEventSpeakers, json]));
+		// .then(() => setAddPerson(false));
 	};
 
 	const handleAddCompany = () => {
@@ -144,16 +143,16 @@ const NewEvent = () => {
 			about: aboutCompany,
 		};
 		console.log(newCompany);
-		// fetch(`${api}/persons`, {
-		// 	method: 'POST',
-		// 	body: JSON.stringify(newCompany),
-		// 	headers: {
-		// 		'Content-type': 'application/json; charset=UTF-8',
-		// 	},
-		// })
-		// 	.then((response) => response.json())
-		// 	.then(json => setNewEventSpeakers([...newEventSpeakers, json]))
-		// 	.then(() => setAddOrganizator(false));
+		fetch(`${api}/persons`, {
+			method: 'POST',
+			body: JSON.stringify(newCompany),
+			headers: {
+				'Content-type': 'application/json',
+			},
+		})
+			.then((response) => response.json())
+			.then((json) => setNewEventSpeakers([...newEventSpeakers, json]))
+			.then(() => setAddOrganizator(false));
 	};
 
 	return (

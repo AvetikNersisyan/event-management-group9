@@ -40,6 +40,40 @@
       "Field of activity": "expos",
       "about": "Expos organization company",
       "rate": "3.5"
+    },
+    {
+      "id": 0.015102113825493202,
+      "type": "person",
+      "firstname": "hello",
+      "lastname": "dlksa",
+      "DoB": "",
+      "profession": "",
+      "about": "adfa"
+    },
+    {
+      "id": 0.5540335877008022,
+      "type": "person",
+      "firstname": "hello",
+      "lastname": "dlksa",
+      "DoB": "",
+      "profession": "",
+      "about": "adfa"
+    },
+    {
+      "type": "person",
+      "firstname": "hello",
+      "lastname": "dlksa",
+      "DoB": "",
+      "profession": "",
+      "about": "adfa",
+      "id": 1.5540335877008022
+    },
+    {
+      "type": "company",
+      "name": "եսիմ ինչ",
+      "fieldOfActivity": "սադֆա",
+      "about": "աֆս",
+      "id": 2.5540335877008022
     }
   ],
   "events": [
