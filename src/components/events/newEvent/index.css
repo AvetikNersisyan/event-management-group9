@@ -48,7 +48,7 @@
 
 .new-event-stroks{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   margin-right: -10px;
   margin-left: -10px;
@@ -79,4 +79,13 @@
 .event-title-type{
     display: flex;
     justify-content: center;
+}
+
+.new-event-selector{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bolder;
+    width: 200px;
 }

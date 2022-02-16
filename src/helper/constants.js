@@ -9,6 +9,7 @@ export const eventTypes = [
 ]
 
 export const professionTypes = [
+    'director',
     'artist',
     'actor',
     'designer',

@@ -24,12 +24,6 @@ function App() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		// fetch(`${api}/users`)
-		// 	.then((res) => res.json())
-		// 	.then((res) => {
-		// 		dispatch(setUsers(res));
-		// 	});
-
 		fetch(`${api}/events`)
 			.then((res) => res.json())
 			.then((res) => {
@@ -40,12 +34,6 @@ function App() {
 			.then((res) => res.json())
 			.then((res) => {
 				dispatch(setPersons(res));
-			});
-
-		fetch(`${api}/companies`)
-			.then((res) => res.json())
-			.then((res) => {
-				dispatch(setCompanies(res));
 			});
 	}, []);
 

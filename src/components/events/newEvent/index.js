@@ -5,9 +5,16 @@ import { api } from '../../../api';
 import { addEvent } from '../../../redux/ducks/eventDuck';
 import { toBase64 } from '../../../helper/utils';
 import { eventTypes, professionTypes } from '../../../helper/constants';
+import AddCompany from './addCompany';
+import AddPerson from './addPerson';
 
 const NewEvent = () => {
-	const persons = useSelector((state) => state.PersonsDuck.persons);
+	const data = useSelector((state) => state.PersonsDuck.persons);
+	const [persons, setPersons] = useState(data.filter(item => item.type === "person"))
+	const [companys, setCompanys] = useState(data.filter(item => item.type === "company"))
+	const [personInput, setPersonInput] = useState('');
+	const [companyInput, setCompanyInput] = useState('');
+
 	const [eventType, setEventType] = useState('');
 	const [title, setTitle] = useState('');
 	const [text, setText] = useState('');
@@ -15,11 +22,13 @@ const NewEvent = () => {
 	const [start, setStart] = useState('');
 	const [end, setEnd] = useState('');
 
+
 	const [location, setLocation] = useState('');
 	const [address, setAddress] = useState('');
 	const [ticketCount, setTicketCount] = useState(null);
 	const [image, setImage] = useState('');
 	const [newEventSpeakers, setNewEventSpeakers] = useState([]);
+
 
 	const [addPerson, setAddPerson] = useState(false);
 	const [personFirstName, setPersonFirstName] = useState('');
@@ -27,6 +36,7 @@ const NewEvent = () => {
 	const [personDoB, setPersonDoB] = useState('');
 	const [personBio, setPersonBio] = useState('');
 	const [profession, setProfession] = useState('');
+
 
 	const [addOrganizator, setAddOrganizator] = useState(false);
 	const [companyName, setCompanyName] = useState('');
@@ -61,12 +71,7 @@ const NewEvent = () => {
 			guest_quantity: ticketCount,
 			available_seats: ticketCount,
 		},
-		speakers: [
-			{
-				name: 'Poghos Petrosyan',
-				rating: 4.9,
-			},
-		],
+		speakers: addOrganizator,
 	};
 
 	const inputFile = () => {
@@ -116,8 +121,8 @@ const NewEvent = () => {
 	const handleAddPerson = () => {
 		let newPerson = {
 			type: 'person',
-			firstname: personFirstName,
-			lastname: personLastName,
+			name: personFirstName,
+			lastName: personLastName,
 			DoB: personDoB,
 			profession: profession,
 			about: personBio,
@@ -131,8 +136,15 @@ const NewEvent = () => {
 			},
 		})
 			.then((response) => response.json())
-			.then((json) => setNewEventSpeakers([...newEventSpeakers, json]));
-		// .then(() => setAddPerson(false));
+			.then((json) => setNewEventSpeakers([...newEventSpeakers, json]))
+			.then(() => {
+				setAddPerson(false);
+				setPersonFirstName('');
+				setPersonLastName('');
+				setPersonDoB('');
+				setPersonBio('');
+				setProfession('');
+			});
 	};
 
 	const handleAddCompany = () => {
@@ -152,8 +164,38 @@ const NewEvent = () => {
 		})
 			.then((response) => response.json())
 			.then((json) => setNewEventSpeakers([...newEventSpeakers, json]))
-			.then(() => setAddOrganizator(false));
+			.then(() => {
+				setAddOrganizator(false);
+				setCompanyName('');
+				setFieldOfActivity('');
+				setAboutCompany('');
+			});
 	};
+
+	const changePersonInput = (e) => {
+		setPersonInput(e.target.value);
+	};
+	const addChoosenPerson = () => {
+		if (personInput) {
+			let thisPerson = persons.filter(e => e.name === personInput)
+			setNewEventSpeakers([...newEventSpeakers, thisPerson[0]]);
+		} else {
+			alert('Please choose one option')
+		}
+
+	}
+
+	const changeCompanyInput = (e) => {
+		setCompanyInput(e.target.value);
+	};
+	const addChoosenCompany = () => {
+		if (companyInput) {
+			let thisCompany = companys.filter(e => e.name === companyInput)
+			setNewEventSpeakers([...newEventSpeakers, thisCompany[0]]);
+		} else {
+			alert('Please choose one option')
+		}
+	}
 
 	return (
 		<div className={'new-event-page global-conteiner'}>
@@ -267,117 +309,103 @@ const NewEvent = () => {
 							Chosoe file
 						</button>
 					</label>
-					<img src={image} />
+					<img style={{ width: '100%' }} src={image} />
 				</div>
+
+
 				<div className='new-event-stroks'>
+					<div>
+						<select
+							className='new-event-selector'
+							value={personInput}
+							onChange={changePersonInput}
+						>
+							{persons.map((person) => (
+								<option key={person.id} value={person.name}>
+									{person.name + ' ' + person.lastName}
+								</option>
+							))}
+						</select>
+						<button className='button' onClick={addChoosenPerson}>
+							Add
+						</button>
+					</div>
 					<button className='button' onClick={() => setAddPerson(!addPerson)}>
-						Person
+						{addPerson ? 'Close adding' : 'Add New Person'}
 					</button>
+				</div>
+				{addPerson ? (
+					<AddPerson
+						profession={profession}
+						changeProfessionType={changeProfessionType}
+						professionTypes={professionTypes}
+						personFirstName={personFirstName}
+						setPersonFirstName={setPersonFirstName}
+						personLastName={personLastName}
+						setPersonLastName={setPersonLastName}
+						personDoB={personDoB}
+						setPersonDoB={setPersonDoB}
+						personBio={personBio}
+						setPersonBio={setPersonBio}
+						handleAddPerson={handleAddPerson}
+					/>
+				) :
+					''
+				}
+
+
+				<div className='new-event-stroks'>
+					<div>
+						<select
+							className='new-event-selector'
+							value={companyInput}
+							onChange={changeCompanyInput}
+						>
+							{companys.map((person) => (
+								<option key={person.id} value={person.name}>
+									{person.name}
+								</option>
+							))}
+						</select>
+						<button className='button' onClick={addChoosenCompany}>
+							Add
+						</button>
+					</div>
 					<button
 						className='button'
 						onClick={() => setAddOrganizator(!addOrganizator)}
 					>
-						Add Organizator
+						{addOrganizator ? 'Close adding' : 'Add New Organizator'}
 					</button>
 				</div>
-
-				{addOrganizator ? (
-					<>
-						<div className='event-title-type'>
-							<input
-								className='new-event-title-inputs'
-								value={companyName}
-								onChange={(e) => setCompanyName(e.target.value)}
-								placeholder={'Company name'}
-								required={true}
-							/>
-							<input
-								className='new-event-title-inputs'
-								value={fieldOfActivity}
-								onChange={(e) => setFieldOfActivity(e.target.value)}
-								placeholder={'Field of activity'}
-								required={true}
-							/>
-						</div>
-						<div className='new-event-stroks'>
-							<textarea
-								style={{ padding: '10px' }}
-								className='new-event-title-inputs'
-								value={aboutCompany}
-								onChange={(e) => setAboutCompany(e.target.value)}
-								placeholder={'About company'}
-								required={true}
-							/>
-							<button
-								className={'button'}
-								type={'submit'}
-								onClick={handleAddCompany}
-							>
-								Add Company
-							</button>
-						</div>
-					</>
-				) : (
+				{addOrganizator ?
+					<AddCompany
+						companyName={companyName}
+						setCompanyName={setCompanyName}
+						fieldOfActivity={fieldOfActivity}
+						setFieldOfActivity={setFieldOfActivity}
+						aboutCompany={aboutCompany}
+						setAboutCompany={setAboutCompany}
+						handleAddCompany={handleAddCompany}
+					/>
+					:
 					''
-				)}
+				}
 
-				{addPerson ? (
-					<>
-						<div className='event-title-type'>
-							<select
-								className='new-event-title-inputs'
-								value={profession}
-								onChange={changeProfessionType}
-							>
-								{professionTypes.map((type) => (
-									<option key={type} value={type}>
-										{type}
-									</option>
-								))}
-							</select>
-							<input
-								className='new-event-title-inputs'
-								value={personFirstName}
-								onChange={(e) => setPersonFirstName(e.target.value)}
-								placeholder={'Firstname'}
-								required={true}
-							/>
-							<input
-								className='new-event-title-inputs'
-								value={personLastName}
-								onChange={(e) => setPersonLastName(e.target.value)}
-								placeholder={'Firstname'}
-								required={true}
-							/>
-							<input
-								className='new-event-inputs'
-								value={personDoB}
-								onChange={(e) => setPersonDoB(e.target.value)}
-								type={'date'}
-							/>
-						</div>
-						<div className='new-event-stroks'>
-							<textarea
-								style={{ padding: '10px' }}
-								className='new-event-title-inputs'
-								value={personBio}
-								onChange={(e) => setPersonBio(e.target.value)}
-								placeholder={'Peson Biography'}
-								required={true}
-							/>
+
+				<div>
+					{newEventSpeakers?.map((item, index) => (
+						<span className='tag-item' key={index}>
+							<span>{item.name}</span>
 							<button
-								className={'button'}
-								type={'submit'}
-								onClick={handleAddPerson}
+								className='remove-button'
+							// onClick={() => removeSpeaker(item.name)}
 							>
-								Add Person
+								X
 							</button>
-						</div>
-					</>
-				) : (
-					''
-				)}
-
+						</span>
+					))}
+				</div>
 				<button className={'button'} type={'submit'}>
 					Add event
 				</button>
