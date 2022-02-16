@@ -1,7 +1,51 @@
 {
+  "persons": [
+    {
+      "type": "person",
+      "name": "Robert",
+      "lastName": "Downey Jr.",
+      "DoB": "04/04/1965",
+      "profession": "actor",
+      "about": "Robert John Downey Jr. (born April 4, 1965)[1] is an American actor and producer. His career has been characterized by critical and popular success in his youth, followed by a period of substance abuse and legal troubles, before a resurgence of commercial success later in his career. In 2008, Downey was named by Time magazine among the 100 most influential people in the world,[2][3] and from 2013 to 2015, he was listed by Forbes as Hollywood's highest-paid actor",
+      "rate": "4.2"
+    },
+    {
+      "type": "person",
+      "name": "Vasili",
+      "lastName": "Vakulenko",
+      "DoB": "20/04/1980",
+      "profession": "artist",
+      "about": "Basta first began to write rap songs between the ages of 15–16. In 1997, he joined the rap group Psycholyric, which he later renamed Kasta. In 1998, he recorded his first solo single 'Моя Игра' (Moya Igra/My Game). Subsequently, Vakulenko assembled his own band, 'Уличные Звуки' (Ulichnye Zvuki/Street Sounds). In 2004, he was noticed by Bogdan Titomir, who invited him to accompany him to Moscow. In Moscow, Basta met other performers Smoky Mo and Guf (future founder of the Centr). Later on, he participated in recording Guf's album 'Город дорог' (Gorod Dorog/City of roads) and collaborated with him on the cover of his first single 'Моя Игра' (Moya Igra/My Game).",
+      "rate": "4.0"
+    },
+    {
+      "type": "person",
+      "name": "Elon",
+      "lastName": "Musk",
+      "DoB": "28/06/1971",
+      "profession": "CEO",
+      "about": "Elon Reeve Musk FRS (born June 28, 1971) is an entrepreneur and business magnate. He is the founder, CEO, and Chief Engineer at SpaceX; early-stage investor, CEO, and Product Architect of Tesla, Inc.; founder of The Boring Company; and co-founder of Neuralink and OpenAI. With an estimated net worth of around US$243 billion as of February 2022,[2] Musk is the wealthiest person in the world according to both the Bloomberg Billionaires Index and the Forbes real-time billionaires list.",
+      "rate": "4.6"
+    },
+    {
+      "type": "company",
+      "name": "Prime Production",
+      "fieldOfActivity": "concerts",
+      "about": "Sponsor of Basta's and Beth Hart's concerts",
+      "rate": "3.9"
+    },
+    {
+      "type": "company",
+      "name": "Digtec",
+      "Field of activity": "expos",
+      "about": "Expos organization company",
+      "rate": "3.5"
+    }
+  ],
   "events": [
     {
       "id": 1,
+      "type": "Concert",
       "title": "Lorem Ipsum",
       "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n \n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
       "price": 10.99,
@@ -29,6 +73,7 @@
     },
     {
       "id": 2,
+      "type": "Business",
       "title": "Lorem Ipsum",
       "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n \n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
       "price": 10.99,
@@ -56,6 +101,7 @@
     },
     {
       "id": 3,
+      "type": "Film",
       "title": "sdfa",
       "description": "asdf",
       "price": 10.99,
@@ -81,6 +127,7 @@
       ]
     },
     {
+      "type": "Sport",
       "title": "asdadsasd",
       "description": "asdasd",
       "price": 10.99,
@@ -107,6 +154,7 @@
       "id": 4
     },
     {
+      "type": "Festival",
       "title": "asdadsasd",
       "description": "asdasd",
       "price": 10.99,
@@ -133,6 +181,7 @@
       "id": 5
     },
     {
+      "type": "Sport",
       "title": "asdadsasd",
       "description": "asdasd",
       "price": 10.99,
@@ -159,6 +208,7 @@
       "id": 6
     },
     {
+      "type": "Conference",
       "title": "asdadsasd",
       "description": "asdasd",
       "price": 10.99,
@@ -185,6 +235,7 @@
       "id": 7
     },
     {
+      "type": "Concert",
       "title": "a",
       "description": "a",
       "price": 10.99,
@@ -211,6 +262,7 @@
       "id": 8
     },
     {
+      "type": "Film",
       "title": "a",
       "description": "a",
       "price": 10.99,
@@ -237,6 +289,7 @@
       "id": 9
     },
     {
+      "type": "Business",
       "title": "a",
       "description": "a",
       "price": 10.99,
@@ -263,6 +316,7 @@
       "id": 10
     },
     {
+      "type": "Concert",
       "title": "a",
       "description": "a",
       "price": 10.99,
@@ -289,6 +343,7 @@
       "id": 11
     },
     {
+      "type": "Concert",
       "title": "a",
       "description": "a",
       "price": 10.99,
@@ -315,6 +370,7 @@
       "id": 12
     },
     {
+      "type": "Presentation",
       "title": "a",
       "description": "a",
       "price": 10.99,
@@ -341,6 +397,7 @@
       "id": 13
     },
     {
+      "type": "Concert",
       "title": "a",
       "description": "a",
       "price": 10.99,
@@ -367,6 +424,7 @@
       "id": 14
     },
     {
+      "type": "Concert",
       "title": "a",
       "description": "a",
       "price": 10.99,
@@ -393,6 +451,7 @@
       "id": 15
     },
     {
+      "type": "Film",
       "title": "adasasa",
       "description": "aasdas",
       "price": 10.99,
@@ -424,6 +483,7 @@
       "id": 16
     },
     {
+      "type": "Film",
       "title": "adasasa",
       "description": "aasdas",
       "price": 10.99,
@@ -456,6 +516,7 @@
       "id": 17
     },
     {
+      "type": "Festival",
       "title": "adasasa",
       "description": "aasdas",
       "price": 10.99,
@@ -489,6 +550,7 @@
       "id": 18
     },
     {
+      "type": "Concert",
       "title": "adasasa",
       "description": "aasdas",
       "price": 10.99,
@@ -537,88 +599,7 @@
         "sport",
         "music"
       ],
-      "interestedEvents": [
-        {
-          "id": 1,
-          "title": "Lorem Ipsum",
-          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n \n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          "price": 10.99,
-          "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
-          "tags": [
-            "music",
-            "sport"
-          ],
-          "event_details": {
-            "start_date": "01/01/01",
-            "end_date": "01/01/01",
-            "start_time": "15:00",
-            "end_time": "18:00",
-            "location": "Yerevan",
-            "address": "Baghramyan 26",
-            "guest_quantity": 100,
-            "available_seats": 17
-          },
-          "speakers": [
-            {
-              "name": "Poghos Petrosyan",
-              "rating": 4.9
-            }
-          ]
-        },
-        {
-          "id": 3,
-          "title": "sdfa",
-          "description": "asdf",
-          "price": 10.99,
-          "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
-          "tags": [
-            "asdf"
-          ],
-          "event_details": {
-            "start_date": "2022-02-08",
-            "end_date": "2022-02-09",
-            "start_time": "00:00",
-            "end_time": "00:00",
-            "location": "London",
-            "address": "Masht",
-            "guest_quantity": "99",
-            "available_seats": "99"
-          },
-          "speakers": [
-            {
-              "name": "Poghos Petrosyan",
-              "rating": 4.9
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "title": "Lorem Ipsum",
-          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n \n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          "price": 10.99,
-          "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
-          "tags": [
-            "music",
-            "sport"
-          ],
-          "event_details": {
-            "start_date": "01/01/01",
-            "end_date": "01/01/01",
-            "start_time": "15:00",
-            "end_time": "18:00",
-            "location": "Yerevan",
-            "address": "Baghramyan 26",
-            "guest_quantity": 100,
-            "available_seats": 17
-          },
-          "speakers": [
-            {
-              "name": "Poghos Petrosyan",
-              "rating": 4.9
-            }
-          ]
-        }
-      ],
+      "interestedEvents": [],
       "allreadyGone": [],
       "going": []
     },
@@ -634,304 +615,7 @@
       "interests": [
         "business"
       ],
-      "interestedEvents": [
-        {
-          "id": 1,
-          "title": "Lorem Ipsum",
-          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n \n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          "price": 10.99,
-          "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
-          "tags": [
-            "music",
-            "sport"
-          ],
-          "event_details": {
-            "start_date": "01/01/01",
-            "end_date": "01/01/01",
-            "start_time": "15:00",
-            "end_time": "18:00",
-            "location": "Yerevan",
-            "address": "Baghramyan 26",
-            "guest_quantity": 100,
-            "available_seats": 17
-          },
-          "speakers": [
-            {
-              "name": "Poghos Petrosyan",
-              "rating": 4.9
-            }
-          ]
-        },
-        {
-          "id": 3,
-          "title": "sdfa",
-          "description": "asdf",
-          "price": 10.99,
-          "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
-          "tags": [
-            "asdf"
-          ],
-          "event_details": {
-            "start_date": "2022-02-08",
-            "end_date": "2022-02-09",
-            "start_time": "00:00",
-            "end_time": "00:00",
-            "location": "London",
-            "address": "Masht",
-            "guest_quantity": "99",
-            "available_seats": "99"
-          },
-          "speakers": [
-            {
-              "name": "Poghos Petrosyan",
-              "rating": 4.9
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "title": "Lorem Ipsum",
-          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n \n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          "price": 10.99,
-          "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
-          "tags": [
-            "music",
-            "sport"
-          ],
-          "event_details": {
-            "start_date": "01/01/01",
-            "end_date": "01/01/01",
-            "start_time": "15:00",
-            "end_time": "18:00",
-            "location": "Yerevan",
-            "address": "Baghramyan 26",
-            "guest_quantity": 100,
-            "available_seats": 17
-          },
-          "speakers": [
-            {
-              "name": "Poghos Petrosyan",
-              "rating": 4.9
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "title": "Lorem Ipsum",
-          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n \n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          "price": 10.99,
-          "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
-          "tags": [
-            "music",
-            "sport"
-          ],
-          "event_details": {
-            "start_date": "01/01/01",
-            "end_date": "01/01/01",
-            "start_time": "15:00",
-            "end_time": "18:00",
-            "location": "Yerevan",
-            "address": "Baghramyan 26",
-            "guest_quantity": 100,
-            "available_seats": 17
-          },
-          "speakers": [
-            {
-              "name": "Poghos Petrosyan",
-              "rating": 4.9
-            }
-          ]
-        },
-        {
-          "id": 1,
-          "title": "Lorem Ipsum",
-          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n \n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          "price": 10.99,
-          "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
-          "tags": [
-            "music",
-            "sport"
-          ],
-          "event_details": {
-            "start_date": "01/01/01",
-            "end_date": "01/01/01",
-            "start_time": "15:00",
-            "end_time": "18:00",
-            "location": "Yerevan",
-            "address": "Baghramyan 26",
-            "guest_quantity": 100,
-            "available_seats": 17
-          },
-          "speakers": [
-            {
-              "name": "Poghos Petrosyan",
-              "rating": 4.9
-            }
-          ]
-        },
-        {
-          "id": 1,
-          "title": "Lorem Ipsum",
-          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n \n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          "price": 10.99,
-          "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
-          "tags": [
-            "music",
-            "sport"
-          ],
-          "event_details": {
-            "start_date": "01/01/01",
-            "end_date": "01/01/01",
-            "start_time": "15:00",
-            "end_time": "18:00",
-            "location": "Yerevan",
-            "address": "Baghramyan 26",
-            "guest_quantity": 100,
-            "available_seats": 17
-          },
-          "speakers": [
-            {
-              "name": "Poghos Petrosyan",
-              "rating": 4.9
-            }
-          ]
-        },
-        {
-          "id": 1,
-          "title": "Lorem Ipsum",
-          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n \n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          "price": 10.99,
-          "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
-          "tags": [
-            "music",
-            "sport"
-          ],
-          "event_details": {
-            "start_date": "01/01/01",
-            "end_date": "01/01/01",
-            "start_time": "15:00",
-            "end_time": "18:00",
-            "location": "Yerevan",
-            "address": "Baghramyan 26",
-            "guest_quantity": 100,
-            "available_seats": 17
-          },
-          "speakers": [
-            {
-              "name": "Poghos Petrosyan",
-              "rating": 4.9
-            }
-          ]
-        },
-        {
-          "id": 1,
-          "title": "Lorem Ipsum",
-          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n \n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          "price": 10.99,
-          "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
-          "tags": [
-            "music",
-            "sport"
-          ],
-          "event_details": {
-            "start_date": "01/01/01",
-            "end_date": "01/01/01",
-            "start_time": "15:00",
-            "end_time": "18:00",
-            "location": "Yerevan",
-            "address": "Baghramyan 26",
-            "guest_quantity": 100,
-            "available_seats": 17
-          },
-          "speakers": [
-            {
-              "name": "Poghos Petrosyan",
-              "rating": 4.9
-            }
-          ]
-        },
-        {
-          "id": 1,
-          "title": "Lorem Ipsum",
-          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n \n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          "price": 10.99,
-          "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
-          "tags": [
-            "music",
-            "sport"
-          ],
-          "event_details": {
-            "start_date": "01/01/01",
-            "end_date": "01/01/01",
-            "start_time": "15:00",
-            "end_time": "18:00",
-            "location": "Yerevan",
-            "address": "Baghramyan 26",
-            "guest_quantity": 100,
-            "available_seats": 17
-          },
-          "speakers": [
-            {
-              "name": "Poghos Petrosyan",
-              "rating": 4.9
-            }
-          ]
-        },
-        {
-          "id": 1,
-          "title": "Lorem Ipsum",
-          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n \n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          "price": 10.99,
-          "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
-          "tags": [
-            "music",
-            "sport"
-          ],
-          "event_details": {
-            "start_date": "01/01/01",
-            "end_date": "01/01/01",
-            "start_time": "15:00",
-            "end_time": "18:00",
-            "location": "Yerevan",
-            "address": "Baghramyan 26",
-            "guest_quantity": 100,
-            "available_seats": 17
-          },
-          "speakers": [
-            {
-              "name": "Poghos Petrosyan",
-              "rating": 4.9
-            }
-          ]
-        },
-        {
-          "id": 1,
-          "title": "Lorem Ipsum",
-          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n \n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          "price": 10.99,
-          "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
-          "tags": [
-            "music",
-            "sport"
-          ],
-          "event_details": {
-            "start_date": "01/01/01",
-            "end_date": "01/01/01",
-            "start_time": "15:00",
-            "end_time": "18:00",
-            "location": "Yerevan",
-            "address": "Baghramyan 26",
-            "guest_quantity": 100,
-            "available_seats": 17
-          },
-          "speakers": [
-            {
-              "name": "Poghos Petrosyan",
-              "rating": 4.9
-            }
-          ]
-        }
-      ],
+      "interestedEvents": [],
       "allreadyGone": [],
       "going": []
     },
@@ -947,88 +631,7 @@
       "interests": [
         "business"
       ],
-      "interestedEvents": [
-        {
-          "id": 1,
-          "title": "Lorem Ipsum",
-          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n \n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          "price": 10.99,
-          "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
-          "tags": [
-            "music",
-            "sport"
-          ],
-          "event_details": {
-            "start_date": "01/01/01",
-            "end_date": "01/01/01",
-            "start_time": "15:00",
-            "end_time": "18:00",
-            "location": "Yerevan",
-            "address": "Baghramyan 26",
-            "guest_quantity": 100,
-            "available_seats": 17
-          },
-          "speakers": [
-            {
-              "name": "Poghos Petrosyan",
-              "rating": 4.9
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "title": "Lorem Ipsum",
-          "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n \n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          "price": 10.99,
-          "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
-          "tags": [
-            "music",
-            "sport"
-          ],
-          "event_details": {
-            "start_date": "01/01/01",
-            "end_date": "01/01/01",
-            "start_time": "15:00",
-            "end_time": "18:00",
-            "location": "Yerevan",
-            "address": "Baghramyan 26",
-            "guest_quantity": 100,
-            "available_seats": 17
-          },
-          "speakers": [
-            {
-              "name": "Poghos Petrosyan",
-              "rating": 4.9
-            }
-          ]
-        },
-        {
-          "id": 3,
-          "title": "sdfa",
-          "description": "asdf",
-          "price": 10.99,
-          "img_url": "https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg",
-          "tags": [
-            "asdf"
-          ],
-          "event_details": {
-            "start_date": "2022-02-08",
-            "end_date": "2022-02-09",
-            "start_time": "00:00",
-            "end_time": "00:00",
-            "location": "London",
-            "address": "Masht",
-            "guest_quantity": "99",
-            "available_seats": "99"
-          },
-          "speakers": [
-            {
-              "name": "Poghos Petrosyan",
-              "rating": 4.9
-            }
-          ]
-        }
-      ],
+      "interestedEvents": [],
       "allreadyGone": [],
       "going": []
     },

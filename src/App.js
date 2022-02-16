@@ -17,6 +17,8 @@ import { api } from './api';
 import Error404 from './components/error404';
 import NewEvent from './components/events/newEvent';
 import Footer from './components/footer';
+import { setPersons } from './redux/ducks/personsDuck';
+import { setCompanies } from './redux/ducks/companiesDuck';
 
 function App() {
 	const dispatch = useDispatch();
@@ -32,6 +34,18 @@ function App() {
 			.then((res) => res.json())
 			.then((res) => {
 				dispatch(setEvents(res));
+			});
+
+		fetch(`${api}/persons`)
+			.then((res) => res.json())
+			.then((res) => {
+				dispatch(setPersons(res));
+			});
+
+		fetch(`${api}/companies`)
+			.then((res) => res.json())
+			.then((res) => {
+				dispatch(setCompanies(res));
 			});
 	}, []);
 

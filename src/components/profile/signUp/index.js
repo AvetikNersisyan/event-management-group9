@@ -1,11 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUser, setActiveUser, setLoggedIn } from '../../../redux/ducks/userDuck';
+import { setActiveUser, setLoggedIn } from '../../../redux/ducks/userDuck';
 import { api } from '../../../api'
 import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
-    const users = useSelector((state) => state.UserDuck.users)
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -34,7 +33,7 @@ const SignUp = () => {
     const handleRegistration = () => {
         if (regPassElement.current.value === regPasConfElement.current.value) {
             let newUser = {
-                id: users.length,
+                id: 0,
                 type: "user",
                 firstname: regFirstnameElement.current.value,
                 lastname: regLastnameElement.current.value,
@@ -46,7 +45,6 @@ const SignUp = () => {
                 allreadyGone: [],
                 going: []
             };
-            dispatch(addUser(newUser))
             fetch(`${api}/users`, {
                 method: "POST",
                 body: JSON.stringify(newUser), headers: {

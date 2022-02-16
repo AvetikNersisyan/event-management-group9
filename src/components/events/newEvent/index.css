@@ -75,3 +75,8 @@
     box-shadow: 0px 20px 30px rgba(0,0,0,0.08);
     transform: translateY(-2px);
   }
+
+.event-title-type{
+    display: flex;
+    justify-content: center;
+}
