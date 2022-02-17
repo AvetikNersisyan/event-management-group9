@@ -5,8 +5,6 @@ const ADD_USER = 'userDuck/ADD_USER';
 const SET_ACTIVE_USER = 'userDuck/SET_ACTIVE_USER';
 const SET_LOGGED_IN = 'userDuck/SET_LOGGED_IN';
 const SET_PROFILE_PIC = 'userDuck/SET_PROFILE_PIC';
-const SET_IS_USER_LOGGED_IN = 'userDuck/SET_IS_USER_LOGGED_IN';
-const SET_IS_ADMIN_LOGGED_IN = 'userDuck/SET_IS_ADMIN_LOGGED_IN';
 const SET_LIKED_EVENT = 'userDuck/SET_LIKED_EVENT';
 const REMOVE_LIKED_EVENT = 'userDuck/REMOVE_LIKED_EVENT';
 
@@ -23,7 +21,7 @@ const initialState = {
 	loggedIn: false,
 };
 
-export const UserDuck = (state = initialState, { type, payload }) => {
+const UserDuck = (state = initialState, { type, payload }) => {
 	switch (type) {
 		case SET_USERS:
 			return { ...state, users: [...payload] };
@@ -61,3 +59,5 @@ export const UserDuck = (state = initialState, { type, payload }) => {
 			return state;
 	}
 };
+
+export default UserDuck;
