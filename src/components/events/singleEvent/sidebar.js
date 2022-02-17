@@ -40,12 +40,9 @@ const Sidebar = ({
 	end_time,
 	location,
 	address,
+	available_seats,
+	guest_quantity,
 }) => {
-	const navigate = useNavigate();
-	// const onAttend = () => {
-	// 	navigate(`./checkout`);
-	// };
-
 	const [isOpen, setIsOpen] = useState(false);
 
 	const onBuyTicket = () => {
@@ -57,7 +54,7 @@ const Sidebar = ({
 	return (
 		<div className={'sidebar'}>
 			<button onClick={onBuyTicket}> ATTEND </button>
-			{isOpen && <Popup close={onPopupClose} />}
+			{isOpen && <Popup eventId={ev.id} close={onPopupClose} />}
 
 			<div className={'event-details'}>
 				<h3> Event detail</h3>
@@ -84,6 +81,14 @@ const Sidebar = ({
 				<div className={'event-detail-info'}>
 					<label> Address: </label>
 					<span> {address} </span>
+				</div>
+
+				<div className={'event-detail-info'}>
+					<label> Seats: </label>
+					<span>
+						{' '}
+						{available_seats}/ {guest_quantity}{' '}
+					</span>
 				</div>
 			</div>
 		</div>

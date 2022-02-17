@@ -1,4 +1,5 @@
 import { createAction } from '../../../helper/redux-helper';
+import { api } from '../../../api';
 
 const SET_USERS = 'userDuck/SET_USER';
 const ADD_USER = 'userDuck/ADD_USER';
@@ -14,9 +15,15 @@ export const setActiveUser = createAction(SET_ACTIVE_USER);
 export const setLoggedIn = createAction(SET_LOGGED_IN);
 export const setProfilePic = createAction(SET_PROFILE_PIC);
 export const setLikedEvent = createAction(SET_LIKED_EVENT);
+export const removeLike = createAction(REMOVE_LIKED_EVENT);
 
 const initialState = {
-	users: [{ user_details: {}, interestedEvents: [] }],
+	users: [
+		{
+			user_details: {},
+			interestedEvents: [{}],
+		},
+	],
 	activeUser: null,
 	loggedIn: false,
 };
@@ -33,9 +40,34 @@ const UserDuck = (state = initialState, { type, payload }) => {
 			return { ...state, loggedIn: payload };
 		case SET_PROFILE_PIC:
 			return { ...state, profilePic: payload };
+
 		case REMOVE_LIKED_EVENT:
-			const removedEventUsers = [];
-			return { ...state, users: [...removedEventUsers] };
+			console.log(payload, 'payload');
+			console.log(payload.activeUser, 'users');
+			const changedLikedEvents = payload.activeUser.interestedEvents.filter(
+				({ id }) => id !== payload.eventID
+			);
+
+			const changedUser = {
+				...state.activeUser,
+				interestedEvents: changedLikedEvents,
+			};
+
+			console.log(changedUser, 'changed User');
+
+			fetch(`${api}/users/${payload.activeUser.id}`, {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(changedUser),
+			}).catch((err) => console.warn(err));
+
+			return {
+				...state,
+				activeUser: changedUser,
+			};
+
 		case SET_LIKED_EVENT:
 			const changedUsers = state.users.map((user) => {
 				if (user.id === payload.activeUser.id && user.type !== 'admin') {
@@ -52,8 +84,6 @@ const UserDuck = (state = initialState, { type, payload }) => {
 				}
 				return user;
 			});
-
-			console.log(state.users, 'users');
 			return { ...state, users: [...changedUsers] };
 		default:
 			return state;

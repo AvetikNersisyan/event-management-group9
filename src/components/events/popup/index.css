@@ -5,10 +5,10 @@
     width: 60vw;
     min-width: 300px;
     padding: 2em;
-    /*margin-left: auto;*/
     display: block;
     z-index: 11;
-    background: rgba(103, 93, 93, 0.74);
+    background: rgba(103, 93, 93);
+    transition: ease-out 1s;
 
 }
 
@@ -22,9 +22,23 @@
     height: 100vh;
     display: block;
     z-index: 10000;
-    background: rgba(0, 0, 0, 0.39);
+    background: rgba(0, 0, 0, 0.62);
+    transition: ease-out 1s;
+
 }
 
-body {
-    /*overflow: hidden;*/
+
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    margin-top: 2em;
+}
+
+.card-details {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    gap: 1em;
 }

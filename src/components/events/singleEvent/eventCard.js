@@ -8,7 +8,11 @@ import EventFooter from './eventFooter';
 import { api } from '../../../api';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteEvent } from '../../../redux/ducks/eventDuck';
-import { setActiveUser, setLikedEvent } from '../../../redux/ducks/userDuck';
+import {
+	removeLike,
+	setActiveUser,
+	setLikedEvent,
+} from '../../../redux/ducks/userDuck';
 import { useEffect, useMemo, useState } from 'react';
 
 const EventCard = ({ ev }) => {
@@ -33,7 +37,13 @@ const EventCard = ({ ev }) => {
 				...activeUser,
 				interestedEvents: [...activeUser.interestedEvents, ev],
 			}),
-		}).then();
+		})
+			.then(
+				(res) =>
+					res.ok &&
+					dispatch(removeLike({ activeUser: activeUser, eventID: ev.id }))
+			)
+			.catch((err) => console.warn(err));
 	};
 
 	const isAdminLogged = activeUser && activeUser.type === 'admin';
@@ -54,7 +64,7 @@ const EventCard = ({ ev }) => {
 			})
 				.then((res) => res.json())
 				.then((res) => {
-					dispatch(setLikedEvent({ activeUser, ev }));
+					res.ok && dispatch(setLikedEvent({ activeUser, ev }));
 					dispatch(
 						setActiveUser({
 							...activeUser,
