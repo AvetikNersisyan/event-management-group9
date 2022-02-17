@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import './index.css';
 
 // eslint-disable-next-line no-unused-vars
-import Dropdown from './Dropdown';
+//import Dropdown from './Dropdown';
 import { useState } from 'react';
 import Logo from '../../assets/img/logo.png';
 import { useSelector } from 'react-redux';
@@ -44,9 +44,9 @@ const Index = () => {
 							onMouseLeave={onMouseLeave}
 						>
 							<NavLink to={'/'} className='nav-links' onClick={closeMobileMenu}>
-								Home <i className='fas fa-caret-down' />
+								Home
 							</NavLink>
-							{dropdown && <Dropdown />}
+							{/* {dropdown && <Dropdown />} */}
 						</li>
 						<li className='nav-item'>
 							<NavLink
@@ -54,7 +54,7 @@ const Index = () => {
 								className='nav-links'
 								onClick={closeMobileMenu}
 							>
-								Events <i className='fas fa-caret-down' />
+								Events
 							</NavLink>
 						</li>
 						<li className='nav-item'>
@@ -63,7 +63,7 @@ const Index = () => {
 								className='nav-links'
 								onClick={closeMobileMenu}
 							>
-								Profile <i className='fas fa-caret-down' />
+								Profile
 							</NavLink>
 						</li>
 						<li className='nav-item'>
@@ -72,7 +72,7 @@ const Index = () => {
 								className='nav-links'
 								onClick={closeMobileMenu}
 							>
-								Categories <i className='fas fa-caret-down' />
+								Categories
 							</NavLink>
 						</li>
 						<li className='nav-item'>
@@ -81,7 +81,7 @@ const Index = () => {
 								className='nav-links'
 								onClick={closeMobileMenu}
 							>
-								Pages <i className='fas fa-caret-down' />
+								Pages
 							</NavLink>
 						</li>
 

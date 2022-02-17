@@ -1,11 +1,17 @@
+/* eslint-disable react/jsx-no-undef */
 import './style.css';
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useSelector } from 'react-redux';
+//import Feedback from '../feedback';
 
 const Categories = () => {
 	const [startDate, setStartDate] = useState(null);
 	const [endDate, setEndDate] = useState(null);
+
+	const state = useSelector((s) => s.UserDuck.events);
+	console.log(state);
 
 	return (
 		<div className='wrapper'>
@@ -128,6 +134,8 @@ const Categories = () => {
 					</div>
 				</form>
 			</div>
+			{/* 
+			<Feedback /> */}
 		</div>
 	);
 };
