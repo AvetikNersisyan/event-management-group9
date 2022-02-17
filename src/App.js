@@ -17,11 +17,7 @@ import Error404 from './components/error404';
 import NewEvent from './components/events/newEvent';
 import Footer from './components/footer';
 
-import Checkout from './components/checkout';
-
 import { setPersons } from './redux/ducks/personsDuck';
-import { setCompanies } from './redux/ducks/companiesDuck';
-
 
 function App() {
 	const dispatch = useDispatch();

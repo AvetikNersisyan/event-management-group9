@@ -54,7 +54,7 @@ const Sidebar = ({
 	return (
 		<div className={'sidebar'}>
 			<button onClick={onBuyTicket}> ATTEND </button>
-			{isOpen && <Popup eventId={ev.id} close={onPopupClose} />}
+			{isOpen && <Popup ev={ev} close={onPopupClose} />}
 
 			<div className={'event-details'}>
 				<h3> Event detail</h3>
