@@ -819,7 +819,35 @@
       "interests": [
         "business"
       ],
-      "interestedEvents": [],
+      "interestedEvents": [
+        {
+          "type": "Concert",
+          "title": "a",
+          "description": "a",
+          "price": 10.99,
+          "img_url": "",
+          "tags": [
+            ""
+          ],
+          "event_details": {
+            "start_date": "",
+            "end_date": "",
+            "start_time": "00:00",
+            "end_time": "00:00",
+            "location": "",
+            "address": "",
+            "guest_quantity": null,
+            "available_seats": null
+          },
+          "speakers": [
+            {
+              "name": "Poghos Petrosyan",
+              "rating": 4.9
+            }
+          ],
+          "id": 8
+        }
+      ],
       "allreadyGone": [],
       "going": [
         {
