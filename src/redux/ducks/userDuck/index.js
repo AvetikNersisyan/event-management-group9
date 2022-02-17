@@ -8,6 +8,7 @@ const SET_LOGGED_IN = 'userDuck/SET_LOGGED_IN';
 const SET_PROFILE_PIC = 'userDuck/SET_PROFILE_PIC';
 const SET_LIKED_EVENT = 'userDuck/SET_LIKED_EVENT';
 const REMOVE_LIKED_EVENT = 'userDuck/REMOVE_LIKED_EVENT';
+const ADD_GOING = 'eventDuck/ADD_GOING';
 
 export const setUsers = createAction(SET_USERS);
 export const addUser = createAction(ADD_USER);
@@ -16,6 +17,7 @@ export const setLoggedIn = createAction(SET_LOGGED_IN);
 export const setProfilePic = createAction(SET_PROFILE_PIC);
 export const setLikedEvent = createAction(SET_LIKED_EVENT);
 export const removeLike = createAction(REMOVE_LIKED_EVENT);
+export const setGoing = createAction(ADD_GOING);
 
 const initialState = {
 	users: [
@@ -40,6 +42,25 @@ const UserDuck = (state = initialState, { type, payload }) => {
 			return { ...state, loggedIn: payload };
 		case SET_PROFILE_PIC:
 			return { ...state, profilePic: payload };
+
+		case ADD_GOING:
+			const activeUser = {
+				...state.activeUser,
+				going: [...state.activeUser.going, payload.ev],
+			};
+
+			fetch(`${api}/users/${payload.userId}`, {
+				method: 'PUT',
+				headers: {
+					'Content-type': 'application/json',
+				},
+				body: JSON.stringify(activeUser),
+			});
+
+			return {
+				...state,
+				activeUser: { ...activeUser },
+			};
 
 		case REMOVE_LIKED_EVENT:
 			console.log(payload, 'payload');
