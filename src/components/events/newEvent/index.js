@@ -7,8 +7,11 @@ import { toBase64 } from '../../../helper/utils';
 import { eventTypes, professionTypes } from '../../../helper/constants';
 import AddCompany from './addCompany';
 import AddPerson from './addPerson';
+import { useNavigate } from 'react-router-dom';
 
 const NewEvent = () => {
+	const navigate = useNavigate();
+
 	const data = useSelector((state) => state.PersonsDuck.persons);
 	const [persons, setPersons] = useState(data.filter(item => item.type === "person"))
 	const [companys, setCompanys] = useState(data.filter(item => item.type === "company"))
@@ -19,16 +22,18 @@ const NewEvent = () => {
 	const [title, setTitle] = useState('');
 	const [text, setText] = useState('');
 	const [tag, setTag] = useState([]);
-	const [start, setStart] = useState('');
-	const [end, setEnd] = useState('');
+	const [startDate, setStartDate] = useState('');
+	const [startTime, setStartTime] = useState('')
+	const [endDate, setEndDate] = useState('');
+	const [endTime, setEndTime] = useState('');
 
 
 	const [location, setLocation] = useState('');
 	const [address, setAddress] = useState('');
 	const [ticketCount, setTicketCount] = useState(null);
+	const [price, setPrice] = useState(null)
 	const [image, setImage] = useState('');
 	const [newEventSpeakers, setNewEventSpeakers] = useState([]);
-
 
 	const [addPerson, setAddPerson] = useState(false);
 	const [personFirstName, setPersonFirstName] = useState('');
@@ -36,7 +41,6 @@ const NewEvent = () => {
 	const [personDoB, setPersonDoB] = useState('');
 	const [personBio, setPersonBio] = useState('');
 	const [profession, setProfession] = useState('');
-
 
 	const [addOrganizator, setAddOrganizator] = useState(false);
 	const [companyName, setCompanyName] = useState('');
@@ -54,32 +58,35 @@ const NewEvent = () => {
 			.catch((err) => console.error(err));
 	};
 
-	const newEvent = {
-		type: eventType,
-		title,
-		description: text,
-		price: 10.99,
-		img_url: image,
-		tags: [tag],
-		event_details: {
-			start_date: start,
-			end_date: end,
-			start_time: '00:00',
-			end_time: '00:00',
-			location,
-			address,
-			guest_quantity: ticketCount,
-			available_seats: ticketCount,
-		},
-		speakers: addOrganizator,
-	};
-
 	const inputFile = () => {
 		imageRef.current.click();
 	};
 
 	const submitHandler = (e) => {
 		e.preventDefault();
+		let newEvent = {
+			type: eventType,
+			title: title,
+			description: text,
+			price: price,
+			img_url: image,
+			tags: tag,
+			event_details: {
+				start_date: startDate,
+				end_date: endDate,
+				start_time: startTime,
+				end_time: endTime,
+				location: location,
+				address: address,
+				guest_quantity: ticketCount,
+				available_seats: ticketCount,
+			},
+			speakers: newEventSpeakers,
+			rate: {
+				coutn: 0,
+				sum: 0
+			}
+		};
 		fetch(`${api}/events/`, {
 			method: 'POST',
 			headers: {
@@ -91,6 +98,7 @@ const NewEvent = () => {
 			.then((res) => {
 				dispatch(addEvent(newEvent));
 			})
+			.then(navigate('/events'))
 			.catch((err) => console.warn(err));
 	};
 
@@ -128,7 +136,6 @@ const NewEvent = () => {
 			profession: profession,
 			about: personBio,
 		};
-		console.log(newPerson);
 		fetch(`${api}/persons/`, {
 			method: 'POST',
 			body: JSON.stringify(newPerson),
@@ -183,7 +190,6 @@ const NewEvent = () => {
 		} else {
 			alert('Please choose one option')
 		}
-
 	}
 
 	const changeCompanyInput = (e) => {
@@ -201,7 +207,7 @@ const NewEvent = () => {
 
 	return (
 		<div className={'new-event-page global-conteiner'}>
-			<form className={'new-event-conteiner'} onSubmit={submitHandler}>
+			<div className={'new-event-conteiner'}>
 				<fieldset className={'event-title'}>
 					<div className='event-title-type'>
 						<input
@@ -262,23 +268,36 @@ const NewEvent = () => {
 				<div className={'new-event-stroks'}>
 					<input
 						className='new-event-inputs'
-						value={start}
-						onChange={(e) => setStart(e.target.value)}
+						value={startDate}
+						onChange={(e) => setStartDate(e.target.value)}
 						type={'date'}
 					/>
 					<input
 						className='new-event-inputs'
-						value={end}
-						onChange={(e) => setEnd(e.target.value)}
+						value={endDate}
+						onChange={(e) => setEndDate(e.target.value)}
 						type={'date'}
+					/>
+					<input
+						className='new-event-inputs'
+						value={startTime}
+						onChange={(e) => setStartTime(e.target.value)}
+						type={'time'}
+					/>
+					<input
+						className='new-event-inputs'
+						value={endTime}
+						onChange={(e) => setEndTime(e.target.value)}
+						type={'time'}
 					/>
 				</div>
 				<div className='new-event-stroks'>
 					<input
 						className='new-event-inputs'
-						value={location}
-						onChange={(e) => setLocation(e.target.value)}
-						placeholder={'Location'}
+						type='number'
+						value={price}
+						onChange={(e) => setPrice(e.target.value)}
+						placeholder={"ticket's price"}
 					/>
 					<input
 						className='new-event-inputs'
@@ -290,6 +309,12 @@ const NewEvent = () => {
 					/>
 				</div>
 				<div className='new-event-stroks'>
+					<input
+						className='new-event-inputs'
+						value={location}
+						onChange={(e) => setLocation(e.target.value)}
+						placeholder={'Location'}
+					/>
 					<input
 						className='new-event-inputs'
 						value={address}
@@ -408,10 +433,10 @@ const NewEvent = () => {
 						</span>
 					))}
 				</div>
-				<button className={'button'} type={'submit'}>
+				<button className={'button'} type={'submit'} onClick={submitHandler}>
 					Add event
 				</button>
-			</form>
+			</div>
 		</div>
 	);
 };
