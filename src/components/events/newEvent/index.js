@@ -110,6 +110,7 @@ const NewEvent = () => {
 		setTag(newInt);
 	};
 
+
 	const changeEventType = (e) => {
 		setEventType(e.target.value);
 	};
@@ -196,6 +197,7 @@ const NewEvent = () => {
 			alert('Please choose one option')
 		}
 	}
+
 
 	return (
 		<div className={'new-event-page global-conteiner'}>

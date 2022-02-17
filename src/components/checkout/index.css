@@ -1,0 +1,17 @@
+.event-checkout{
+
+}
+
+.event-checkout img{
+    width: 100px;
+}
+
+.popup {
+    position: absolute;
+    top: auto;
+    left: auto;
+    width: calc(100vw - 15px);
+    /*display: block;*/
+    z-index: 1;
+}
+

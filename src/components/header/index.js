@@ -95,7 +95,9 @@ const Index = () => {
 									Add new Event <i className='fas fa-caret-down' />
 								</NavLink>
 							</li>
-						) : ''}
+						) : (
+							''
+						)}
 					</ul>
 				</div>
 
