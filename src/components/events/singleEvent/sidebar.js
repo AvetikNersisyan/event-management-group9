@@ -1,6 +1,9 @@
 import { api } from '../../../api';
 import { useDispatch } from 'react-redux';
 import { addEvent } from '../../../redux/ducks/eventDuck';
+import { NavLink, useNavigate } from 'react-router-dom';
+import Popup from '../popup';
+import { useCallback, useState } from 'react';
 
 // fake event
 const ev = {
@@ -30,18 +33,28 @@ const ev = {
 };
 
 const Sidebar = ({
+	ev,
 	start_date,
 	start_time,
 	end_date,
 	end_time,
 	location,
 	address,
+	available_seats,
+	guest_quantity,
 }) => {
-	const dispatch = useDispatch();
+	const [isOpen, setIsOpen] = useState(false);
+
+	const onBuyTicket = () => {
+		setIsOpen((prev) => !prev);
+	};
+
+	const onPopupClose = useCallback(() => setIsOpen(false));
 
 	return (
 		<div className={'sidebar'}>
-			<button> ATTEND </button>
+			<button onClick={onBuyTicket}> ATTEND </button>
+			{isOpen && <Popup ev={ev} close={onPopupClose} />}
 
 			<div className={'event-details'}>
 				<h3> Event detail</h3>
@@ -68,6 +81,14 @@ const Sidebar = ({
 				<div className={'event-detail-info'}>
 					<label> Address: </label>
 					<span> {address} </span>
+				</div>
+
+				<div className={'event-detail-info'}>
+					<label> Seats: </label>
+					<span>
+						{' '}
+						{available_seats}/ {guest_quantity}{' '}
+					</span>
 				</div>
 			</div>
 		</div>

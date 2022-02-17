@@ -1,0 +1,44 @@
+.checkout-popup {
+    position: absolute;
+    top: 200px;
+    left: 15vw ;
+    width: 60vw;
+    min-width: 300px;
+    padding: 2em;
+    display: block;
+    z-index: 11;
+    background: rgba(103, 93, 93);
+    transition: ease-out 1s;
+
+}
+
+.background-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.62);
+    transition: ease-out 1s;
+
+}
+
+
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    margin-top: 2em;
+}
+
+.card-details {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    gap: 1em;
+}

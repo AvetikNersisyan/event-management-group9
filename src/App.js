@@ -9,8 +9,7 @@ import Categories from './components/categories';
 import { useEffect, useState } from 'react';
 import SignUp from './components/profile/signUp';
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { setUsers } from './redux/ducks/userDuck';
+import { useDispatch, useSelector } from 'react-redux';
 import SingleEvent from './components/events/singleEvent';
 import { setEvents } from './redux/ducks/eventDuck';
 import { api } from './api';
@@ -18,22 +17,28 @@ import Error404 from './components/error404';
 import NewEvent from './components/events/newEvent';
 import Footer from './components/footer';
 
+import { setPersons } from './redux/ducks/personsDuck';
+
 function App() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		// fetch(`${api}/users`)
-		// 	.then((res) => res.json())
-		// 	.then((res) => {
-		// 		dispatch(setUsers(res));
-		// 	});
-
 		fetch(`${api}/events`)
 			.then((res) => res.json())
 			.then((res) => {
 				dispatch(setEvents(res));
 			});
+
+		fetch(`${api}/persons`)
+			.then((res) => res.json())
+			.then((res) => {
+				dispatch(setPersons(res));
+			});
 	}, []);
+
+	const activeUser = useSelector(({ UserDuck }) => UserDuck.activeUser); //TODO: get active user to show delete button
+
+	const isAdminLogged = activeUser && activeUser.type === 'admin';
 
 	return (
 		<div className='App'>
@@ -41,14 +46,17 @@ function App() {
 
 			<Routes>
 				<Route path={'/'} element={<Home />} />
-
 				<Route path={'/categories'} element={<Categories />} />
 				<Route path={'profile/signup'} element={<SignUp />} />
 				<Route path={'/profile/'} element={<Profile />} />
-
-				<Route path={'/events/:eventId'} element={<SingleEvent />} />
+				<Route
+					path={'/events/:eventId'}
+					exact={true}
+					element={<SingleEvent />}
+				/>
 				<Route path={'/events'} exact={true} element={<Events />} />
-				{true && <Route path={'/new-event'} element={<NewEvent />} />}
+				{isAdminLogged && <Route path={'/new-event'} element={<NewEvent />} />}
+				{/*<Route path={'events/:eventID/checkout'} element={<Checkout />} />*/}
 				<Route path={'*'} element={<Error404 />} />
 			</Routes>
 

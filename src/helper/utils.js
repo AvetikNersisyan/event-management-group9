@@ -11,3 +11,15 @@ export const toBase64 = (file) =>
 		fd.onload = () => res(fd.result);
 		fd.onerror = (err) => rej(err);
 	});
+
+export const validate = (card, name, CVV, date, year) => {
+	let valid = require('card-validator');
+	const { cardholderName, cvv, expirationDate, expirationYear, number } = valid;
+	return (
+		cardholderName(name).isValid &&
+		cvv(CVV).isValid &&
+		expirationYear(year).isValid &&
+		expirationDate(date) &&
+		number(card).isValid
+	);
+};

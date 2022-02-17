@@ -24,7 +24,7 @@ const Footer = () => {
                 </p>
             </div>
             <div>
-                <h3>Contuct Us</h3>
+                <h3>Contact Us</h3>
                 <div>
                     <img className='icon' src={facebook} alt='icon' />
                     <img className='icon' src={instagram} alt='icon' />
