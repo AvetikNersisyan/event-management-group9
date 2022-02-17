@@ -3,6 +3,7 @@ import './index.css';
 import Populiar from './populiar';
 import Featured from './featured';
 import Review from '../review';
+import Feedback from '../feedback';
 const Home = () => {
   return (
     <div className='global-container'>
@@ -12,6 +13,7 @@ const Home = () => {
       <Populiar />
       <Featured />
       <Review />
+      <Feedback />
     </div>
   );
 };
