@@ -3,8 +3,13 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { decreaseSeats } from '../../../redux/ducks/eventDuck';
 import { validate } from '../../../helper/utils';
+import { setGoing } from '../../../redux/ducks/userDuck';
+import { api } from '../../../api';
 
-const Popup = ({ close, eventId }) => {
+const Popup = ({ close, ev }) => {
+	const eventId = ev.id;
+	const activeUser = useSelector(({ UserDuck }) => UserDuck.activeUser);
+
 	const [cardNumber, setCardNumber] = useState('');
 	const [cardHolder, setCardHolder] = useState('');
 	const [cardCVV, setCardCVV] = useState('');
@@ -24,10 +29,11 @@ const Popup = ({ close, eventId }) => {
 		e.preventDefault();
 
 		const isValid = validate(cardNumber, cardHolder, cardCVV, expDate, expYear);
-		console.log(isValid);
+		console.log(isValid, 'isValid card');
 
 		if (isValid) {
 			dispatch(decreaseSeats({ eventId, seats: 1 }));
+			dispatch(setGoing({ userId: activeUser.id, ev }));
 			close();
 		}
 	};

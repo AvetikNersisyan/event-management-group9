@@ -24,6 +24,7 @@ const EventDuck = (state = initialState, { type, payload }) => {
 			return { ...state, events: filteredEvents };
 		case ADD_EVENT:
 			return { ...state, events: [...state.events, payload] };
+
 		case DECREASE_SEATS:
 			const seatFilterEvent = state.events.filter(
 				({ id }) => id === payload.eventId
