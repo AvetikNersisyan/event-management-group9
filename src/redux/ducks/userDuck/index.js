@@ -26,7 +26,7 @@ const initialState = {
 			interestedEvents: [{}],
 		},
 	],
-	activeUser: null,
+	activeUser: JSON.parse(sessionStorage.getItem('user')),
 	loggedIn: false,
 };
 
