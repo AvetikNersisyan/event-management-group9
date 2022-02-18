@@ -101,8 +101,8 @@
         "sport"
       ],
       "rate": {
-        "count": 4,
-        "sum": 13
+        "sum": 19.5,
+        "count": 6
       },
       "event_details": {
         "start_date": "01/01/01",
@@ -132,7 +132,7 @@
         "asdf"
       ],
       "rate": {
-        "count": 0,
+        "count": 1,
         "sum": 0
       },
       "event_details": {
@@ -162,8 +162,8 @@
         ""
       ],
       "rate": {
-        "count": 0,
-        "sum": 0
+        "sum": 0,
+        "count": 2
       },
       "event_details": {
         "start_date": "",
@@ -224,8 +224,8 @@
         ""
       ],
       "rate": {
-        "count": 0,
-        "sum": 0
+        "sum": 3,
+        "count": 1
       },
       "event_details": {
         "start_date": "",
@@ -286,8 +286,8 @@
         ""
       ],
       "rate": {
-        "count": 0,
-        "sum": 0
+        "sum": 4,
+        "count": 1
       },
       "event_details": {
         "start_date": "",
@@ -802,7 +802,7 @@
         ]
       ],
       "rate": {
-        "count": 0,
+        "count": 1,
         "sum": 0
       },
       "event_details": {
@@ -911,7 +911,10 @@
       "interestedEvents": [],
       "allreadyGone": [],
       "going": [],
-      "rated_events": []
+      "rated_events": [
+        3,
+        1
+      ]
     },
     {
       "id": 2,
@@ -992,6 +995,14 @@
             }
           ]
         }
+      ],
+      "rated_events": [
+        3,
+        2,
+        24,
+        4,
+        8,
+        6
       ]
     },
     {

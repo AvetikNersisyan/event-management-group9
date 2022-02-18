@@ -55,8 +55,10 @@ const Sidebar = ({
 	return (
 		<div className={'sidebar'}>
 			<button onClick={onBuyTicket}> ATTEND </button>
-			{isOpen && <Popup ev={ev} close={onPopupClose} />}
 
+			<div className={'event-details'}>
+				{isOpen && <Popup ev={ev} close={onPopupClose} />}
+			</div>
 			<div className={'event-details'}>
 				<div className='event-detail-info'>
 					<label> rating </label>
