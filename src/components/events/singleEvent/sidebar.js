@@ -4,7 +4,7 @@ import { addEvent } from '../../../redux/ducks/eventDuck';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Popup from '../popup';
 import { useCallback, useState } from 'react';
-import Rating from './rating';
+import Rating from './rating/index';
 
 // fake event
 const ev = {

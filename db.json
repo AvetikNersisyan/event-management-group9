@@ -126,8 +126,8 @@
         "sport"
       ],
       "rate": {
-        "sum": 19.5,
-        "count": 6
+        "sum": 27.75,
+        "count": 8
       },
       "event_details": {
         "start_date": "01/01/01",
@@ -406,7 +406,8 @@
           }
         ],
         "id": 10
-      }},
+      }
+    },
     {
       "type": "Concert",
       "title": "a",
@@ -486,7 +487,10 @@
       ],
       "interestedEvents": [],
       "allreadyGone": [],
-      "going": []
+      "going": [],
+      "rated_events": [
+        2
+      ]
     },
     {
       "id": 1,

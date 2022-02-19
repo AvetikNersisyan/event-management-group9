@@ -14,8 +14,7 @@ const colors = {
 
 const Rating = ({ ev }) => {
 	const { count, sum } = ev.rate;
-	console.log(sum, 'sum');
-	console.log(count, 'count');
+
 	const activeUser = useSelector(({ UserDuck }) => UserDuck.activeUser);
 	const isAlreadyRated = useMemo(
 		() => activeUser?.rated_events?.some((id) => id === ev.id),
@@ -35,12 +34,12 @@ const Rating = ({ ev }) => {
 	const stars = Array(5).fill(0);
 
 	useEffect(() => {
-		fetch(`${api}/users/${activeUser.id}`, {
+		fetch(`${api}/users/${activeUser?.id}`, {
 			method: 'PATCH',
 			headers: {
 				'Content-type': 'application/json',
 			},
-			body: JSON.stringify({ rated_events: activeUser.rated_events }),
+			body: JSON.stringify({ rated_events: activeUser?.rated_events }),
 		}).catch((err) => console.warn(err));
 
 		fetch(`${api}/events/${ev.id}`, {
