@@ -112,11 +112,7 @@
           "name": "Poghos Petrosyan",
           "rating": 4.9
         }
-      ],
-      "rate": {
-        "coutn": 0,
-        "sum": 0
-      }
+      ]
     },
     {
       "id": 2,
@@ -202,7 +198,6 @@
         "location": "",
         "address": "",
         "guest_quantity": null,
-        "available_seats": null
         "available_seats": -11
       },
       "speakers": [
@@ -361,6 +356,7 @@
         "available_seats": null
       },
       "speakers": [
+        {
           "id": 2,
           "type": "person",
           "name": "Vasili",
@@ -402,19 +398,15 @@
         "location": "",
         "address": "",
         "guest_quantity": null,
-        "available_seats": null
-      "rate": {
-        "coutn": 0,
-        "sum": 0
-      },
-      "speakers": [
-        {
-          "name": "Poghos Petrosyan",
-          "rating": 4.9
-        }
-      ],
-      "id": 10
-    },
+        "available_seats": null,
+        "speakers": [
+          {
+            "name": "Poghos Petrosyan",
+            "rating": 4.9
+          }
+        ],
+        "id": 10
+      }},
     {
       "type": "Concert",
       "title": "a",
