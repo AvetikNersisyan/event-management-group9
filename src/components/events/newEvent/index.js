@@ -79,10 +79,11 @@ const NewEvent = () => {
 			},
 			speakers: newEventSpeakers,
 			rate: {
-				coutn: 0,
+				count: 0,
 				sum: 0,
 			},
 		};
+
 		fetch(`${api}/events/`, {
 			method: 'POST',
 			headers: {
@@ -370,7 +371,7 @@ const NewEvent = () => {
 							<span>{item.name}</span>
 							<button
 								className='remove-button'
-							// onClick={() => removeSpeaker(item.name)}
+								// onClick={() => removeSpeaker(item.name)}
 							>
 								X
 							</button>

@@ -94,8 +94,8 @@
         "sport"
       ],
       "rate": {
-        "count": 0,
-        "sum": 0
+        "sum": 0,
+        "count": 1
       },
       "event_details": {
         "start_date": "01/01/01",
@@ -126,8 +126,8 @@
         "sport"
       ],
       "rate": {
-        "sum": 27.75,
-        "count": 8
+        "sum": 29.25,
+        "count": 9
       },
       "event_details": {
         "start_date": "01/01/01",
@@ -157,8 +157,8 @@
         "asdf"
       ],
       "rate": {
-        "count": 1,
-        "sum": 0
+        "sum": 4,
+        "count": 2
       },
       "event_details": {
         "start_date": "2022-02-08",
@@ -489,7 +489,8 @@
       "allreadyGone": [],
       "going": [],
       "rated_events": [
-        2
+        2,
+        3
       ]
     },
     {
