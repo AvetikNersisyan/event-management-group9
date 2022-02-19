@@ -16,8 +16,6 @@ const Feedback = () => {
 		feedback: '',
 	});
 
-	console.log(currentValue, 'hover');
-
 	const stars = Array(5).fill(0);
 
 	const handleChange = (e) => {

@@ -68,10 +68,10 @@ const NewEvent = () => {
 			img_url: image,
 			tags: tag,
 			event_details: {
-				start_date: startDate,
-				end_date: endDate,
-				start_time: startTime,
-				end_time: endTime,
+				start_date: startDate.current.value,
+				end_date: endDate.current.value,
+				start_time: startTime.current.value,
+				end_time: endTime.current.value,
 				location: locationInput.current.value,
 				address: addressInput.current.value,
 				guest_quantity: ticketCountInput.current.value,
@@ -79,7 +79,7 @@ const NewEvent = () => {
 			},
 			speakers: newEventSpeakers,
 			rate: {
-				coutn: 0,
+				count: 0,
 				sum: 0,
 			},
 		};
@@ -153,7 +153,6 @@ const NewEvent = () => {
 			fieldOfActivity: obj.fieldOfActivityInput,
 			about: obj.aboutCompanyInput,
 		};
-		console.log(newCompany);
 		fetch(`${api}/persons`, {
 			method: 'POST',
 			body: JSON.stringify(newCompany),
