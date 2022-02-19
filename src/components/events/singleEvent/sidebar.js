@@ -4,6 +4,7 @@ import { addEvent } from '../../../redux/ducks/eventDuck';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Popup from '../popup';
 import { useCallback, useState } from 'react';
+import Rating from './rating';
 
 // fake event
 const ev = {
@@ -54,9 +55,18 @@ const Sidebar = ({
 	return (
 		<div className={'sidebar'}>
 			<button onClick={onBuyTicket}> ATTEND </button>
-			{isOpen && <Popup ev={ev} close={onPopupClose} />}
 
 			<div className={'event-details'}>
+				{isOpen && <Popup ev={ev} close={onPopupClose} />}
+			</div>
+			<div className={'event-details'}>
+				<div className='event-detail-info'>
+					<label> rating </label>
+					<span>
+						{' '}
+						<Rating ev={ev} />
+					</span>
+				</div>
 				<h3> Event detail</h3>
 				<div className={'event-detail-info'}>
 					<label> Start date: </label>

@@ -1,6 +1,4 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import fbIcon from '../../../assets/img/facebook-app-symbol.png';
-import twitterIcon from '../../../assets/img/twitter.png';
 import shareIcon from '../../../assets/img/share.png';
 import favoriteIcon from '../../../assets/img/favourite.png';
 import deleteIcon from '../../../assets/img/delete.png';
@@ -13,7 +11,10 @@ import {
 	setActiveUser,
 	setLikedEvent,
 } from '../../../redux/ducks/userDuck';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import fbIcon from '../../../assets/img/facebook-app-symbol.png';
+import twitterIcon from '../../../assets/img/twitter.png';
 
 const EventCard = ({ ev }) => {
 	const { title, description, img_url, tags, id } = ev;

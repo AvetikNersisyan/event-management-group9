@@ -68,6 +68,10 @@
         "music",
         "sport"
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "01/01/01",
         "end_date": "01/01/01",
@@ -96,6 +100,10 @@
         "music",
         "sport"
       ],
+      "rate": {
+        "sum": 19.5,
+        "count": 6
+      },
       "event_details": {
         "start_date": "01/01/01",
         "end_date": "01/01/01",
@@ -123,6 +131,10 @@
       "tags": [
         "asdf"
       ],
+      "rate": {
+        "count": 1,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "2022-02-08",
         "end_date": "2022-02-09",
@@ -149,6 +161,10 @@
       "tags": [
         ""
       ],
+      "rate": {
+        "sum": 0,
+        "count": 2
+      },
       "event_details": {
         "start_date": "",
         "end_date": "",
@@ -176,6 +192,10 @@
       "tags": [
         ""
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "",
         "end_date": "",
@@ -203,6 +223,10 @@
       "tags": [
         ""
       ],
+      "rate": {
+        "sum": 3,
+        "count": 1
+      },
       "event_details": {
         "start_date": "",
         "end_date": "",
@@ -230,6 +254,10 @@
       "tags": [
         ""
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "",
         "end_date": "",
@@ -257,6 +285,10 @@
       "tags": [
         ""
       ],
+      "rate": {
+        "sum": 0,
+        "count": 1
+      },
       "event_details": {
         "start_date": "",
         "end_date": "",
@@ -284,6 +316,10 @@
       "tags": [
         ""
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "",
         "end_date": "",
@@ -311,6 +347,10 @@
       "tags": [
         ""
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "",
         "end_date": "",
@@ -338,6 +378,10 @@
       "tags": [
         ""
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "",
         "end_date": "",
@@ -365,6 +409,10 @@
       "tags": [
         ""
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "",
         "end_date": "",
@@ -392,6 +440,10 @@
       "tags": [
         ""
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "",
         "end_date": "",
@@ -419,6 +471,10 @@
       "tags": [
         ""
       ],
+      "rate": {
+        "sum": 3,
+        "count": 1
+      },
       "event_details": {
         "start_date": "",
         "end_date": "",
@@ -446,6 +502,10 @@
       "tags": [
         ""
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "",
         "end_date": "",
@@ -478,6 +538,10 @@
           "asdas"
         ]
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "",
         "end_date": "",
@@ -511,6 +575,10 @@
           "asdasd"
         ]
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "",
         "end_date": "",
@@ -545,6 +613,10 @@
           "asdasdasdasd"
         ]
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "",
         "end_date": "",
@@ -580,6 +652,10 @@
           "asdasdasd"
         ]
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "",
         "end_date": "",
@@ -609,6 +685,10 @@
           "fest"
         ]
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "",
         "end_date": "",
@@ -634,6 +714,10 @@
           "festival"
         ]
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "",
         "end_date": "",
@@ -659,6 +743,10 @@
           "festival"
         ]
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "2022-02-28",
         "end_date": "2022-03-03",
@@ -684,6 +772,10 @@
           "festival"
         ]
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "2022-02-28",
         "end_date": "2022-03-03",
@@ -709,6 +801,10 @@
           "festival"
         ]
       ],
+      "rate": {
+        "count": 1,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "2022-02-28",
         "end_date": "2022-03-03",
@@ -734,6 +830,10 @@
           "festival"
         ]
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "2022-02-28",
         "end_date": "2022-03-03",
@@ -759,6 +859,10 @@
           "festival"
         ]
       ],
+      "rate": {
+        "count": 0,
+        "sum": 0
+      },
       "event_details": {
         "start_date": "2022-02-28",
         "end_date": "2022-03-03",
@@ -789,7 +893,8 @@
       ],
       "interestedEvents": [],
       "allreadyGone": [],
-      "going": []
+      "going": [],
+      "rated_events": []
     },
     {
       "id": 1,
@@ -805,7 +910,11 @@
       ],
       "interestedEvents": [],
       "allreadyGone": [],
-      "going": []
+      "going": [],
+      "rated_events": [
+        3,
+        1
+      ]
     },
     {
       "id": 2,
@@ -829,6 +938,10 @@
           "tags": [
             ""
           ],
+          "rate": {
+            "count": 0,
+            "sum": 0
+          },
           "event_details": {
             "start_date": "",
             "end_date": "",
@@ -861,6 +974,10 @@
             "music",
             "sport"
           ],
+          "rate": {
+            "count": 0,
+            "sum": 0
+          },
           "event_details": {
             "start_date": "01/01/01",
             "end_date": "01/01/01",
@@ -878,6 +995,15 @@
             }
           ]
         }
+      ],
+      "rated_events": [
+        3,
+        2,
+        24,
+        4,
+        8,
+        6,
+        14
       ]
     },
     {
@@ -894,7 +1020,8 @@
       ],
       "interestedEvents": [],
       "allreadyGone": [],
-      "going": []
+      "going": [],
+      "rated_events": []
     },
     {
       "id": 4,
@@ -910,7 +1037,8 @@
       ],
       "interestedEvents": [],
       "allreadyGone": [],
-      "going": []
+      "going": [],
+      "rated_events": []
     },
     {
       "id": 0,

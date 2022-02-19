@@ -8,7 +8,8 @@ const SET_LOGGED_IN = 'userDuck/SET_LOGGED_IN';
 const SET_PROFILE_PIC = 'userDuck/SET_PROFILE_PIC';
 const SET_LIKED_EVENT = 'userDuck/SET_LIKED_EVENT';
 const REMOVE_LIKED_EVENT = 'userDuck/REMOVE_LIKED_EVENT';
-const ADD_GOING = 'eventDuck/ADD_GOING';
+const ADD_GOING = 'userDuck/ADD_GOING';
+const SET_RATED_EVENTS = 'userDuck/SET_RATED_EVENTS';
 
 export const setUsers = createAction(SET_USERS);
 export const addUser = createAction(ADD_USER);
@@ -18,11 +19,13 @@ export const setProfilePic = createAction(SET_PROFILE_PIC);
 export const setLikedEvent = createAction(SET_LIKED_EVENT);
 export const removeLike = createAction(REMOVE_LIKED_EVENT);
 export const setGoing = createAction(ADD_GOING);
+export const setRatedEvents = createAction(SET_RATED_EVENTS);
 
 const initialState = {
 	users: [
 		{
 			user_details: {},
+			rated_events: [],
 			interestedEvents: [{}],
 		},
 	],
@@ -32,6 +35,15 @@ const initialState = {
 
 const UserDuck = (state = initialState, { type, payload }) => {
 	switch (type) {
+		case SET_RATED_EVENTS:
+			const users = state.users.map((item) => {
+				if (item.id === payload.userId) {
+					item.rated_events = [...item.rated_events, payload.eventId];
+				}
+				return item;
+			});
+
+			return { ...state, users: [...users] };
 		case SET_USERS:
 			return { ...state, users: [...payload] };
 		case ADD_USER:
