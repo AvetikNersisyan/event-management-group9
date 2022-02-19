@@ -286,7 +286,7 @@
         ""
       ],
       "rate": {
-        "sum": 4,
+        "sum": 0,
         "count": 1
       },
       "event_details": {
@@ -472,8 +472,8 @@
         ""
       ],
       "rate": {
-        "count": 0,
-        "sum": 0
+        "sum": 3,
+        "count": 1
       },
       "event_details": {
         "start_date": "",
@@ -1002,7 +1002,8 @@
         24,
         4,
         8,
-        6
+        6,
+        14
       ]
     },
     {
