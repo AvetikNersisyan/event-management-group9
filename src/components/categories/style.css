@@ -12,10 +12,11 @@
     }
 
 .wrapper{
-    min-height:400px;
+    min-height:100%;
     background-color: #eeeded;
-    margin-top: 150px;
-
+    padding: 20px;
+    border-end-start-radius: 50px;
+    border-end-end-radius: 50px;
 }
 
 .form-element{
@@ -46,18 +47,5 @@ input,.selectpicker{
 
 .selectpicker:hover{
     background-color: rgb(232, 232, 240);
-}
-
-.find_event{
-    background-color: rgb(230, 67, 135);
-    color: azure;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-
-}
-
-.find_event:hover{
-    background-color: rgb(197, 132, 162);
 }
 

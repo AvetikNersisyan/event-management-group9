@@ -1,6 +1,7 @@
 .App {
   text-align: center;
 }
+
 .main-header {
   display: flex;
   flex-direction: row;
