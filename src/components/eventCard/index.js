@@ -1,15 +1,7 @@
-import { useNavigate } from 'react-router-dom';
-import './profileEvent.css'
-import hash from '../../../../assets/img/hash.png';
-import locationCard from '../../../../assets/img/locationCard.png';
+import hash from '../../assets/img/hash.png';
+import locationCard from '../../assets/img/locationCard.png';
 
-const ProfileEvent = ({ event: { id, img_url, title, description, tags, event_details, } }) => {
-    const navigate = useNavigate();
-
-    const handleEventClick = (id) => {
-        navigate(`/events/${id}`);
-    };
-
+const EventCard = ({ item: { id, img_url, title, description, tags, event_details, }, handleEventClick }) => {
     return (
         <div
             className='profile-event-card'
@@ -43,9 +35,15 @@ const ProfileEvent = ({ event: { id, img_url, title, description, tags, event_de
                         {event_details.start_date}
                     </span>
                 </div>
+                <div>
+                    <span className='event-footer-info'>Available tickets :</span>
+                    <span className='event-footer-info'>
+                        {event_details.available_seats}
+                    </span>
+                </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ProfileEvent;
+export default EventCard;
