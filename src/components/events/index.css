@@ -27,3 +27,18 @@
 .event-image-medium {
     width: 95%;
 }
+
+.event-tags {
+    
+}
+
+.event-footer-info{
+    margin: 5px;
+    font-size: 17px;
+}
+
+.event-card-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
