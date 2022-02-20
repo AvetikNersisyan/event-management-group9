@@ -4,8 +4,9 @@ import { memo, useRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useSelector } from 'react-redux';
+
 import { eventTypes } from '../../helper/constants';
-//import Feedback from '../feedback';
+
 
 const Categories = ({ handleFilter, cancelSearch }) => {
 	const filterTitle = useRef(null)
@@ -87,8 +88,6 @@ const Categories = ({ handleFilter, cancelSearch }) => {
 					</div>
 				</div>
 			</div>
-			{/* 
-			<Feedback /> */}
 		</div>
 	);
 };
