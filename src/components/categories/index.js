@@ -4,7 +4,6 @@ import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useSelector } from 'react-redux';
-//import Feedback from '../feedback';
 
 const Categories = () => {
 	const [startDate, setStartDate] = useState(null);
@@ -134,8 +133,6 @@ const Categories = () => {
 					</div>
 				</form>
 			</div>
-			{/* 
-			<Feedback /> */}
 		</div>
 	);
 };

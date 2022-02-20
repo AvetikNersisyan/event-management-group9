@@ -4,21 +4,12 @@
    
 }
 
-
-       
-     /*  .contacts_item{
-        flex-basis:36%;
-        position: relative;
-      } */
-        
-  
-        h3{
-          color: grey;
-        
-         font-size: 12px;
-         margin-top: 20px;
-         margin-bottom: 10px;
-         text-transform: uppercase;
+   h3{
+     color: grey;
+     font-size: 12px;
+     margin-top: 20px;
+     margin-bottom: 10px;
+     text-transform: uppercase;
       }
 
       .close-btn{
@@ -30,38 +21,18 @@
          border-radius:50%;
           cursor: pointer;
   
- 
- 
- 
-
-   
+    
        }
        
 
-    
-  
      
-     /*  .form-element{
-        display: flex;
-          justify-content: space-between; 
-         } */
-    
-        /*  .half{  
-          flex-basis: 49%;
-         }
-            */
-          /*   input{
-              width:100%;
-              margin-top: 20px;
-              padding: 15px;
-            } */
     .forms{
       position: relative;
       margin-top: 20px;
-       
+  
     }
-
-
+       
+    
    
     .toggle{
       width: 150px;
@@ -87,7 +58,7 @@
          padding: 50px 10px;
         }
 
-
+        
         .submit{
           margin-top: 25px;
           background:#885a60;
