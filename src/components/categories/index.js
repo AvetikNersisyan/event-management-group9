@@ -7,16 +7,16 @@ import { useSelector } from 'react-redux';
 
 import { eventTypes } from '../../helper/constants';
 
-
 const Categories = ({ handleFilter, cancelSearch }) => {
-	const filterTitle = useRef(null)
-	const filterCategories = useRef(null)
-	const filterCities = useRef(null)
-	const filterTeg = useRef(null)
+	const filterTitle = useRef(null);
+	const filterCategories = useRef(null);
+	const filterCities = useRef(null);
+	const filterTeg = useRef(null);
 	const filterStartDate = useRef(null);
 	const filterEndDate = useRef(null);
 
-	const handleSearch = () => {
+	const handleSearch = (e) => {
+		e.preventDefault();
 		let filteringObject = {
 			title: filterTitle.current.value.toLowerCase(),
 			type: filterCategories.current.value,
@@ -24,20 +24,29 @@ const Categories = ({ handleFilter, cancelSearch }) => {
 			location: filterCities.current.value,
 			start_date: filterStartDate.current.value,
 			end_date: filterEndDate.current.value,
-		}
-		handleFilter(filteringObject)
-	}
+		};
+		handleFilter(filteringObject);
+	};
 
 	return (
 		<div className='wrapper'>
-			<div className='container'>
+			<form className='container'>
 				<div action='' method='GET' name='search_event'>
 					<div className='form-element'>
 						<div className='form_element half'>
-							<input placeholder='By title' name='name_event' ref={filterTitle} />
+							<input
+								placeholder='By title'
+								name='name_event'
+								ref={filterTitle}
+							/>
 						</div>
 						<div className='form_element half'>
-							<select name='name' selected='selected' className='selectpicker' ref={filterCategories}>
+							<select
+								name='name'
+								selected='selected'
+								className='selectpicker'
+								ref={filterCategories}
+							>
 								<option value=''>All Categories</option>
 								{eventTypes.map((type) => (
 									<option key={type} value={type}>
@@ -74,20 +83,45 @@ const Categories = ({ handleFilter, cancelSearch }) => {
 						</div>
 						<div className='form_element half'>
 							<div className='datepicker'>
-								<input className='new-event-inputs' ref={filterStartDate} type={'date'} />
-								<input className='new-event-inputs' ref={filterEndDate} type={'date'} />
+								<input
+									className='new-event-inputs'
+									defaultValue={'1900-01-01'}
+									ref={filterStartDate}
+									type={'date'}
+								/>
+								<input
+									className='new-event-inputs'
+									defaultValue={'2030-01-01'}
+									ref={filterEndDate}
+									type={'date'}
+								/>
 							</div>
 						</div>
 
 						<div className='form_element half'>
-							<button className='button' style={{ margin: '20px' }} value='Find Event' onClick={handleSearch} >Search</button>
+							<button
+								className='button'
+								style={{ margin: '20px' }}
+								value='Find Event'
+								onClick={handleSearch}
+							>
+								Search
+							</button>
 						</div>
 						<div className='form_element half'>
-							<button className='button' style={{ margin: '20px' }} value='Find Event' onClick={cancelSearch} >Cancel</button>
+							<button
+								type={'reset'}
+								className='button'
+								style={{ margin: '20px' }}
+								value='Find Event'
+								onClick={cancelSearch}
+							>
+								Reset
+							</button>
 						</div>
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	);
 };
