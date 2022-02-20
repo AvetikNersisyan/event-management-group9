@@ -6,13 +6,15 @@ import EventCard from '../eventCard';
 
 const AllEvents = () => {
 	const events = useSelector(({ EventDuck }) => EventDuck.events);
+
 	const navigate = useNavigate();
-	events.sort(
-		(a, b) =>
-			new Date(a.event_details.start_date) -
-			new Date(b.event_details.start_date)
-	);
-	const [searching, setSearching] = useState(false)
+	// events.sort(
+	// 	(a, b) =>
+	// 		new Date(a.event_details.start_date) -
+	// 		new Date(b.event_details.start_date)
+	// );
+
+	const [searching, setSearching] = useState(false);
 	const [eventsList, setEventsList] = useState(
 		events.filter(
 			(items) =>
@@ -26,28 +28,51 @@ const AllEvents = () => {
 	};
 
 	const handleFilter = (obj) => {
-		setSearching(true)
-		let filtered = events
-			.filter(
-				(items) =>
-					new Date(items.event_details.start_date).getTime() >
-					new Date().getTime()
-			)
-			.filter((item) => {
-				return (
-					item.title.toLowerCase() === obj.title.toLowerCase() ||
-					item.event_details.location.toLowerCase() === obj.location.toLowerCase() ||
-					item.type.toLowerCase() === obj.type.toLowerCase() ||
-					item.event_details.start_date === obj.start_date ||
-					item.event_details.end_date === obj.end_date ||
-					item.tags.indexOf(obj.tags) >= 0
-				);
+		setSearching(true);
+
+		for (let value in obj) {
+			if (!obj[value]) {
+				delete obj[value];
+			}
+		}
+
+		let searchTerms = Object.keys(obj);
+		searchTerms = searchTerms.filter((t) => !t.includes('date'));
+
+		let tempObj;
+		let filtered = events;
+
+		searchTerms.forEach((term) => {
+			filtered = filtered.filter((item) => {
+				tempObj = {
+					title: item.title,
+					tags: item.tags.join(''),
+					location: item.event_details.location,
+					type: item.type,
+					start_date: item.event_details.start_date,
+					end_date: item.event_details.end_date,
+				};
+
+				return tempObj[term]?.toLowerCase()?.includes(obj[term].toLowerCase());
 			});
+		});
+
+		filtered = filtered.filter((event) => {
+			return (
+				new Date(event.event_details.start_date).getTime() >
+					new Date(obj.start_date).getTime() &&
+				new Date(event.event_details.start_date).getTime() <
+					new Date(obj.end_date).getTime()
+			);
+		});
+
+		console.log(filtered, 'filtered');
+
 		setEventsList(filtered);
 	};
 
 	const cancelSearch = () => {
-		setSearching(false)
+		setSearching(false);
 		setEventsList(
 			events.filter(
 				(items) =>
@@ -63,9 +88,7 @@ const AllEvents = () => {
 				handleFilter={(obj) => handleFilter(obj)}
 				cancelSearch={cancelSearch}
 			/>
-			{
-				!searching ? <h1>All Upcoming Events</h1> : <h1>Your search</h1>
-			}
+			{!searching ? <h1>All Upcoming Events</h1> : <h1>Your search</h1>}
 			<div className='profile-event-list'>
 				{eventsList.map((item) => (
 					<EventCard

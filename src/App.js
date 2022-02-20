@@ -18,6 +18,7 @@ import NewEvent from './components/events/newEvent';
 import Footer from './components/footer';
 
 import { setPersons } from './redux/ducks/personsDuck';
+import { setActiveUser } from './redux/ducks/userDuck';
 
 function App() {
 	const dispatch = useDispatch();
@@ -43,7 +44,6 @@ function App() {
 	return (
 		<div className='App'>
 			<Index />
-
 			<Routes>
 				<Route path={'/'} element={<Home />} />
 				<Route path={'/categories'} element={<Categories />} />
@@ -54,7 +54,7 @@ function App() {
 					exact={true}
 					element={<SingleEvent />}
 				/>
-				<Route path={'/events'} exact={true} element={<Events />} />
+				<Route path={'/events'} element={<Events />} />
 				{isAdminLogged && <Route path={'/new-event'} element={<NewEvent />} />}
 				<Route path={'*'} element={<Error404 />} />
 			</Routes>
