@@ -13,39 +13,35 @@ const NewEvent = () => {
 	const navigate = useNavigate();
 
 	const data = useSelector((state) => state.PersonsDuck.persons);
-	const [persons, setPersons] = useState(data.filter(item => item.type === "person"))
-	const [companys, setCompanys] = useState(data.filter(item => item.type === "company"))
+	const [persons, setPersons] = useState(
+		data.filter((item) => item.type === 'person')
+	);
+	const [companys, setCompanys] = useState(
+		data.filter((item) => item.type === 'company')
+	);
 	const [personInput, setPersonInput] = useState('');
 	const [companyInput, setCompanyInput] = useState('');
 
 	const [eventType, setEventType] = useState('');
-	const [title, setTitle] = useState('');
-	const [text, setText] = useState('');
+	const titleInput = useRef(null);
+	const textInput = useRef(null);
 	const [tag, setTag] = useState([]);
-	const [startDate, setStartDate] = useState('');
-	const [startTime, setStartTime] = useState('')
-	const [endDate, setEndDate] = useState('');
-	const [endTime, setEndTime] = useState('');
+	const startDate = useRef(null);
+	const startTime = useRef(null);
+	const endDate = useRef(null);
+	const endTime = useState(null);
 
-
-	const [location, setLocation] = useState('');
-	const [address, setAddress] = useState('');
-	const [ticketCount, setTicketCount] = useState(null);
-	const [price, setPrice] = useState(null)
+	const locationInput = useRef(null);
+	const addressInput = useRef(null);
+	const ticketCountInput = useRef(null);
+	const priceInput = useRef(null);
 	const [image, setImage] = useState('');
 	const [newEventSpeakers, setNewEventSpeakers] = useState([]);
 
 	const [addPerson, setAddPerson] = useState(false);
-	const [personFirstName, setPersonFirstName] = useState('');
-	const [personLastName, setPersonLastName] = useState('');
-	const [personDoB, setPersonDoB] = useState('');
-	const [personBio, setPersonBio] = useState('');
 	const [profession, setProfession] = useState('');
 
 	const [addOrganizator, setAddOrganizator] = useState(false);
-	const [companyName, setCompanyName] = useState('');
-	const [fieldOfActivity, setFieldOfActivity] = useState('');
-	const [aboutCompany, setAboutCompany] = useState('');
 
 	const dispatch = useDispatch();
 
@@ -66,27 +62,28 @@ const NewEvent = () => {
 		e.preventDefault();
 		let newEvent = {
 			type: eventType,
-			title: title,
-			description: text,
-			price: price,
+			title: titleInput.current.value,
+			description: textInput.current.value,
+			price: priceInput.current.value,
 			img_url: image,
 			tags: tag,
 			event_details: {
-				start_date: startDate,
-				end_date: endDate,
-				start_time: startTime,
-				end_time: endTime,
-				location: location,
-				address: address,
-				guest_quantity: ticketCount,
-				available_seats: ticketCount,
+				start_date: startDate.current.value,
+				end_date: endDate.current.value,
+				start_time: startTime.current.value,
+				end_time: endTime.current.value,
+				location: locationInput.current.value,
+				address: addressInput.current.value,
+				guest_quantity: ticketCountInput.current.value,
+				available_seats: ticketCountInput.current.value,
 			},
 			speakers: newEventSpeakers,
 			rate: {
-				coutn: 0,
-				sum: 0
-			}
+				count: 0,
+				sum: 0,
+			},
 		};
+
 		fetch(`${api}/events/`, {
 			method: 'POST',
 			headers: {
@@ -118,7 +115,6 @@ const NewEvent = () => {
 		setTag(newInt);
 	};
 
-
 	const changeEventType = (e) => {
 		setEventType(e.target.value);
 	};
@@ -127,14 +123,14 @@ const NewEvent = () => {
 		setProfession(e.target.value);
 	};
 
-	const handleAddPerson = () => {
+	const handleAddPerson = (obj) => {
 		let newPerson = {
 			type: 'person',
-			name: personFirstName,
-			lastName: personLastName,
-			DoB: personDoB,
+			name: obj.personFirstNameInput,
+			lastName: obj.personLastNameInput,
+			DoB: obj.personDoBInput,
 			profession: profession,
-			about: personBio,
+			about: obj.personBioInput,
 		};
 		fetch(`${api}/persons/`, {
 			method: 'POST',
@@ -147,22 +143,17 @@ const NewEvent = () => {
 			.then((json) => setNewEventSpeakers([...newEventSpeakers, json]))
 			.then(() => {
 				setAddPerson(false);
-				setPersonFirstName('');
-				setPersonLastName('');
-				setPersonDoB('');
-				setPersonBio('');
 				setProfession('');
 			});
 	};
 
-	const handleAddCompany = () => {
+	const handleAddCompany = (obj) => {
 		let newCompany = {
 			type: 'company',
-			name: companyName,
-			fieldOfActivity: fieldOfActivity,
-			about: aboutCompany,
+			name: obj.companyNameInput,
+			fieldOfActivity: obj.fieldOfActivityInput,
+			about: obj.aboutCompanyInput,
 		};
-		console.log(newCompany);
 		fetch(`${api}/persons`, {
 			method: 'POST',
 			body: JSON.stringify(newCompany),
@@ -174,36 +165,34 @@ const NewEvent = () => {
 			.then((json) => setNewEventSpeakers([...newEventSpeakers, json]))
 			.then(() => {
 				setAddOrganizator(false);
-				setCompanyName('');
-				setFieldOfActivity('');
-				setAboutCompany('');
 			});
 	};
 
 	const changePersonInput = (e) => {
 		setPersonInput(e.target.value);
 	};
+
 	const addChoosenPerson = () => {
 		if (personInput) {
-			let thisPerson = persons.filter(e => e.name === personInput)
+			let thisPerson = persons.filter((e) => e.name === personInput);
 			setNewEventSpeakers([...newEventSpeakers, thisPerson[0]]);
 		} else {
-			alert('Please choose one option')
+			alert('Please choose one option');
 		}
-	}
+	};
 
 	const changeCompanyInput = (e) => {
 		setCompanyInput(e.target.value);
 	};
+
 	const addChoosenCompany = () => {
 		if (companyInput) {
-			let thisCompany = companys.filter(e => e.name === companyInput)
+			let thisCompany = companys.filter((e) => e.name === companyInput);
 			setNewEventSpeakers([...newEventSpeakers, thisCompany[0]]);
 		} else {
-			alert('Please choose one option')
+			alert('Please choose one option');
 		}
-	}
-
+	};
 
 	return (
 		<div className={'new-event-page global-conteiner'}>
@@ -212,8 +201,7 @@ const NewEvent = () => {
 					<div className='event-title-type'>
 						<input
 							className='new-event-title-inputs'
-							value={title}
-							onChange={(e) => setTitle(e.target.value)}
+							ref={titleInput}
 							placeholder={'Event Title'}
 							required={true}
 						/>
@@ -232,8 +220,7 @@ const NewEvent = () => {
 					<textarea
 						style={{ padding: '10px' }}
 						className='new-event-title-inputs'
-						value={text}
-						onChange={(e) => setText(e.target.value)}
+						ref={textInput}
 						placeholder={'Event text'}
 						required={true}
 					/>
@@ -266,44 +253,22 @@ const NewEvent = () => {
 					</div>
 				</div>
 				<div className={'new-event-stroks'}>
-					<input
-						className='new-event-inputs'
-						value={startDate}
-						onChange={(e) => setStartDate(e.target.value)}
-						type={'date'}
-					/>
-					<input
-						className='new-event-inputs'
-						value={endDate}
-						onChange={(e) => setEndDate(e.target.value)}
-						type={'date'}
-					/>
-					<input
-						className='new-event-inputs'
-						value={startTime}
-						onChange={(e) => setStartTime(e.target.value)}
-						type={'time'}
-					/>
-					<input
-						className='new-event-inputs'
-						value={endTime}
-						onChange={(e) => setEndTime(e.target.value)}
-						type={'time'}
-					/>
+					<input className='new-event-inputs' ref={startDate} type={'date'} />
+					<input className='new-event-inputs' ref={endDate} type={'date'} />
+					<input className='new-event-inputs' ref={startTime} type={'time'} />
+					<input className='new-event-inputs' ref={endTime} type={'time'} />
 				</div>
 				<div className='new-event-stroks'>
 					<input
 						className='new-event-inputs'
 						type='number'
-						value={price}
-						onChange={(e) => setPrice(e.target.value)}
+						ref={priceInput}
 						placeholder={"ticket's price"}
 					/>
 					<input
 						className='new-event-inputs'
 						min={0}
-						value={ticketCount}
-						onChange={(e) => setTicketCount(e.target.value)}
+						ref={ticketCountInput}
 						type={'number'}
 						placeholder={'avavilable tickets'}
 					/>
@@ -311,14 +276,12 @@ const NewEvent = () => {
 				<div className='new-event-stroks'>
 					<input
 						className='new-event-inputs'
-						value={location}
-						onChange={(e) => setLocation(e.target.value)}
+						ref={locationInput}
 						placeholder={'Location'}
 					/>
 					<input
 						className='new-event-inputs'
-						value={address}
-						onChange={(e) => setAddress(e.target.value)}
+						ref={addressInput}
 						placeholder={'address'}
 					/>
 				</div>
@@ -338,7 +301,6 @@ const NewEvent = () => {
 					</label>
 					<img style={{ width: '100%' }} src={image} />
 				</div>
-
 
 				<div className='new-event-stroks'>
 					<div>
@@ -366,20 +328,11 @@ const NewEvent = () => {
 						profession={profession}
 						changeProfessionType={changeProfessionType}
 						professionTypes={professionTypes}
-						personFirstName={personFirstName}
-						setPersonFirstName={setPersonFirstName}
-						personLastName={personLastName}
-						setPersonLastName={setPersonLastName}
-						personDoB={personDoB}
-						setPersonDoB={setPersonDoB}
-						personBio={personBio}
-						setPersonBio={setPersonBio}
-						handleAddPerson={handleAddPerson}
+						handleAddPerson={(obj) => handleAddPerson(obj)}
 					/>
-				) :
+				) : (
 					''
-				}
-
+				)}
 
 				<div className='new-event-stroks'>
 					<div>
@@ -405,20 +358,11 @@ const NewEvent = () => {
 						{addOrganizator ? 'Close adding' : 'Add New Organizator'}
 					</button>
 				</div>
-				{addOrganizator ?
-					<AddCompany
-						companyName={companyName}
-						setCompanyName={setCompanyName}
-						fieldOfActivity={fieldOfActivity}
-						setFieldOfActivity={setFieldOfActivity}
-						aboutCompany={aboutCompany}
-						setAboutCompany={setAboutCompany}
-						handleAddCompany={handleAddCompany}
-					/>
-					:
+				{addOrganizator ? (
+					<AddCompany handleAddCompany={(obj) => handleAddCompany(obj)} />
+				) : (
 					''
-				}
-
+				)}
 
 				<div>
 					{newEventSpeakers?.map((item, index) => (
@@ -426,7 +370,7 @@ const NewEvent = () => {
 							<span>{item.name}</span>
 							<button
 								className='remove-button'
-							// onClick={() => removeSpeaker(item.name)}
+								// onClick={() => removeSpeaker(item.name)}
 							>
 								X
 							</button>

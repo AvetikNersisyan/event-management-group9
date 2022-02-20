@@ -6,7 +6,7 @@ import Events from './components/events';
 import Index from './components/header';
 import Categories from './components/categories';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import SignUp from './components/profile/signUp';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -56,7 +56,6 @@ function App() {
 				/>
 				<Route path={'/events'} exact={true} element={<Events />} />
 				{isAdminLogged && <Route path={'/new-event'} element={<NewEvent />} />}
-				{/*<Route path={'events/:eventID/checkout'} element={<Checkout />} />*/}
 				<Route path={'*'} element={<Error404 />} />
 			</Routes>
 

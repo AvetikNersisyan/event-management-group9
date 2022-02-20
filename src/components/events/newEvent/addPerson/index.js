@@ -1,15 +1,28 @@
+import { useRef } from "react";
+
 const AddPerson = ({ profession,
     changeProfessionType,
     professionTypes,
-    personFirstName,
-    setPersonFirstName,
-    personLastName,
-    setPersonLastName,
-    personDoB,
-    setPersonDoB,
-    personBio,
-    setPersonBio,
     handleAddPerson }) => {
+
+    const personFirstNameInput = useRef(null);
+    const personLastNameInput = useRef(null);
+    const personDoBInput = useRef(null);
+    const personBioInput = useRef(null);
+
+    const handleAdd = () => {
+        handleAddPerson({
+            personFirstNameInput: personFirstNameInput.current.value,
+            personLastNameInput: personLastNameInput.current.value,
+            personDoBInput: personDoBInput.current.value,
+            personBioInput: personBioInput.current.value,
+        })
+        personFirstNameInput.current.value = '';
+        personLastNameInput.current.value = '';
+        personDoBInput.current.value = '';
+        personBioInput.current.value = '';
+    }
+
     return (
         <>
             <div className='event-title-type'>
@@ -26,22 +39,19 @@ const AddPerson = ({ profession,
                 </select>
                 <input
                     className='new-event-title-inputs'
-                    value={personFirstName}
-                    onChange={(e) => setPersonFirstName(e.target.value)}
+                    ref={personFirstNameInput}
                     placeholder={'Firstname'}
                     required={true}
                 />
                 <input
                     className='new-event-title-inputs'
-                    value={personLastName}
-                    onChange={(e) => setPersonLastName(e.target.value)}
+                    ref={personLastNameInput}
                     placeholder={'Firstname'}
                     required={true}
                 />
                 <input
                     className='new-event-inputs'
-                    value={personDoB}
-                    onChange={(e) => setPersonDoB(e.target.value)}
+                    ref={personDoBInput}
                     type={'date'}
                 />
             </div>
@@ -49,15 +59,14 @@ const AddPerson = ({ profession,
                 <textarea
                     style={{ padding: '10px' }}
                     className='new-event-title-inputs'
-                    value={personBio}
-                    onChange={(e) => setPersonBio(e.target.value)}
+                    ref={personBioInput}
                     placeholder={'Peson Biography'}
                     required={true}
                 />
                 <button
                     className={'button'}
                     type={'submit'}
-                    onClick={handleAddPerson}
+                    onClick={handleAdd}
                 >
                     Add Person
                 </button>

@@ -1,9 +1,11 @@
+
 /* .App {
    text-align: center; 
 } 
 
  .main-header {
    display: flex;
+
   flex-direction: row;
    justify-content: center; 
    gap: 2em;

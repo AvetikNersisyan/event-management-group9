@@ -1,24 +1,34 @@
-const AddCompany = ({ companyName,
-    setCompanyName,
-    fieldOfActivity,
-    setFieldOfActivity,
-    aboutCompany,
-    setAboutCompany,
-    handleAddCompany }) => {
+import { useRef } from "react";
+
+
+const AddCompany = ({
+    handleAddCompany,
+}) => {
+
+    const companyNameInput = useRef(null);
+    const fieldOfActivityInput = useRef(null);
+    const aboutCompanyInput = useRef(null);
+
+    const handleAdd = () => {
+        handleAddCompany({ companyNameInput: companyNameInput.current.value, fieldOfActivityInput: fieldOfActivityInput.current.value, aboutCompanyInput: aboutCompanyInput.current.value })
+        companyNameInput.current.value = '';
+        fieldOfActivityInput.current.value = '';
+        aboutCompanyInput.current.value = '';
+    }
+
+
     return (
         <>
             <div className='event-title-type'>
                 <input
                     className='new-event-title-inputs'
-                    value={companyName}
-                    onChange={(e) => setCompanyName(e.target.value)}
+                    ref={companyNameInput}
                     placeholder={'Company name'}
                     required={true}
                 />
                 <input
                     className='new-event-title-inputs'
-                    value={fieldOfActivity}
-                    onChange={(e) => setFieldOfActivity(e.target.value)}
+                    ref={fieldOfActivityInput}
                     placeholder={'Field of activity'}
                     required={true}
                 />
@@ -27,12 +37,11 @@ const AddCompany = ({ companyName,
                 <textarea
                     style={{ padding: '10px' }}
                     className='new-event-title-inputs'
-                    value={aboutCompany}
-                    onChange={(e) => setAboutCompany(e.target.value)}
+                    ref={aboutCompanyInput}
                     placeholder={'About company'}
                     required={true}
                 />
-                <button className={'button'} type={'submit'} onClick={handleAddCompany}>
+                <button className={'button'} type={'submit'} onClick={handleAdd}>
                     Add Company
                 </button>
             </div>

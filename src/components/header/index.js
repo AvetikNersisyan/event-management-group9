@@ -68,15 +68,6 @@ const Index = () => {
 						</li>
 						<li className='nav-item'>
 							<NavLink
-								to={'/categories'}
-								className='nav-links'
-								onClick={closeMobileMenu}
-							>
-								Categories
-							</NavLink>
-						</li>
-						<li className='nav-item'>
-							<NavLink
 								to={'/pages'}
 								className='nav-links'
 								onClick={closeMobileMenu}

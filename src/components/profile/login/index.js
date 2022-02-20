@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setActiveUser, setLoggedIn } from '../../../redux/ducks/userDuck';
 import { NavLink } from 'react-router-dom';
 import { api } from '../../../api';

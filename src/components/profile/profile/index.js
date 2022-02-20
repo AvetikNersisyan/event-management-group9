@@ -13,6 +13,12 @@ import { toBase64 } from '../../../helper/utils';
 const ProfileInfo = () => {
 	const [baseImage, setBaseImage] = useState('');
 	const activeUser = useSelector((state) => state.UserDuck.activeUser);
+	const filteredAllreadyGone = activeUser.going.filter((items) =>
+		new Date(items.event_details.start_date).getTime() <
+		new Date().getTime())
+	const filteredGoing = activeUser.going.filter((items) =>
+		new Date(items.event_details.start_date).getTime() >
+		new Date().getTime())
 	const dispatch = useDispatch();
 	const choosenPhoto = useRef(null);
 
@@ -118,9 +124,9 @@ const ProfileInfo = () => {
 					<div className='going'>
 						<h2 className='profile-list-name'>Going Events</h2>
 						<div className='profile-event-list'>
-							{activeUser.going.length > 0 ? (
+							{filteredGoing.length > 0 ? (
 								<>
-									{activeUser.going?.map((item) => (
+									{filteredGoing.map((item) => (
 										<ProfileEvent event={item} />
 									))}
 								</>
@@ -135,9 +141,9 @@ const ProfileInfo = () => {
 					<div className='going'>
 						<h2 className='profile-list-name'>Allready Gone</h2>
 						<div className='profile-event-list'>
-							{activeUser.allreadyGone.length > 0 ? (
+							{filteredAllreadyGone.length > 0 ? (
 								<>
-									{activeUser.allreadyGone?.map((item) => (
+									{filteredAllreadyGone?.map((item) => (
 										<ProfileEvent event={item} />
 									))}
 								</>
