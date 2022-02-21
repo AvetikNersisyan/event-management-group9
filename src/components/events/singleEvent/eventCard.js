@@ -13,8 +13,6 @@ import {
 } from '../../../redux/ducks/userDuck';
 import { useEffect, useState } from 'react';
 
-import fbIcon from '../../../assets/img/facebook-app-symbol.png';
-import twitterIcon from '../../../assets/img/twitter.png';
 
 const EventCard = ({ ev }) => {
 	const { title, description, img_url, tags, id } = ev;
@@ -158,7 +156,7 @@ const EventCard = ({ ev }) => {
 				</div>
 			</div>
 
-			<EventFooter />
+			<EventFooter ev={ev} />
 		</div>
 	);
 };
