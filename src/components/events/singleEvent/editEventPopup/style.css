@@ -21,3 +21,8 @@
     max-width: 70vw;
     min-width: 200px;
 }
+
+.image-preview {
+    /*width: 50px;*/
+    height: 100px;
+}

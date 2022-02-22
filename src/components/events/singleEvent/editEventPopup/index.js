@@ -162,8 +162,8 @@ const EditEventPopup = ({ ev }) => {
 	// const addressInput = useRef(null);
 	// const ticketCountInput = useRef(null);
 	// const priceInput = useRef(null);
-	const [image, setImage] = useState('');
-	const [newEventSpeakers, setNewEventSpeakers] = useState([]);
+	const [image, setImage] = useState(ev.img_url);
+	const [newEventSpeakers, setNewEventSpeakers] = useState(ev.speakers);
 
 	const [addPerson, setAddPerson] = useState(false);
 	const [profession, setProfession] = useState('');
@@ -173,12 +173,10 @@ const EditEventPopup = ({ ev }) => {
 	const dispatch = useDispatch();
 
 	const imageRef = useRef(null);
-	// const tagElement = useRef(null);
 
 	const descHandler = eventHandler(newDesc);
 	const titleHandler = eventHandler(newTitle);
 
-	console.log(title);
 	const imageSelectHandler = (ref) => {
 		toBase64(ref)
 			.then((resp) => setImage(resp))
@@ -191,40 +189,40 @@ const EditEventPopup = ({ ev }) => {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		let newEvent = {
-			// type: eventType,
-			// title: title,
-			// description: textInput.current.value,
-			// price: priceInput.current.value,
-			// img_url: image,
-			// tags: tag,
-			// event_details: {
-			// 	start_date: startDate.current.value,
-			// 	end_date: endDate.current.value,
-			// 	start_time: startTime.current.value,
-			// 	end_time: endTime.current.value,
-			// 	location: locationInput.current.value,
-			// 	address: addressInput.current.value,
-			// 	guest_quantity: ticketCountInput.current.value,
-			// 	available_seats: ticketCountInput.current.value,
-			// },
-			// speakers: newEventSpeakers,
+		let changedEvent = {
+			type: eventType,
+			title: title,
+			description: desc,
+			price: price,
+			img_url: image,
+			tags: tag,
+			event_details: {
+				start_date: startDate,
+				end_date: endDate,
+				start_time: startTime,
+				end_time: endTime,
+				location: location,
+				address: address,
+				guest_quantity: ev.event_details.guest_quantity,
+				available_seats: availableSeats,
+			},
+			speakers: newEventSpeakers,
 			// rate: {
 			// 	count: 0,
 			// 	sum: 0,
 			// },
 		};
 
-		fetch(`${api}/events/`, {
-			method: 'POST',
+		fetch(`${api}/events/${ev.id}`, {
+			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(newEvent),
+			body: JSON.stringify(changedEvent),
 		})
 			.then((res) => res.json())
 			.then((res) => {
-				dispatch(addEvent(newEvent));
+				dispatch(addEvent(changedEvent));
 			})
 			.then(navigate('/events'))
 			.catch((err) => console.warn(err));
@@ -455,7 +453,7 @@ const EditEventPopup = ({ ev }) => {
 							Upload
 						</button>
 					</label>
-					<img style={{ width: '100%' }} src={image} alt={'image'} />
+					<img className={'image-preview'} src={image} alt={'image'} />
 				</div>
 
 				{/*<div className='new-event-stroks'>*/}
