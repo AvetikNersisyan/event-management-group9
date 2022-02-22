@@ -46,14 +46,14 @@ const AllEvents = () => {
 			filtered = filtered.filter((item) => {
 				tempObj = {
 					title: item.title,
-					tags: item.tags.join(''),
+					tags: item.tags.join(' '),
 					location: item.event_details.location,
 					type: item.type,
 					start_date: item.event_details.start_date,
 					end_date: item.event_details.end_date,
 				};
 
-				return tempObj[term]?.toLowerCase()?.includes(obj[term].toLowerCase());
+				return tempObj[term]?.includes(obj[term]);
 			});
 		});
 
