@@ -86,8 +86,6 @@ const UserDuck = (state = initialState, { type, payload }) => {
 				interestedEvents: changedLikedEvents,
 			};
 
-			console.log(changedUser, 'changed User');
-
 			fetch(`${api}/users/${payload.activeUser.id}`, {
 				method: 'PUT',
 				headers: {

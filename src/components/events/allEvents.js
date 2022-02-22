@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Categories from '../categories';
@@ -102,4 +102,4 @@ const AllEvents = () => {
 	);
 };
 
-export default AllEvents;
+export default memo(AllEvents);
