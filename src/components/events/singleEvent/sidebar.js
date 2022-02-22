@@ -1,7 +1,4 @@
-import { api } from '../../../api';
-import { useDispatch } from 'react-redux';
-import { addEvent } from '../../../redux/ducks/eventDuck';
-import { NavLink, useNavigate } from 'react-router-dom';
+import Iframe from 'react-iframe';
 import Popup from '../popup';
 import { useCallback, useState } from 'react';
 import Rating from './rating/index';
@@ -100,6 +97,17 @@ const Sidebar = ({
 						{available_seats}/ {guest_quantity}{' '}
 					</span>
 				</div>
+				<div className={'event-detail-info'}>
+					<Iframe
+						url='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3047.8162940368825!2d44.510153515389156!3d40.190901579392026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406abd1f2b141a7b%3A0xbdc90e63fc589ca6!2s14%20Marshal%20Baghramyan%20Ave%2C%20Yerevan%200019!5e0!3m2!1sen!2s!4v1645282013489!5m2!1sen!2s'
+						width='300 px'
+						height='300 px'
+						style='border:0;'
+						allow='fullscreen'
+						loading='lazy'
+					/>
+				</div>
+
 			</div>
 		</div>
 	);

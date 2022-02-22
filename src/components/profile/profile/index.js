@@ -12,11 +12,12 @@ import { toBase64 } from '../../../helper/utils';
 
 const ProfileInfo = () => {
 	const [baseImage, setBaseImage] = useState('');
+	const [markRead, setMarkRead] = useState(false)
 	const activeUser = useSelector((state) => state.UserDuck.activeUser);
-	const filteredAllreadyGone = activeUser.going.filter((items) =>
+	const filteredAllreadyGone = activeUser?.going?.filter((items) =>
 		new Date(items.event_details.start_date).getTime() <
 		new Date().getTime())
-	const filteredGoing = activeUser.going.filter((items) =>
+	const filteredGoing = activeUser?.going?.filter((items) =>
 		new Date(items.event_details.start_date).getTime() >
 		new Date().getTime())
 	const dispatch = useDispatch();
@@ -58,10 +59,55 @@ const ProfileInfo = () => {
 		choosenPhoto.current.click();
 	};
 
+	const handleMarkAsRead = (id) => {
+		setMarkRead(!markRead)
+
+		// չի աշխատում չեմ ջոգում խի
+		// fetch(`${api}/users/100/messages/${id}`, {
+		// 	method: 'PATCH',
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 	},
+		// 	body: JSON.stringify({
+		// 		phone: '123'
+		// 	}),
+		// }).then(res => res.json())
+
+
+	}
+
+	const handleMarkAsUnread = () => {
+		setMarkRead(!markRead)
+	}
+
 	return (
 		<div className='myProfile'>
 			{activeUser.firstname === 'admin' ? (
-				<h1>Hello our admin</h1>
+				<>
+					<h1 className='detaile-classes' >Hello our admin</h1>
+					<h2 className='detaile-classes' >Messages</h2>
+					<div className='card-footer-all-comments'>
+						{activeUser.messages.sort((a, b) => new Date(a.date) - new Date(b.date)).map(msg =>
+							<>
+								<div className="admin-single-comment" style={!markRead ? { backgroundColor: 'rgb(255, 146, 146)' } : { backgroundColor: 'rgb(123, 255, 123)' }} >
+									<div className='admin-sender-info'>
+										<div className='admin-message-details'>{msg.sender}</div>
+										<div className='admin-message-details'>{msg.email}</div>
+									</div>
+									<div className='admin-sender-info'>
+										<div className='admin-message-details'>{msg.subject}</div>
+										<div className='admin-message-details'>id: {msg.eventId}</div>
+									</div>
+									<div className='admin-message-details'>{msg.message}</div>
+									{
+										!markRead ? <button className='button' onClick={(id) => handleMarkAsRead(msg.id)}>Mark as read</button> :
+											<button className='button' onClick={handleMarkAsUnread}>Unmark</button>
+									}
+								</div>
+							</>
+						)}
+					</div>
+				</>
 			) : (
 				<>
 					<div className='profile-head'>
@@ -156,9 +202,10 @@ const ProfileInfo = () => {
 						</div>
 					</div>
 				</>
-			)}
+			)
+			}
 			<button className='button' onClick={handleLogOut}>LogOut</button>
-		</div>
+		</div >
 	);
 };
 

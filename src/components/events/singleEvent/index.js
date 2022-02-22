@@ -29,7 +29,6 @@ const SingleEvent = () => {
 			{isValidUrl ? (
 				<div className={'single-event-page'}>
 					<img className={'bgImage'} src={backGroundImage} />
-
 					<EventCard ev={event} />
 					<Sidebar ev={event} {...event?.event_details} />
 				</div>
