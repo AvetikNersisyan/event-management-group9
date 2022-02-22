@@ -136,13 +136,23 @@ const EditEventPopup = ({ ev }) => {
 	const [endDate, newEndDate] = useState(ev.event_details.end_date);
 	const [endTime, newEndTime] = useState(ev.event_details.end_time);
 	const [startTime, newStartTime] = useState(ev.event_details.end_time);
+	const [tag, setTag] = useState(ev.tags);
+	const [price, newPrice] = useState(ev.price);
+	const [location, newLocation] = useState(ev.event_details.location);
+	const [address, newAddress] = useState(ev.event_details.address);
+	const [availableSeats, newAvailableSeats] = useState(
+		ev.event_details.available_seats
+	);
 
 	const endDateHandler = eventHandler(newEndDate);
 	const startDateHandler = eventHandler(newStartDate);
 	const endTimeHandler = eventHandler(newEndTime);
 	const startTimeHandler = eventHandler(newStartTime);
+	const priceHandler = eventHandler(newPrice);
+	const locationHandler = eventHandler(newLocation);
+	const addressHandler = eventHandler(newAddress);
+	const availableSeatsHandler = eventHandler(newAvailableSeats);
 
-	const [tag, setTag] = useState([]);
 	// const startDate = useRef(null);
 	// const startTime = useRef(null);
 	// const endDate = useRef(null);
@@ -291,7 +301,7 @@ const EditEventPopup = ({ ev }) => {
 		setPersonInput(e.target.value);
 	};
 
-	const addChoosenPerson = () => {
+	const addSelectedPerson = () => {
 		if (personInput) {
 			let thisPerson = persons.filter((e) => e.name === personInput);
 			setNewEventSpeakers([...newEventSpeakers, thisPerson[0]]);
@@ -403,13 +413,16 @@ const EditEventPopup = ({ ev }) => {
 					<input
 						className='new-event-inputs'
 						type='number'
-						// ref={priceInput}
+						min={0}
+						value={price}
+						onChange={priceHandler}
 						placeholder={"ticket's price"}
 					/>
 					<input
 						className='new-event-inputs'
 						min={0}
-						// ref={ticketCountInput}
+						value={availableSeats}
+						onChange={availableSeatsHandler}
 						type={'number'}
 						placeholder={'avavilable tickets'}
 					/>
@@ -417,12 +430,14 @@ const EditEventPopup = ({ ev }) => {
 				<div className='new-event-stroks'>
 					<input
 						className='new-event-inputs'
-						// ref={locationInput}
+						value={location}
+						onChange={locationHandler}
 						placeholder={'Location'}
 					/>
 					<input
 						className='new-event-inputs'
-						// ref={addressInput}
+						value={address}
+						onChange={addressHandler}
 						placeholder={'address'}
 					/>
 				</div>
@@ -443,27 +458,28 @@ const EditEventPopup = ({ ev }) => {
 					<img style={{ width: '100%' }} src={image} alt={'image'} />
 				</div>
 
-				<div className='new-event-stroks'>
-					<div>
-						<select
-							className='new-event-selector'
-							value={personInput}
-							onChange={changePersonInput}
-						>
-							{persons.map((person) => (
-								<option key={person.id} value={person.name}>
-									{person.name + ' ' + person.lastName}
-								</option>
-							))}
-						</select>
-						<button className='button' onClick={addChoosenPerson}>
-							Add
-						</button>
-					</div>
-					<button className='button' onClick={() => setAddPerson(!addPerson)}>
-						{addPerson ? 'Close adding' : 'Add New Person'}
-					</button>
-				</div>
+				{/*<div className='new-event-stroks'>*/}
+				{/*	<div>*/}
+				{/*		<select*/}
+				{/*			className='new-event-selector'*/}
+				{/*			value={personInput}*/}
+				{/*			onChange={changePersonInput}*/}
+				{/*		>*/}
+				{/*			{persons.map((person) => (*/}
+				{/*				<option key={person.id} value={person.name}>*/}
+				{/*					{person.name + ' ' + person.lastName}*/}
+				{/*				</option>*/}
+				{/*			))}*/}
+				{/*		</select>*/}
+				{/*		<button className='button' onClick={addSelectedPerson}>*/}
+				{/*			Add*/}
+				{/*		</button>*/}
+				{/*	</div>*/}
+				{/*	<button className='button' onClick={() => setAddPerson(!addPerson)}>*/}
+				{/*		{addPerson ? 'Close adding' : 'Add New Person'}*/}
+				{/*	</button>*/}
+				{/*</div>*/}
+
 				{addPerson ? (
 					<AddPerson
 						profession={profession}
@@ -475,51 +491,52 @@ const EditEventPopup = ({ ev }) => {
 					''
 				)}
 
-				<div className='new-event-stroks'>
-					<div>
-						<select
-							className='new-event-selector'
-							value={companyInput}
-							onChange={changeCompanyInput}
-						>
-							{companys.map((person) => (
-								<option key={person.id} value={person.name}>
-									{person.name}
-								</option>
-							))}
-						</select>
-						<button className='button' onClick={addChosenCompany}>
-							Add
-						</button>
-					</div>
-					<button
-						className='button'
-						onClick={() => setAddOrganizator(!addOrganizator)}
-					>
-						{addOrganizator ? 'Close adding' : 'Add New Organizator'}
-					</button>
-				</div>
-				{addOrganizator ? (
-					<AddCompany handleAddCompany={(obj) => handleAddCompany(obj)} />
-				) : (
-					''
-				)}
+				{/*<div className='new-event-stroks'>*/}
+				{/*	<div>*/}
+				{/*		<select*/}
+				{/*			className='new-event-selector'*/}
+				{/*			value={companyInput}*/}
+				{/*			onChange={changeCompanyInput}*/}
+				{/*		>*/}
+				{/*			{companys.map((person) => (*/}
+				{/*				<option key={person.id} value={person.name}>*/}
+				{/*					{person.name}*/}
+				{/*				</option>*/}
+				{/*			))}*/}
+				{/*		</select>*/}
+				{/*		<button className='button' onClick={addChosenCompany}>*/}
+				{/*			Add*/}
+				{/*		</button>*/}
+				{/*	</div>*/}
+				{/*	<button*/}
+				{/*		className='button'*/}
+				{/*		onClick={() => setAddOrganizator(!addOrganizator)}*/}
+				{/*	>*/}
+				{/*		{addOrganizator ? 'Close adding' : 'Add New Organizator'}*/}
+				{/*	</button>*/}
+				{/*</div>*/}
+				{/*{addOrganizator ? (*/}
+				{/*	<AddCompany handleAddCompany={(obj) => handleAddCompany(obj)} />*/}
+				{/*) : (*/}
+				{/*	''*/}
+				{/*)}*/}
 
-				<div>
-					{newEventSpeakers?.map((item, index) => (
-						<span className='tag-item' key={index}>
-							<span>{item.name}</span>
-							<button
-								className='remove-button'
-								// onClick={() => removeSpeaker(item.name)}
-							>
-								X
-							</button>
-						</span>
-					))}
-				</div>
+				{/*<div>*/}
+				{/*	{newEventSpeakers?.map((item, index) => (*/}
+				{/*		<span className='tag-item' key={index}>*/}
+				{/*			<span>{item.name}</span>*/}
+				{/*			<button*/}
+				{/*				className='remove-button'*/}
+				{/*				// onClick={() => removeSpeaker(item.name)}*/}
+				{/*			>*/}
+				{/*				X*/}
+				{/*			</button>*/}
+				{/*		</span>*/}
+				{/*	))}*/}
+				{/*</div>*/}
+
 				<button className={'button'} type={'submit'} onClick={submitHandler}>
-					Add event
+					Save event
 				</button>
 			</div>
 		</div>

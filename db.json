@@ -226,7 +226,7 @@
       ],
       "rate": {
         "sum": 0,
-        "count": 3
+        "count": 5
       },
       "id": 1
     },
@@ -595,6 +595,9 @@
         "sum": 0
       },
       "id": 11
+    },
+    {
+      "id": 12
     }
   ],
   "users": [
@@ -812,6 +815,9 @@
           "subject": "About this event",
           "message": "Is there any free places?"
         }
+      ],
+      "rated_events": [
+        2
       ]
     }
   ]
