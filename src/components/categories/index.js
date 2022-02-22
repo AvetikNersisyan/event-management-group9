@@ -18,10 +18,10 @@ const Categories = ({ handleFilter, cancelSearch }) => {
 	const handleSearch = (e) => {
 		e.preventDefault();
 		let filteringObject = {
-			title: filterTitle.current.value.toLowerCase(),
-			type: filterCategories.current.value,
-			tags: filterTeg.current.value.toLowerCase(),
-			location: filterCities.current.value,
+			title: filterTitle.current.value.toLowerCase().trim(),
+			type: filterCategories.current.value.toLowerCase().trim(),
+			tags: filterTeg.current.value.toLowerCase().trim(),
+			location: filterCities.current.value.toLowerCase().trim(),
 			start_date: filterStartDate.current.value,
 			end_date: filterEndDate.current.value,
 		};
