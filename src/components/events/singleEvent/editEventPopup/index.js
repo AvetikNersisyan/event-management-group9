@@ -1,15 +1,121 @@
-import './index.css';
+// import { useRef, useState } from 'react';
+// import './style.css';
+// import NewEvent from '../../newEvent';
+// import { eventTypes } from '../../../../helper/constants';
+//
+// const EditEventPopup = ({ ev }) => {
+// 	const [title, newTitle] = useState(ev.title || '');
+// 	const [desc, newDesc] = useState(ev.description || '');
+// 	const [image, newImage] = useState(ev.img_url || '');
+// 	const [type, newType] = useState(ev.type || '');
+// 	const [tag, setTag] = useState(ev.tags);
+//
+// 	const newTitleHandler = (e) => newTitle(e.target.value);
+//
+// 	const descHandler = (e) => newDesc(e.target.value);
+//
+// 	const handleEventType = (e) => newType(e.target.value);
+//
+// 	const removeTag = (e) => {
+// 		let id = e.item;
+// 		const newInt = tag.filter((item) => item !== id);
+// 		setTag(newInt);
+// 	};
+//
+// 	const addTag = () => {
+// 		let newTag = tagElement.current.value;
+// 		if (newTag === '') {
+// 			alert('Please type some tag');
+// 		} else {
+// 			setTag([...tag, newTag]);
+// 			tagElement.current.value = '';
+// 		}
+// 	};
+//
+// 	return (
+// 		<div className={'edit-popup'}>
+// 			{/*<NewEvent ev={ev} />*/}
+// 			<input value={title} onChange={newTitleHandler} />
+// 			<textarea value={desc} onChange={descHandler} />
+// 			<select
+// 				// className='new-event-title-inputs'
+// 				value={type}
+// 				onChange={handleEventType}
+// 			>
+// 				{eventTypes.map((type) => (
+// 					<option key={type} value={type}>
+// 						{type}
+// 					</option>
+// 				))}
+// 			</select>
+//
+// 			<div>
+// 				{tag?.map((item) => (
+// 					<span className='tag-item'>
+// 						<span>{item}</span>
+// 						<button
+// 							className='remove-button'
+// 							onClick={() => removeTag({ item })}
+// 						>
+// 							X
+// 						</button>
+// 					</span>
+// 				))}
+// 			</div>
+//
+// 			<div className='tag-input'>
+// 				<input
+// 					className='new-event-inputs'
+// 					type='search'
+// 					ref={tagElement}
+// 					placeholder='tags..'
+// 				/>
+// 				<button className='button' onClick={addTag}>
+// 					Add
+// 				</button>
+// 			</div>
+//
+// 			<div className={'new-event-stroks'}>
+// 				<input className='new-event-inputs' ref={startDate} type={'date'} />
+// 				<input className='new-event-inputs' ref={endDate} type={'date'} />
+// 				<input className='new-event-inputs' ref={startTime} type={'time'} />
+// 				<input className='new-event-inputs' ref={endTime} type={'time'} />
+// 			</div>
+// 			<div className='new-event-stroks'>
+// 				<input
+// 					className='new-event-inputs'
+// 					type='number'
+// 					ref={priceInput}
+// 					placeholder={"ticket's price"}
+// 				/>
+// 				<input
+// 					className='new-event-inputs'
+// 					min={0}
+// 					ref={ticketCountInput}
+// 					type={'number'}
+// 					placeholder={'avavilable tickets'}
+// 				/>
+// 			</div>
+// 		</div>
+// 	);
+// };
+//
+// export default EditEventPopup;
+
+import './style.css';
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { api } from '../../../api';
-import { addEvent } from '../../../redux/ducks/eventDuck';
-import { toBase64 } from '../../../helper/utils';
-import { eventTypes, professionTypes } from '../../../helper/constants';
-import AddCompany from './addCompany';
-import AddPerson from './addPerson';
-import { useNavigate } from 'react-router-dom';
 
-const NewEvent = ({ ev }) => {
+import { api } from '../../../../api';
+import { useNavigate } from 'react-router-dom';
+import { eventHandler, toBase64 } from '../../../../helper/utils';
+import { addEvent } from '../../../../redux/ducks/eventDuck';
+import { eventTypes, professionTypes } from '../../../../helper/constants';
+import AddPerson from '../../newEvent/addPerson';
+import AddCompany from '../../newEvent/addCompany';
+
+const EditEventPopup = ({ ev }) => {
+	const tagElement = useRef(null);
 	const navigate = useNavigate();
 
 	const data = useSelector((state) => state.PersonsDuck.persons);
@@ -22,20 +128,30 @@ const NewEvent = ({ ev }) => {
 	const [personInput, setPersonInput] = useState('');
 	const [companyInput, setCompanyInput] = useState('');
 
-	const [eventType, setEventType] = useState('');
-	const titleInput = useRef(null);
+	const [eventType, setEventType] = useState(ev.type || '');
 
-	const textInput = useRef(null);
+	const [title, newTitle] = useState(ev.title);
+	const [desc, newDesc] = useState(ev.description);
+	const [startDate, newStartDate] = useState(ev.event_details.start_date);
+	const [endDate, newEndDate] = useState(ev.event_details.end_date);
+	const [endTime, newEndTime] = useState(ev.event_details.end_time);
+	const [startTime, newStartTime] = useState(ev.event_details.end_time);
+
+	const endDateHandler = eventHandler(newEndDate);
+	const startDateHandler = eventHandler(newStartDate);
+	const endTimeHandler = eventHandler(newEndTime);
+	const startTimeHandler = eventHandler(newStartTime);
+
 	const [tag, setTag] = useState([]);
-	const startDate = useRef(null);
-	const startTime = useRef(null);
-	const endDate = useRef(null);
-	const endTime = useState(null);
+	// const startDate = useRef(null);
+	// const startTime = useRef(null);
+	// const endDate = useRef(null);
+	// const endTime = useState(null);
 
-	const locationInput = useRef(null);
-	const addressInput = useRef(null);
-	const ticketCountInput = useRef(null);
-	const priceInput = useRef(null);
+	// const locationInput = useRef(null);
+	// const addressInput = useRef(null);
+	// const ticketCountInput = useRef(null);
+	// const priceInput = useRef(null);
 	const [image, setImage] = useState('');
 	const [newEventSpeakers, setNewEventSpeakers] = useState([]);
 
@@ -47,8 +163,12 @@ const NewEvent = ({ ev }) => {
 	const dispatch = useDispatch();
 
 	const imageRef = useRef(null);
-	const tagElement = useRef(null);
+	// const tagElement = useRef(null);
 
+	const descHandler = eventHandler(newDesc);
+	const titleHandler = eventHandler(newTitle);
+
+	console.log(title);
 	const imageSelectHandler = (ref) => {
 		toBase64(ref)
 			.then((resp) => setImage(resp))
@@ -62,27 +182,27 @@ const NewEvent = ({ ev }) => {
 	const submitHandler = (e) => {
 		e.preventDefault();
 		let newEvent = {
-			type: eventType,
-			title: titleInput.current.value,
-			description: textInput.current.value,
-			price: priceInput.current.value,
-			img_url: image,
-			tags: tag,
-			event_details: {
-				start_date: startDate.current.value,
-				end_date: endDate.current.value,
-				start_time: startTime.current.value,
-				end_time: endTime.current.value,
-				location: locationInput.current.value,
-				address: addressInput.current.value,
-				guest_quantity: ticketCountInput.current.value,
-				available_seats: ticketCountInput.current.value,
-			},
-			speakers: newEventSpeakers,
-			rate: {
-				count: 0,
-				sum: 0,
-			},
+			// type: eventType,
+			// title: title,
+			// description: textInput.current.value,
+			// price: priceInput.current.value,
+			// img_url: image,
+			// tags: tag,
+			// event_details: {
+			// 	start_date: startDate.current.value,
+			// 	end_date: endDate.current.value,
+			// 	start_time: startTime.current.value,
+			// 	end_time: endTime.current.value,
+			// 	location: locationInput.current.value,
+			// 	address: addressInput.current.value,
+			// 	guest_quantity: ticketCountInput.current.value,
+			// 	available_seats: ticketCountInput.current.value,
+			// },
+			// speakers: newEventSpeakers,
+			// rate: {
+			// 	count: 0,
+			// 	sum: 0,
+			// },
 		};
 
 		fetch(`${api}/events/`, {
@@ -116,9 +236,7 @@ const NewEvent = ({ ev }) => {
 		setTag(newInt);
 	};
 
-	const changeEventType = (e) => {
-		setEventType(e.target.value);
-	};
+	const changeEventType = eventHandler(setEventType);
 
 	const changeProfessionType = (e) => {
 		setProfession(e.target.value);
@@ -196,13 +314,14 @@ const NewEvent = ({ ev }) => {
 	};
 
 	return (
-		<div className={'new-event-page global-conteiner'}>
+		<div className={'edit-popup'}>
 			<div className={'new-event-conteiner'}>
 				<fieldset className={'event-title'}>
 					<div className='event-title-type'>
 						<input
 							className='new-event-title-inputs'
-							ref={titleInput}
+							value={title}
+							onChange={titleHandler}
 							placeholder={'Event Title'}
 							required={true}
 						/>
@@ -221,7 +340,8 @@ const NewEvent = ({ ev }) => {
 					<textarea
 						style={{ padding: '10px' }}
 						className='new-event-title-inputs'
-						ref={textInput}
+						value={desc}
+						onChange={descHandler}
 						placeholder={'Event text'}
 						required={true}
 					/>
@@ -254,22 +374,42 @@ const NewEvent = ({ ev }) => {
 					</div>
 				</div>
 				<div className={'new-event-stroks'}>
-					<input className='new-event-inputs' ref={startDate} type={'date'} />
-					<input className='new-event-inputs' ref={endDate} type={'date'} />
-					<input className='new-event-inputs' ref={startTime} type={'time'} />
-					<input className='new-event-inputs' ref={endTime} type={'time'} />
+					<input
+						className='new-event-inputs'
+						value={startDate}
+						onChange={startDateHandler}
+						type={'date'}
+					/>
+					<input
+						className='new-event-inputs'
+						value={endDate}
+						onChange={endDateHandler}
+						type={'date'}
+					/>
+					<input
+						className='new-event-inputs'
+						value={startTime}
+						onChange={startTimeHandler}
+						type={'time'}
+					/>
+					<input
+						className='new-event-inputs'
+						value={endTime}
+						onChange={endTimeHandler}
+						type={'time'}
+					/>
 				</div>
 				<div className='new-event-stroks'>
 					<input
 						className='new-event-inputs'
 						type='number'
-						ref={priceInput}
+						// ref={priceInput}
 						placeholder={"ticket's price"}
 					/>
 					<input
 						className='new-event-inputs'
 						min={0}
-						ref={ticketCountInput}
+						// ref={ticketCountInput}
 						type={'number'}
 						placeholder={'avavilable tickets'}
 					/>
@@ -277,12 +417,12 @@ const NewEvent = ({ ev }) => {
 				<div className='new-event-stroks'>
 					<input
 						className='new-event-inputs'
-						ref={locationInput}
+						// ref={locationInput}
 						placeholder={'Location'}
 					/>
 					<input
 						className='new-event-inputs'
-						ref={addressInput}
+						// ref={addressInput}
 						placeholder={'address'}
 					/>
 				</div>
@@ -297,10 +437,10 @@ const NewEvent = ({ ev }) => {
 					/>
 					<label htmlFor='contained-button-file'>
 						<button className='button' onClick={inputFile}>
-							Chosoe file
+							Upload
 						</button>
 					</label>
-					<img style={{ width: '100%' }} src={image} />
+					<img style={{ width: '100%' }} src={image} alt={'image'} />
 				</div>
 
 				<div className='new-event-stroks'>
@@ -386,4 +526,4 @@ const NewEvent = ({ ev }) => {
 	);
 };
 
-export default NewEvent;
+export default EditEventPopup;
