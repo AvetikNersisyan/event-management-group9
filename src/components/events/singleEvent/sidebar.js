@@ -3,33 +3,6 @@ import Popup from '../popup';
 import { useCallback, useState } from 'react';
 import Rating from './rating/index';
 
-// fake event
-const ev = {
-	id: 3,
-	title: 'Lorem Ipsum esim Lorem Ipsum esim Lorem Ipsum esim ',
-	description:
-		'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\n\n \n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-	price: 10.99,
-	img_url: 'https://www.pcma.org/wp-content/uploads/2018/10/trillion-main.jpg',
-	tags: ['music', 'sport'],
-	event_details: {
-		start_date: '01/01/01',
-		end_date: '01/01/01',
-		start_time: '15:00',
-		end_time: '18:00',
-		location: 'Yerevan',
-		address: 'Baghramyan 26',
-		guest_quantity: 100,
-		available_seats: 17,
-	},
-	speakers: [
-		{
-			name: 'Poghos Petrosyan',
-			rating: 4.9,
-		},
-	],
-};
-
 const Sidebar = ({
 	ev,
 	start_date,
@@ -47,7 +20,7 @@ const Sidebar = ({
 		setIsOpen((prev) => !prev);
 	};
 
-	const onPopupClose = useCallback(() => setIsOpen(false));
+	const onPopupClose = useCallback(() => setIsOpen(false), [isOpen]);
 
 	return (
 		<div className={'sidebar'}>
@@ -107,7 +80,6 @@ const Sidebar = ({
 						loading='lazy'
 					/>
 				</div>
-
 			</div>
 		</div>
 	);

@@ -1,18 +1,23 @@
+import { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
 import shareIcon from '../../../assets/img/share.png';
 import favoriteIcon from '../../../assets/img/favourite.png';
 import deleteIcon from '../../../assets/img/delete.png';
+import editIcon from '../../../assets/img/edit.png';
+
 import EventFooter from './eventFooter';
 import { api } from '../../../api';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { deleteEvent } from '../../../redux/ducks/eventDuck';
 import {
 	removeLike,
 	setActiveUser,
 	setLikedEvent,
 } from '../../../redux/ducks/userDuck';
-import { useEffect, useState } from 'react';
 
+import EditEventPopup from './editEventPopup';
 
 const EventCard = ({ ev }) => {
 	const { title, description, img_url, tags, id } = ev;
@@ -20,6 +25,7 @@ const EventCard = ({ ev }) => {
 	const navigate = useNavigate();
 	const activeUser = useSelector(({ UserDuck }) => UserDuck.activeUser); //TODO: get active user to show delete button
 
+	const [isEditing, setIsEditing] = useState(false);
 	const [favBtnId, setFavBtnId] = useState('favouriteBtn');
 
 	const isLiked = () => favBtnId === 'likedBtn';
@@ -77,7 +83,7 @@ const EventCard = ({ ev }) => {
 		}
 	};
 
-	const likeEvenetHandler = () => {
+	const likeEventHandler = () => {
 		!isLiked() ? likeEvent() : dislikeEvent();
 	};
 
@@ -104,60 +110,71 @@ const EventCard = ({ ev }) => {
 			});
 	};
 
+	const editHandler = () => {
+		setIsEditing((prev) => !prev);
+	};
+
 	return (
-		<div className={'event-vertical'}>
-			<div className={'event-card'}>
-				<div className={'event-head'}>
-					<h1>{title}</h1>
-					<span className={'user-options'}>
-						{isAdminLogged ? (
-							<img
-								onClick={() => deleteHandler(id)}
-								id={'deleteBtn'}
-								src={deleteIcon}
-								alt={'delete'}
-							/>
-						) : (
-							<img
-								onClick={() => likeEvenetHandler()}
-								id={`${favBtnId}`}
-								src={favoriteIcon}
-								alt={'favorite'}
-							/>
-						)}
-					</span>
-				</div>
+		<>
+			{isEditing && <EditEventPopup ev={ev} />}
 
-				<div className={'gallery'}>
-					<img src={img_url} alt={'Event image'} />
-				</div>
-
-				<div className={'description'}>{description}</div>
-
-				<hr className={'divider'} />
-
-				<div className={'event-row'}>
-					<div className={'event-tags tags'}>
-						<p> Tags: </p>{' '}
-						{tags?.map((item, idx) => (
-							<NavLink to={'/events/'} key={idx}>
-								{item}
-							</NavLink>
-						))}
+			<div className={'event-vertical'}>
+				<div className={'event-card'}>
+					<div className={'event-head'}>
+						<h1>{title}</h1>
+						<span className={'user-options'}>
+							{isAdminLogged ? (
+								<>
+									<img
+										onClick={() => deleteHandler(id)}
+										id={'deleteBtn'}
+										src={deleteIcon}
+										alt={'delete'}
+									/>
+									<img onClick={editHandler} src={editIcon} />
+								</>
+							) : (
+								<img
+									onClick={likeEventHandler}
+									id={`${favBtnId}`}
+									src={favoriteIcon}
+									alt={'favorite'}
+								/>
+							)}
+						</span>
 					</div>
 
-					<div className={'social-share'}>
-						<img src={shareIcon} alt={'#'} />
-						<p> Share </p>
+					<div className={'gallery'}>
+						<img src={img_url} alt={'Event image'} />
+					</div>
 
-						<div id={'fbIcon'}></div>
-						<div id={'twitterIcon'}></div>
+					<div className={'description'}>{description}</div>
+
+					<hr className={'divider'} />
+
+					<div className={'event-row'}>
+						<div className={'event-tags tags'}>
+							<p> Tags: </p>{' '}
+							{tags?.map((item, idx) => (
+								<NavLink to={'/events/'} key={idx}>
+									{item}
+								</NavLink>
+							))}
+						</div>
+
+						<div className={'social-share'}>
+							<img src={shareIcon} alt={'#'} />
+							<p> Share </p>
+
+							<div id={'fbIcon'}></div>
+							<div id={'twitterIcon'}></div>
+						</div>
 					</div>
 				</div>
+
+				<EventFooter ev={ev} />
 			</div>
-
-			<EventFooter ev={ev} />
-		</div>
+		</>
 	);
 };
 

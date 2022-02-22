@@ -75,8 +75,6 @@ const UserDuck = (state = initialState, { type, payload }) => {
 			};
 
 		case REMOVE_LIKED_EVENT:
-			console.log(payload, 'payload');
-			console.log(payload.activeUser, 'users');
 			const changedLikedEvents = payload.activeUser.interestedEvents.filter(
 				({ id }) => id !== payload.eventID
 			);
@@ -115,6 +113,7 @@ const UserDuck = (state = initialState, { type, payload }) => {
 						return user;
 					} else console.log('already liked');
 				}
+
 				return user;
 			});
 			return { ...state, users: [...changedUsers] };

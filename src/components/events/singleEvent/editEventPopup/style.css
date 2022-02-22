@@ -1,0 +1,21 @@
+.edit-popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 20%;
+    width: 100vw;
+    z-index: 100;
+    background: #a29899;
+
+}
+.edit-popup input {
+    width: 50%;
+}
+
+.edit-popup textarea {
+    width: 50%;
+    min-height: 150px;
+    max-width: 70vw;
+    min-width: 200px;
+}

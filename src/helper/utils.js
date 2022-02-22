@@ -23,3 +23,5 @@ export const validate = (card, name, CVV, date, year) => {
 		number(card).isValid
 	);
 };
+
+export const eventHandler = (func) => (e) => func(e.target.value);
