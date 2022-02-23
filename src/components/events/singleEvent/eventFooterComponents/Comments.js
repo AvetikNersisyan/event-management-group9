@@ -1,36 +1,41 @@
 import { useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import { api } from '../../../../api';
+import { addComment } from '../../../../redux/ducks/eventDuck';
 
 const Comments = ({ comments, loggedIn, id, ev }) => {
     const inputText = useRef(null)
-
-    // պետքա փոխվի, գրվի ռեդաքսում
     const [comment, setComment] = useState(comments)
-
+    const dispatch = useDispatch()
     const handleAddComment = () => {
         let today = new Date()
-        let newComment = {
-            userName: loggedIn.firstname + loggedIn.lastname,
-            comment: inputText.current.value,
-            date: today.getFullYear() + '-' + today.getMonth() + '-' + today.getDate(),
-            time: today.getHours() + ':' + today.getMinutes()
+        let nowTime = Date.now()
+        if (inputText.current.value === '') {
+            alert('Cannot add an empty comment, please type something')
+        } else {
+            let newComment = {
+                userName: loggedIn.firstname + ' ' + loggedIn.lastname,
+                comment: inputText.current.value,
+                date: nowTime,
+                time: today.getHours() + ':' + today.getMinutes()
+            }
+            fetch(`${api}/events/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...ev,
+                    comments: [...ev.comments, newComment],
+                }),
+            }).then(res => res.json())
+                .then(() => {
+                    dispatch(addComment({ newComment, id }))
+                })
+            inputText.current.value = ''
+
         }
-
-        // պետքա փոխվի, գրվի ռեդաքսում
-        setComment([...comment, newComment])
-
-        fetch(`${api}/events/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                ...ev,
-                comments: [...ev.comments, newComment],
-            }),
-        }).then(res => res.json())
-        inputText.current.value = ''
     }
 
     return (
@@ -45,12 +50,12 @@ const Comments = ({ comments, loggedIn, id, ev }) => {
                     <p>For adding a comment you need to <NavLink className='card-footer-links' to='../../profile'>Log In</NavLink> or <NavLink className='card-footer-links' to='../../profile/signup'>Sign In</NavLink></p>
             }
             <div className='card-footer-all-comments'>
-                {comment.sort((a, b) => new Date(a.date) - new Date(b.date)).map(com =>
+                {comment?.sort((a, b) => new Date(b.date) - new Date(a.date)).map(com =>
                     <>
                         <div className="single-comment">
                             <div>{com.userName}</div>
                             <div>{com.comment}</div>
-                            <div>{com.date}{' '}{com.time}</div>
+                            <div>{Intl.DateTimeFormat('ru').format(com.date)}{' '}{com.time}</div>
                         </div>
                     </>
                 )}

@@ -171,4 +171,10 @@
   padding: 10px;
 }
 
+.event-id-link{
+  
+}
 
+.event-id-link:hover {
+  cursor: pointer;
+}

@@ -5,11 +5,13 @@ const SET_EVENTS = 'eventDuck/SET_EVENTS';
 const ADD_EVENT = 'eventDuck/ADD_EVENT';
 const DELETE_EVENT = 'eventDuck/DELETE_EVENT';
 const DECREASE_SEATS = 'eventDuck/DECREASE_SEATS';
+const ADD_COMMENT = 'eventDuck/ADD_COMMENT'
 
 export const setEvents = createAction(SET_EVENTS);
 export const addEvent = createAction(ADD_EVENT);
 export const deleteEvent = createAction(DELETE_EVENT);
 export const decreaseSeats = createAction(DECREASE_SEATS);
+export const addComment = createAction(ADD_COMMENT)
 
 const initialState = {
 	events: [{ event_detail: {} }],
@@ -41,6 +43,16 @@ const EventDuck = (state = initialState, { type, payload }) => {
 			}).catch((err) => console.log(err));
 
 			return { ...state, events: [...state.events] };
+		case ADD_COMMENT:
+			let newEvent = state.events.map((item) => {
+				if (item.id === payload.id) {
+					item.comments.push(payload.newComment)
+					return item
+				} else {
+					return item
+				}
+			})
+			return { ...state, events: newEvent }
 		default:
 			return state;
 	}

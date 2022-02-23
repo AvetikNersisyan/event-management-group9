@@ -10,6 +10,8 @@ const SET_LIKED_EVENT = 'userDuck/SET_LIKED_EVENT';
 const REMOVE_LIKED_EVENT = 'userDuck/REMOVE_LIKED_EVENT';
 const ADD_GOING = 'userDuck/ADD_GOING';
 const SET_RATED_EVENTS = 'userDuck/SET_RATED_EVENTS';
+const SET_MESSAGE_READ = 'userDuck/SET_MESSAGE_READ';
+const SET_MESSAGE_UNREAD = 'userDuck/SET_MESSAGE_UNREAD';
 
 export const setUsers = createAction(SET_USERS);
 export const addUser = createAction(ADD_USER);
@@ -20,6 +22,8 @@ export const setLikedEvent = createAction(SET_LIKED_EVENT);
 export const removeLike = createAction(REMOVE_LIKED_EVENT);
 export const setGoing = createAction(ADD_GOING);
 export const setRatedEvents = createAction(SET_RATED_EVENTS);
+export const setMessageRead = createAction(SET_MESSAGE_READ);
+export const setMessageUnread = createAction(SET_MESSAGE_UNREAD);
 
 const initialState = {
 	users: [
@@ -118,6 +122,16 @@ const UserDuck = (state = initialState, { type, payload }) => {
 				return user;
 			});
 			return { ...state, users: [...changedUsers] };
+		case SET_MESSAGE_READ:
+			const readIndex = state.activeUser.messages.findIndex(item => item.id === payload)
+			state.activeUser.messages[readIndex].status = true
+			const changedReadActiveUser = state.activeUser
+			return { ...state, activeUser: changedReadActiveUser }
+		case SET_MESSAGE_UNREAD:
+			const unreadIndex = state.activeUser.messages.findIndex(item => item.id === payload)
+			state.activeUser.messages[unreadIndex].status = false
+			const changedUnreadActiveUser = state.activeUser
+			return { ...state, activeUser: changedUnreadActiveUser }
 		default:
 			return state;
 	}
