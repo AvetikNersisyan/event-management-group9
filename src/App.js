@@ -18,7 +18,8 @@ import NewEvent from './components/events/newEvent';
 import Footer from './components/footer';
 
 import { setPersons } from './redux/ducks/personsDuck';
-import { setActiveUser } from './redux/ducks/userDuck';
+import About from './components/about';
+import { setFeedbacks } from './redux/ducks/feedbackDuck';
 
 function App() {
 	const dispatch = useDispatch();
@@ -35,6 +36,11 @@ function App() {
 			.then((res) => {
 				dispatch(setPersons(res));
 			});
+		fetch(`${api}/feedbacks`)
+			.then((res) => res.json())
+			.then(res => {
+				dispatch(setFeedbacks(res))
+			})
 	}, []);
 
 	const activeUser = useSelector(({ UserDuck }) => UserDuck.activeUser); //TODO: get active user to show delete button
@@ -57,6 +63,7 @@ function App() {
 				<Route path={'/events'} element={<Events />} />
 				{isAdminLogged && <Route path={'/new-event'} element={<NewEvent />} />}
 				<Route path={'*'} element={<Error404 />} />
+				<Route path={'/about'} element={<About />} />
 			</Routes>
 
 			<Footer />

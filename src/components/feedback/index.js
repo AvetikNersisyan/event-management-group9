@@ -1,4 +1,7 @@
-import { memo, useState } from 'react';
+import { memo, useState, useRef } from 'react';
+import { useDispatch } from 'react-redux'
+import { addFeedback } from '../../redux/ducks/feedbackDuck'
+import { api } from '../../api.js'
 import './index.css';
 import { FaStar } from 'react-icons/fa';
 const colors = {
@@ -10,22 +13,35 @@ const Feedback = () => {
 	const [modal, setModal] = useState(false);
 	const [currentValue, setCurrentValue] = useState(0);
 	const [hoverValue, setHoverValue] = useState(undefined);
-	const [data, setData] = useState({
-		name: '',
-		email: '',
-		feedback: '',
-	});
+	const dispatch = useDispatch()
+
+	const nameInput = useRef(null)
+	const emailInput = useRef(null)
+	const textInput = useRef(null)
 
 	const stars = Array(5).fill(0);
 
-	const handleChange = (e) => {
-		const { name, value } = e.target;
-		console.log(value);
-		setData({ ...data, [name]: value });
-	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(data);
+		let today = new Date()
+		let newFeedback = {
+			sender: nameInput.current.value,
+			email: emailInput.current.value,
+			text: textInput.current.value,
+			date: Date.now(),
+			time: today.getHours() + ':' + today.getMinutes()
+		}
+		fetch(`${api}/feedbacks`, {
+			method: "POST",
+			body: JSON.stringify(newFeedback), headers: {
+				"Content-type": "application/json; charset=UTF-8"
+			}
+		})
+			.then(response => response.json())
+			.then(json => {
+				dispatch(addFeedback(json))
+				setModal((value) => !value)
+			})
 	};
 	const handleClick = (value) => {
 		setCurrentValue(value);
@@ -61,7 +77,7 @@ const Feedback = () => {
 								className='active_input'
 								placeholder='YOUR NAME'
 								name='name'
-								onChange={(e) => handleChange(e)}
+								ref={nameInput}
 							/>
 						</div>
 						<div>
@@ -69,7 +85,7 @@ const Feedback = () => {
 								type='text'
 								name='email'
 								placeholder='YOUR E-MAIL'
-								onChange={(e) => handleChange(e)}
+								ref={emailInput}
 							/>
 						</div>
 
@@ -79,7 +95,7 @@ const Feedback = () => {
 								type='text'
 								placeholder='LEAVE YOUR MESSAGE'
 								name='feedback'
-								onChange={(e) => handleChange(e)}
+								ref={textInput}
 							/>
 						</div>
 						<div className='stars'>

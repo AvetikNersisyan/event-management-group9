@@ -8,6 +8,7 @@ import { FaFacebook } from 'react-icons/fa';
 import { FaInstagram } from 'react-icons/fa';
 import { FaTwitter } from 'react-icons/fa';
 import { FaYoutube } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -26,7 +27,7 @@ const Footer = () => {
                                 <a className='links' href=''>Services</a>
                             </li>
                             <li>
-                                <a className='links' href=''>About Us</a>
+                                <NavLink to={'/about'} clssName='links' href=''>About Us</NavLink>
                             </li>
                             <li>
                                 <a className='links' href=''>Help</a>
