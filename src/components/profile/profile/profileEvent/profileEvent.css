@@ -15,11 +15,10 @@
 .profile-card-content {
     display: grid;
     gap: 28px;
-    grid-template-columns: 10fr 10fr;
 }
 
 .profile-event-img {
     border: 2px solid rgb(207, 207, 207);
     margin: 20px;
-    height: 250px;
+    width: 100%;
 }

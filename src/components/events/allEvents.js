@@ -7,7 +7,6 @@ import EventCard from '../eventCard';
 const AllEvents = () => {
 	const events = useSelector(({ EventDuck }) => EventDuck.events);
 
-	console.log(events, 'events');
 	const navigate = useNavigate();
 	events.sort(
 		(a, b) =>
