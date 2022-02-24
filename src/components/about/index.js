@@ -1,16 +1,14 @@
-import { useState } from "react";
 import { useSelector } from "react-redux";
-import './feedback.css'
+import './about.css'
 
 const About = () => {
     const feedbacks = useSelector(({ FeedbackDuck }) => FeedbackDuck.feedbacks);
 
-    console.log(feedbacks);
     return (
         <div className="about-page global-container">
             <div>
-                <h1>ABOUT US</h1>
-                <p>
+                <h1 className="about-h1">ABOUT US</h1>
+                <p className="about-text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ipsum purus. Donec mollis dui sed dui dictum sagittis. Vivamus eleifend quam non consequat dictum. Nulla facilisi. In at luctus leo. Pellentesque dictum tempor purus in pulvinar. Curabitur ligula turpis, sodales non velit et, pharetra maximus lorem.
                     Aliquam faucibus, lectus vel facilisis venenatis, magna nisi laoreet dui, sed pretium dolor leo eu ligula. Mauris risus lacus, congue vel elementum at, ullamcorper vel turpis. Nullam semper egestas aliquet. Donec pulvinar placerat tellus et condimentum. Donec in felis tellus. Pellentesque hendrerit fermentum dolor sit amet aliquet. Nullam at ultrices neque. Aenean malesuada neque sed quam varius lacinia. Nulla sodales, tellus quis aliquam imperdiet, leo mauris commodo turpis, ac rhoncus arcu quam eget libero. Nulla faucibus ipsum vitae nulla congue, at vehicula libero consectetur. Donec lacinia turpis ut euismod commodo. Aliquam vitae vehicula tortor. Duis convallis nibh ut lorem auctor feugiat. In ac tempus neque, in commodo nisi. Ut feugiat condimentum ante eu pharetra. Phasellus pellentesque lacinia nisl quis tincidunt.
                     Aliquam varius congue sem, a accumsan ipsum dapibus a. Aliquam hendrerit, neque ac vestibulum tempus, ipsum felis commodo massa, eu accumsan velit lectus in arcu. Phasellus dapibus pretium turpis id accumsan. Nulla ut dapibus orci, rhoncus feugiat nisl. Sed vel suscipit turpis, in dictum quam. Sed elit mi, rhoncus ut massa vel, semper vulputate mauris. Phasellus rhoncus iaculis tempor.
@@ -21,7 +19,7 @@ const About = () => {
                 </p>
             </div>
             <div>
-                <h1>FEEDBACKS</h1>
+                <h1 className="about-h1">FEEDBACKS</h1>
                 {feedbacks.map((item) =>
                     <div className="single-comment">
                         <div>{item.sender}</div>
