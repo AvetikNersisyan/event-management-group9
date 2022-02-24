@@ -17,6 +17,7 @@ const Categories = ({ handleFilter, cancelSearch }) => {
 
 	const handleSearch = (e) => {
 		e.preventDefault();
+
 		let filteringObject = {
 			title: filterTitle.current.value.toLowerCase().trim(),
 			type: filterCategories.current.value.toLowerCase().trim(),
