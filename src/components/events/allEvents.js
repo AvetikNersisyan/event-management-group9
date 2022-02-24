@@ -53,16 +53,16 @@ const AllEvents = () => {
 					end_date: item.event_details.end_date,
 				};
 
-				return tempObj[term]?.includes(obj[term]);
+				return tempObj[term]?.toLowerCase().includes(obj[term]);
 			});
 		});
 
 		filtered = filtered.filter((event) => {
 			return (
 				new Date(event.event_details.start_date).getTime() >
-				new Date(obj.start_date).getTime() &&
+					new Date(obj.start_date).getTime() &&
 				new Date(event.event_details.start_date).getTime() <
-				new Date(obj.end_date).getTime()
+					new Date(obj.end_date).getTime()
 			);
 		});
 

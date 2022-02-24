@@ -3,7 +3,7 @@ import EventDuck from './eventDuck';
 import UserDuck from './userDuck';
 import PersonsDuck from './personsDuck';
 import CompaniesDuck from './companiesDuck';
-import FeedbackDuck from './feedbackDuck'
+import FeedbackDuck from './feedbackDuck';
 
 const rootReducer = combineReducers({
 	UserDuck,
