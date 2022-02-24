@@ -27,8 +27,7 @@ const EventDuck = (state = initialState, { type, payload }) => {
 		case ADD_EVENT:
 			let index = state.events.findIndex(({ id }) => id === payload.id);
 			state.events.splice(index, 1, payload);
-			// console.log(changedEvents, 'changed Events');
-			return { ...state };
+			return { ...state, events: [...state.events] };
 
 		case DECREASE_SEATS:
 			const seatFilterEvent = state.events.filter(
