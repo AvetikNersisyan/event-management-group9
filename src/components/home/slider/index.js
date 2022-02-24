@@ -15,7 +15,6 @@ const Slider = () => {
 			? events.slice(events.length - sliderCount.QUANTITY)
 			: events;
 
-	console.log(latestEvents);
 	const [currentEvent, setCurrentEvent] = useState(0);
 
 	const sliderLength =

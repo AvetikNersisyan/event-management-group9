@@ -27,7 +27,7 @@ const Contact = ({ loggedIn, eventId }) => {
 
     const handleUserSubmit = () => {
         let newMessage = {
-            status: "unread",
+            status: "false",
             eventId: eventId,
             sender: loggedIn.firstname + ' ' + loggedIn.lastname,
             email: loggedIn.email,

@@ -60,9 +60,9 @@ const AllEvents = () => {
 		filtered = filtered.filter((event) => {
 			return (
 				new Date(event.event_details.start_date).getTime() >
-					new Date(obj.start_date).getTime() &&
+				new Date(obj.start_date).getTime() &&
 				new Date(event.event_details.start_date).getTime() <
-					new Date(obj.end_date).getTime()
+				new Date(obj.end_date).getTime()
 			);
 		});
 

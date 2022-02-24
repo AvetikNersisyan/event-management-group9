@@ -94,6 +94,7 @@ font-weight: bold;
 }
 
 .links {
+  text-decoration: none;
   color:white;
   display: block;
   margin-bottom: 5px;
