@@ -205,18 +205,15 @@ const EditEventPopup = ({ ev, editHandler }) => {
 			speakers: newEventSpeakers,
 		};
 
+		dispatch(addEvent({ ...ev, ...changedEvent }));
+
 		fetch(`${api}/events/${ev.id}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({ ...ev, ...changedEvent }),
-		})
-			.then((res) => {
-				console.log(res, 'res');
-				dispatch(addEvent({ ...ev, ...changedEvent }));
-			})
-			.catch((err) => console.warn(err));
+		}).catch((err) => console.warn(err));
 	};
 
 	const addTag = () => {

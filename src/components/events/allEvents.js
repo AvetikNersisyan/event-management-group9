@@ -7,12 +7,13 @@ import EventCard from '../eventCard';
 const AllEvents = () => {
 	const events = useSelector(({ EventDuck }) => EventDuck.events);
 
+	console.log(events, 'events');
 	const navigate = useNavigate();
-	// events.sort(
-	// 	(a, b) =>
-	// 		new Date(a.event_details.start_date) -
-	// 		new Date(b.event_details.start_date)
-	// );
+	events.sort(
+		(a, b) =>
+			new Date(a.event_details.start_date) -
+			new Date(b.event_details.start_date)
+	);
 
 	const [searching, setSearching] = useState(false);
 	const [eventsList, setEventsList] = useState(
