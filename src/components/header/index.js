@@ -1,8 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import './index.css';
 
-// eslint-disable-next-line no-unused-vars
-//import Dropdown from './Dropdown';
 import { useState } from 'react';
 import Logo from '../../assets/img/logo.png';
 import { useSelector } from 'react-redux';
@@ -46,7 +44,6 @@ const Index = () => {
 							<NavLink to={'/'} className='nav-links' onClick={closeMobileMenu}>
 								Home
 							</NavLink>
-							{/* {dropdown && <Dropdown />} */}
 						</li>
 						<li className='nav-item'>
 							<NavLink
@@ -63,12 +60,17 @@ const Index = () => {
 								className='nav-links'
 								onClick={closeMobileMenu}
 							>
-								Profile
-								{
-									activeUser?.profilePic ? <div className='header-profile-pic'>
-										<img className='header-profile-img' src={activeUser?.profilePic} />
-									</div> : ''
-								}
+								Account
+								{activeUser?.profilePic ? (
+									<div className='header-profile-pic'>
+										<img
+											className='header-profile-img'
+											src={activeUser?.profilePic}
+										/>
+									</div>
+								) : (
+									''
+								)}
 							</NavLink>
 						</li>
 

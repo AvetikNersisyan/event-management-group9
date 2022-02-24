@@ -121,8 +121,6 @@ const EditEventPopup = ({ ev, editHandler }) => {
 	const data = useSelector(({ PersonsDuck }) => PersonsDuck.persons);
 	const state = useSelector((state) => state);
 
-	console.log(state, 'state');
-
 	const [persons, setPersons] = useState(
 		data.filter((item) => item.type === 'person')
 	);
@@ -205,18 +203,15 @@ const EditEventPopup = ({ ev, editHandler }) => {
 			speakers: newEventSpeakers,
 		};
 
+		dispatch(addEvent({ ...ev, ...changedEvent }));
+
 		fetch(`${api}/events/${ev.id}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({ ...ev, ...changedEvent }),
-		})
-			.then((res) => {
-				console.log(res, 'res');
-				dispatch(addEvent({ ...ev, ...changedEvent }));
-			})
-			.catch((err) => console.warn(err));
+		}).catch((err) => console.warn(err));
 	};
 
 	const addTag = () => {
@@ -349,7 +344,7 @@ const EditEventPopup = ({ ev, editHandler }) => {
 				<div className='tag-stroke'>
 					<div>
 						{tag?.map((item) => (
-							<span className='tag-item'>
+							<span key={item.id} className='tag-item'>
 								<span>{item}</span>
 								<button
 									className='remove-button'

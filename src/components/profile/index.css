@@ -98,7 +98,13 @@
 }
 
 .profile-event-list{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
   display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
 }
 
 .profilePhoto{
@@ -177,4 +183,10 @@
 
 .event-id-link:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+  .profile-event-list {
+    grid-template-columns: 1fr;
+  }
 }

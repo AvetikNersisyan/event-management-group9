@@ -122,7 +122,7 @@ const EventCard = ({ ev }) => {
 				<div className={'event-card'}>
 					<div className={'event-head'}>
 						<h1>{title}</h1>
-						<span className={'user-options'}>
+						<div className={'user-options'}>
 							{isAdminLogged ? (
 								<>
 									<img
@@ -141,7 +141,7 @@ const EventCard = ({ ev }) => {
 									alt={'favorite'}
 								/>
 							)}
-						</span>
+						</div>
 					</div>
 
 					<div className={'gallery'}>

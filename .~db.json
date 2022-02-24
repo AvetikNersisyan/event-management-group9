@@ -230,7 +230,7 @@
       ],
       "rate": {
         "sum": 0,
-        "count": 38
+        "count": 37
       },
       "id": 1
     },
@@ -255,7 +255,7 @@
       "event_details": {
         "start_date": "2022-03-29",
         "end_date": "2022-03-30",
-        "start_time": "10:00",
+        "start_time": "20:00",
         "end_time": "20:00",
         "location": "Tsaghkadzor",
         "address": "Amiryan 1",
@@ -275,7 +275,7 @@
       ],
       "rate": {
         "sum": 0,
-        "count": 13
+        "count": 20
       },
       "id": 2
     },
@@ -347,7 +347,7 @@
       "event_details": {
         "start_date": "2022-06-03",
         "end_date": "2022-06-05",
-        "start_time": "10:00",
+        "start_time": "20:00",
         "end_time": "20:00",
         "location": "Yerean",
         "address": "Saryan Street",
@@ -365,7 +365,7 @@
       ],
       "rate": {
         "sum": 0,
-        "count": 4
+        "count": 9
       },
       "id": 3
     },
@@ -443,7 +443,7 @@
       ],
       "rate": {
         "sum": 0,
-        "count": 5
+        "count": 6
       },
       "id": 4
     },
@@ -514,7 +514,7 @@
       ],
       "rate": {
         "sum": 0,
-        "count": 3
+        "count": 4
       },
       "id": 6
     },
@@ -825,6 +825,9 @@
           "subject": "About this event",
           "message": "Is there any free places?"
         }
+      ],
+      "rated_events": [
+        1
       ]
     }
   ],

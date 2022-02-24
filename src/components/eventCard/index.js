@@ -1,10 +1,16 @@
 import hash from '../../assets/img/hash.png';
 import locationCard from '../../assets/img/locationCard.png';
+import { MAX_DESCRIPTION } from '../../helper/constants';
 
 const EventCard = ({
 	item: { id, img_url, title, description, tags, event_details },
 	handleEventClick,
 }) => {
+	description =
+		description.length > MAX_DESCRIPTION
+			? description.substring(0, MAX_DESCRIPTION)
+			: description;
+
 	return (
 		<div className='profile-event-card' onClick={() => handleEventClick(id)}>
 			<div className='profile-card-content'>
