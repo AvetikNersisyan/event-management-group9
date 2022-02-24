@@ -3,7 +3,6 @@ import rootReducer from './ducks';
 
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import UserDuck from './ducks/userDuck';
 
 const persistConfig = {
 	key: 'root',
