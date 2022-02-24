@@ -1,11 +1,28 @@
 .slider-wrapper {
     display: flex;
     flex-direction: row;
-    width: 40vw;
+    width:100%;
+    height: 100%;
     padding: 1em;
     gap: 0 1em;
-    height: 20vw;
+margin: auto;
 
+}
+.circle-wrapper{
+    position:relative;
+
+
+}
+
+
+.left-arrow{
+    position: absolute;
+    left: 5%;
+ 
+}
+.right-arrow{
+    position: absolute;
+    right: 5%;
 
 }
 
@@ -13,6 +30,7 @@
     transition: 1s;
     width: 100%;
     height: 100%;
+    
 
 
 

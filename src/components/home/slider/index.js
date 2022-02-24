@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
+
 import { sliderCount } from '../../../helper/constants';
 import './style.css';
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
-
+import Countdown from '../../countdown'
 const Slider = () => {
 	const events = useSelector(({ EventDuck }) =>
 		EventDuck.events.filter(({ img_url }) => img_url !== '')
@@ -63,6 +64,7 @@ const Slider = () => {
 				onClick={nextClickHandler}
 				className={'right-arrow'}
 			/>
+
 		</div>
 	);
 };
