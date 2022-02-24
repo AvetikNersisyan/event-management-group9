@@ -300,3 +300,9 @@
     display: grid;
     grid-template-columns: 3fr 7fr 2fr;
 }
+
+@media screen and (max-width: 800px){
+    .event-card {
+        width: auto;
+    }
+}
