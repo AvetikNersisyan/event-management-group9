@@ -66,15 +66,9 @@ const Categories = ({ handleFilter, cancelSearch }) => {
 								<option value='' selected='selected'>
 									All Cities
 								</option>
-								<option className='level-0' value='yerevan'>
-									Yerevan
-								</option>
-								<option className='level-0' value='los angeles'>
-									Los Angeles
-								</option>
-								<option className='level-0' value='tsaghkadzor'>
-									Tsaghkadzor
-								</option>
+								<option value='yerevan'>Yerevan</option>
+								<option value='los angeles'>Los Angeles</option>
+								<option value='tsaghkadzor'>Tsaghkadzor</option>
 							</select>
 						</div>
 					</div>
@@ -82,41 +76,31 @@ const Categories = ({ handleFilter, cancelSearch }) => {
 						<div className='form_element half'>
 							<input placeholder='By tag' name='name_event' ref={filterTeg} />
 						</div>
-						<div className='form_element half'>
-							<div className='datepicker'>
-								<input
-									className='new-event-inputs'
-									defaultValue={'1900-01-01'}
-									ref={filterStartDate}
-									type={'date'}
-								/>
-								<input
-									className='new-event-inputs'
-									defaultValue={'2030-01-01'}
-									ref={filterEndDate}
-									type={'date'}
-								/>
-							</div>
+						<div className='form_element half '>
+							<input
+								defaultValue={'1900-01-01'}
+								ref={filterStartDate}
+								type={'date'}
+							/>
 						</div>
 
-						<div className='form_element half'>
-							<button
-								className='button'
-								style={{ margin: '20px' }}
-								value='Find Event'
-								onClick={handleSearch}
-							>
+						<div className='form-element half'>
+							<input
+								defaultValue={'2030-01-01'}
+								ref={filterEndDate}
+								type={'date'}
+							/>
+						</div>
+					</div>
+					<div className='event'>
+						<div className='find'>
+							<button value='Find Event' onClick={handleSearch}>
 								Search
 							</button>
 						</div>
-						<div className='form_element half'>
-							<button
-								type={'reset'}
-								className='button'
-								style={{ margin: '20px' }}
-								value='Find Event'
-								onClick={cancelSearch}
-							>
+						<div className='find'>
+
+							<button type={'reset'} value='Find Event' onClick={cancelSearch}>
 								Reset
 							</button>
 						</div>
