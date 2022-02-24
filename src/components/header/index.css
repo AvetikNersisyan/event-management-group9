@@ -64,6 +64,8 @@
      font-size: 18px;
      text-transform: uppercase;
      font-weight: bold;
+     display: flex;
+     align-items: center;
  }
  
  .nav-links:hover{
@@ -138,7 +140,18 @@
 
 }
 
+.header-profile-pic {
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    border: 2px solid black;
+    overflow: hidden;
+    border-radius: 100%;
+}
 
+.header-profile-img{
+    height: 100%;
+}
 
 
 

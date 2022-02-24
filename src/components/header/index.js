@@ -64,15 +64,11 @@ const Index = () => {
 								onClick={closeMobileMenu}
 							>
 								Profile
-							</NavLink>
-						</li>
-						<li className='nav-item'>
-							<NavLink
-								to={'/pages'}
-								className='nav-links'
-								onClick={closeMobileMenu}
-							>
-								Pages
+								{
+									activeUser?.profilePic ? <div className='header-profile-pic'>
+										<img className='header-profile-img' src={activeUser?.profilePic} />
+									</div> : ''
+								}
 							</NavLink>
 						</li>
 

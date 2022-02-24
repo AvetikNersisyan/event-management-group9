@@ -1,0 +1,14 @@
+.about-text{
+    text-align: justify;
+}
+
+.about-h1 {
+    margin: 15px;
+    padding: 5px;
+    border-bottom: 1px solid rgb(150, 150, 150);
+}
+
+.about-page{
+    padding-bottom: 40px;
+    padding-top: 20px;
+}

@@ -2,6 +2,7 @@ import Iframe from 'react-iframe';
 import Popup from '../popup';
 import { useCallback, useState } from 'react';
 import Rating from './rating/index';
+import { useSelector } from 'react-redux';
 
 const Sidebar = ({
 	ev,
@@ -14,6 +15,7 @@ const Sidebar = ({
 	available_seats,
 	guest_quantity,
 }) => {
+	const activeUser = useSelector(({ UserDuck }) => UserDuck.activeUser);
 	const [isOpen, setIsOpen] = useState(false);
 
 	const onBuyTicket = () => {
@@ -24,7 +26,10 @@ const Sidebar = ({
 
 	return (
 		<div className={'sidebar'}>
-			<button onClick={onBuyTicket}> ATTEND </button>
+			{
+				activeUser?.type === 'admin' ? '' : <button onClick={onBuyTicket}> ATTEND </button>
+			}
+
 
 			<div className={'event-details'}>
 				{isOpen && <Popup ev={ev} close={onPopupClose} />}
@@ -34,7 +39,7 @@ const Sidebar = ({
 					<label> rating </label>
 					<span>
 						{' '}
-						<Rating ev={ev} />
+						<Rating ev={ev} activeUser={activeUser} />
 					</span>
 				</div>
 				<h3> Event detail</h3>

@@ -30,7 +30,7 @@ const EventFooter = ({ ev }) => {
         <div className={'event-footer'}>
             <ul className={'head'}>
                 <li onClick={openPersons}> Persons</li>
-                <li onClick={openContact}> Contact</li>
+                {loggedIn?.type === "admin" ? '' : <li onClick={openContact}> Contact</li>}
                 <li onClick={openComments}> Comments</li>
             </ul>
 

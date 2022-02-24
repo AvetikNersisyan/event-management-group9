@@ -12,10 +12,8 @@ const colors = {
 	grey: '#a9a9a9',
 };
 
-const Rating = ({ ev }) => {
+const Rating = ({ ev, activeUser }) => {
 	const { count, sum } = ev.rate;
-
-	const activeUser = useSelector(({ UserDuck }) => UserDuck.activeUser);
 	const isAlreadyRated = useMemo(
 		() => activeUser?.rated_events?.some((id) => id === ev.id),
 		[activeUser?.rated_events?.length]
@@ -76,27 +74,29 @@ const Rating = ({ ev }) => {
 	};
 	return (
 		<div>
-			<div className='box'>
-				{!isRated && activeUser && (
-					<div className='stars'>
-						{stars.map((_, index) => {
-							return (
-								<FaStar
-									key={index}
-									onClick={() => handleClick(index + 1)}
-									onMouseOver={() => handleMouseOver(index + 1)}
-									onMouseLeave={handleMouseLeave}
-									color={
-										(hoverValue || currentValue) > index
-											? colors.orange
-											: colors.grey
-									}
-								/>
-							);
-						})}
-					</div>
-				)}
-			</div>
+			{activeUser?.type === 'admin' ? '' :
+				<div className='box'>
+					{!isRated && activeUser && (
+						<div className='stars'>
+							{stars.map((_, index) => {
+								return (
+									<FaStar
+										key={index}
+										onClick={() => handleClick(index + 1)}
+										onMouseOver={() => handleMouseOver(index + 1)}
+										onMouseLeave={handleMouseLeave}
+										color={
+											(hoverValue || currentValue) > index
+												? colors.orange
+												: colors.grey
+										}
+									/>
+								);
+							})}
+						</div>
+					)}
+				</div>
+			}
 			<p> {rating}/5</p>
 		</div>
 	);
