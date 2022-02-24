@@ -20,3 +20,5 @@ export const professionTypes = [
 export const sliderCount = {
 	QUANTITY: 5,
 };
+
+export const MAX_DESCRIPTION = 150;

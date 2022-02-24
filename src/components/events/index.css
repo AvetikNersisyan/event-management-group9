@@ -41,6 +41,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: #c9dde4db;
+    padding: 0.5em;
+    margin: 1em;
 }
 
 .esim {
