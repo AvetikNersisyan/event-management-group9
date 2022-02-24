@@ -114,11 +114,15 @@ import { eventTypes, professionTypes } from '../../../../helper/constants';
 import AddPerson from '../../newEvent/addPerson';
 import AddCompany from '../../newEvent/addCompany';
 
-const EditEventPopup = ({ ev }) => {
+const EditEventPopup = ({ ev, editHandler }) => {
 	const tagElement = useRef(null);
 	const navigate = useNavigate();
 
-	const data = useSelector((state) => state.PersonsDuck.persons);
+	const data = useSelector(({ PersonsDuck }) => PersonsDuck.persons);
+	const state = useSelector((state) => state);
+
+	console.log(state, 'state');
+
 	const [persons, setPersons] = useState(
 		data.filter((item) => item.type === 'person')
 	);
@@ -153,15 +157,6 @@ const EditEventPopup = ({ ev }) => {
 	const addressHandler = eventHandler(newAddress);
 	const availableSeatsHandler = eventHandler(newAvailableSeats);
 
-	// const startDate = useRef(null);
-	// const startTime = useRef(null);
-	// const endDate = useRef(null);
-	// const endTime = useState(null);
-
-	// const locationInput = useRef(null);
-	// const addressInput = useRef(null);
-	// const ticketCountInput = useRef(null);
-	// const priceInput = useRef(null);
 	const [image, setImage] = useState(ev.img_url);
 	const [newEventSpeakers, setNewEventSpeakers] = useState(ev.speakers);
 
@@ -189,6 +184,7 @@ const EditEventPopup = ({ ev }) => {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
+		editHandler();
 		let changedEvent = {
 			type: eventType,
 			title: title,
@@ -207,24 +203,19 @@ const EditEventPopup = ({ ev }) => {
 				available_seats: availableSeats,
 			},
 			speakers: newEventSpeakers,
-			// rate: {
-			// 	count: 0,
-			// 	sum: 0,
-			// },
 		};
 
 		fetch(`${api}/events/${ev.id}`, {
-			method: 'PATCH',
+			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(changedEvent),
+			body: JSON.stringify({ ...ev, ...changedEvent }),
 		})
-			.then((res) => res.json())
 			.then((res) => {
-				dispatch(addEvent(changedEvent));
+				console.log(res, 'res');
+				dispatch(addEvent({ ...ev, ...changedEvent }));
 			})
-			.then(navigate('/events'))
 			.catch((err) => console.warn(err));
 	};
 

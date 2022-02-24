@@ -88,7 +88,7 @@ const AllEvents = () => {
 				handleFilter={(obj) => handleFilter(obj)}
 				cancelSearch={cancelSearch}
 			/>
-			{!searching ? <h1>All Upcoming Events</h1> : <h1>Your search</h1>}
+			{!searching ? <h1>Upcoming Events</h1> : <h3>Search Results</h3>}
 			<div className='profile-event-list'>
 				{eventsList.map((item) => (
 					<EventCard
@@ -102,4 +102,4 @@ const AllEvents = () => {
 	);
 };
 
-export default memo(AllEvents);
+export default AllEvents;

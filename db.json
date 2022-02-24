@@ -175,7 +175,7 @@
       "type": "Concert",
       "title": "Basta Concert",
       "description": "Basta conccert in Yerevan... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac accumsan ante, sed aliquam dui. Integer tempus nisl a egestas consequat. Nam vel hendrerit ligula. Vivamus hendrerit risus nec est convallis sagittis. Donec et dignissim lorem, sit amet consequat nisl. Donec porta vestibulum mi, id elementum purus tincidunt ac. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean nec tortor vel sem rhoncus volutpat et eget justo. Nullam vel mi pulvinar, lobortis sapien porttitor, porttitor tortor. Sed dapibus lorem tellus, nec cursus justo pretium sed. Fusce tortor purus, sollicitudin quis justo venenatis, semper ultricies augue. Nam.",
-      "price": "15000",
+      "price": "16000",
       "comments": [
         {
           "userName": "Hayk Keshishyan",
@@ -201,7 +201,7 @@
       "event_details": {
         "start_date": "2022-05-15",
         "end_date": "2022-05-15",
-        "start_time": "20:00",
+        "start_time": "22:00",
         "end_time": "22:00",
         "location": "Yerevan",
         "address": "Tsitsernakaberd avenue",
@@ -230,13 +230,13 @@
       ],
       "rate": {
         "sum": 0,
-        "count": 33
+        "count": 42
       },
       "id": 1
     },
     {
       "type": "Business",
-      "title": "Brands and Business",
+      "title": "Brands and Businesses",
       "description": "Brands and Business ... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac accumsan ante, sed aliquam dui. Integer tempus nisl a egestas consequat. Nam vel hendrerit ligula. Vivamus hendrerit risus nec est convallis sagittis. Donec et dignissim lorem, sit amet consequat nisl. Donec porta vestibulum mi, id elementum purus tincidunt ac. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean nec tortor vel sem rhoncus volutpat et eget justo. Nullam vel mi pulvinar, lobortis sapien porttitor, porttitor tortor. Sed dapibus lorem tellus, nec cursus justo pretium sed. Fusce tortor purus, sollicitudin quis justo venenatis, semper ultricies augue. Nam.",
       "price": "5000",
       "comments": [
@@ -261,7 +261,7 @@
       "event_details": {
         "start_date": "2022-03-29",
         "end_date": "2022-03-30",
-        "start_time": "10:00",
+        "start_time": "20:00",
         "end_time": "20:00",
         "location": "Tsaghkadzor",
         "address": "Amiryan 1",
@@ -281,7 +281,7 @@
       ],
       "rate": {
         "sum": 0,
-        "count": 13
+        "count": 14
       },
       "id": 2
     },
@@ -831,6 +831,9 @@
           "subject": "About this event",
           "message": "Is there any free places?"
         }
+      ],
+      "rated_events": [
+        1
       ]
     }
   ],

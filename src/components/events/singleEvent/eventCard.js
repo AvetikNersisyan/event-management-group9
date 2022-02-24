@@ -116,7 +116,7 @@ const EventCard = ({ ev }) => {
 
 	return (
 		<>
-			{isEditing && <EditEventPopup ev={ev} />}
+			{isEditing && <EditEventPopup editHandler={editHandler} ev={ev} />}
 
 			<div className={'event-vertical'}>
 				<div className={'event-card'}>
