@@ -6,6 +6,7 @@ import Events from './components/events';
 import Index from './components/header';
 import Categories from './components/categories';
 
+
 import { useEffect } from 'react';
 import SignUp from './components/profile/signUp';
 import React from 'react';

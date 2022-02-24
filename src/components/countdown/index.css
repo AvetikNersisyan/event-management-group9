@@ -1,0 +1,45 @@
+
+.timer_container{
+   
+    margin:auto;
+  
+ 
+    color: rgb(48, 5, 25);
+    
+  
+  
+  }
+  .timer{
+     
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 7em;
+      padding-top: 2em;
+      width: 100%;
+      height: 100%;
+       
+  }
+  .calendar clock{
+      font-size: 8em;
+  }
+  .timer div:first-child{
+      text-align: center;
+    
+  }
+  .timer div:last-child{
+        display:flex;
+      justify-content: space-between;
+      text-align: center;
+  
+  } 
+  .timer p:first-child, .timer div:last-child span{
+      font-size:44px;
+      margin-top: 15px;
+  
+  }
+  .timer:first-child{
+      margin-bottom: 15px;
+  }
+  
