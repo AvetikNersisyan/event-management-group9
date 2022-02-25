@@ -2,13 +2,9 @@ import { useEffect, useMemo, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import shareIcon from '../../../assets/img/share.png';
-import favoriteIcon from '../../../assets/img/favourite.png';
-import deleteIcon from '../../../assets/img/delete.png';
-import editIcon from '../../../assets/img/edit.png';
+import { api } from '../../../api';
 
 import EventFooter from './eventFooter';
-import { api } from '../../../api';
 
 import { deleteEvent } from '../../../redux/ducks/eventDuck';
 import {
@@ -19,6 +15,11 @@ import {
 
 import EditEventPopup from './editEventPopup';
 
+import shareIcon from '../../../assets/img/share.png';
+import favoriteIcon from '../../../assets/img/favourite.png';
+import deleteIcon from '../../../assets/img/delete.png';
+import editIcon from '../../../assets/img/edit.png';
+
 const EventCard = ({ ev }) => {
 	const { title, description, img_url, tags, id } = ev;
 	const dispatch = useDispatch();
@@ -26,7 +27,10 @@ const EventCard = ({ ev }) => {
 	const activeUser = useSelector(({ UserDuck }) => UserDuck.activeUser);
 
 	const changedLikedEvents = useMemo(() => {
-		return activeUser.interestedEvents.filter(({ id }) => id !== ev.id);
+		return (
+			activeUser &&
+			activeUser?.interestedEvents?.filter(({ id }) => id !== ev.id)
+		);
 	}, [ev.id]);
 
 	const [isEditing, setIsEditing] = useState(false);
@@ -99,6 +103,7 @@ const EventCard = ({ ev }) => {
 	}, []);
 
 	const deleteHandler = (id) => {
+		alert('Լավ մտածի');
 		fetch(`${api}/events/${id}`, {
 			method: 'DELETE',
 			headers: {
