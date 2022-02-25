@@ -44,7 +44,7 @@ const Categories = ({ handleFilter, cancelSearch }) => {
 						<div className='form_element half'>
 							<select
 								name='name'
-								selected='selected'
+								defaultValue={'All Categories'}
 								className='selectpicker'
 								ref={filterCategories}
 							>
@@ -63,9 +63,7 @@ const Categories = ({ handleFilter, cancelSearch }) => {
 								className='selectpicker'
 								ref={filterCities}
 							>
-								<option value='' selected='selected'>
-									All Cities
-								</option>
+								<option value=''>All Cities</option>
 								<option value='yerevan'>Yerevan</option>
 								<option value='los angeles'>Los Angeles</option>
 								<option value='tsaghkadzor'>Tsaghkadzor</option>
@@ -99,7 +97,6 @@ const Categories = ({ handleFilter, cancelSearch }) => {
 							</button>
 						</div>
 						<div className='find'>
-
 							<button type={'reset'} value='Find Event' onClick={cancelSearch}>
 								Reset
 							</button>
