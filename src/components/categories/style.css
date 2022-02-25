@@ -9,6 +9,7 @@
 
     max-width: 1300px;
     margin: 0 auto;
+   
     }
 
 .wrapper{
@@ -26,7 +27,7 @@
 }
 
 .half{  
-    flex-basis: 23%;
+    flex-basis: 33%;
 }
 
 input,.selectpicker{
@@ -36,12 +37,45 @@ input,.selectpicker{
     border-radius: 5px;
     border: 1px solid rgb(167, 164, 164);
 }
-.datepicker{
-    display:flex;
-    justify-content: space-between;
-    width: 100%;
+ .event{
+     display:flex;
+   
+     
     
+     
+ }
+  .find{
+ 
+
+ }
+ 
+ .find button{
+   /*  margin-top: 20px;
+     padding-left: 40px;
+     padding-right: 40px;
+     padding-bottom:10px;
+     padding-top:10px;
+     font-size: 20px; */
+     margin-top: 20px;
+     padding: 12px 27px;
+     border-radius: 12px;
+     font-size: 1.1rem;
+     color: rgb(136, 116, 116);
+     background: rgb(235, 225, 227);
+     will-change: transform;
+     transform: translateY(-4px);
+     transition: transform
+        600ms
+        cubic-bezier(.3, .7, .4, 1);
+
+     
 }
+.find button:hover{
+    filter: brightness(110%);
+
+}
+
+  
 
 
 

@@ -1,6 +1,7 @@
 import './index.css';
 import { FaCalendar } from 'react-icons/fa';
 import { useEffect, useState, useRef } from 'react';
+import { useSelector } from 'react-redux';
 
 const Countdown = () => {
     const [timerDays, setTimerDays] = useState('00');
@@ -8,9 +9,16 @@ const Countdown = () => {
     const [timerMinutes, setTimerMinutes] = useState('00');
     const [timerSeconds, setTimerSeconds] = useState('00');
 
+    const events = useSelector(({ EventDuck }) => EventDuck.events);
+
+    console.log(events);
+
     let interval = useRef();
     const startTimer = () => {
-        const countdownDate = new Date('February 26, 2022 00:00:00').getTime();
+        const countdownDate = events.map((items) =>
+            new Date(items.event_details.start_date).getTime()
+        );
+        /*  const countdownDate = new Date('February 26, 2022 00:00:00').getTime(); */
         interval = setInterval(() => {
             const now = new Date().getTime();
             const distance = countdownDate - now;
@@ -40,7 +48,7 @@ const Countdown = () => {
 
     return (
         <>
-            <section className='timer_container'>
+            <div className='timer_container'>
                 <section className='timer'>
                     <span className='calendar_clock'>
                         <FaCalendar />
@@ -76,7 +84,7 @@ const Countdown = () => {
                         </section>
                     </div>
                 </section>
-            </section>
+            </div>
         </>
     );
 };
