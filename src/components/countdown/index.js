@@ -14,7 +14,9 @@ const Countdown = ({ latestEvents, currentEvent }) => {
     });
 
     const calculateTimeLeft = () => {
-        const difference = +new Date(latestEvents[currentEvent].event_details.start_date) - +new Date();
+        const difference =
+            +new Date(latestEvents[currentEvent].event_details.start_date) -
+            +new Date();
 
         let timeLeft = {};
 
@@ -23,12 +25,11 @@ const Countdown = ({ latestEvents, currentEvent }) => {
                 days: Math.floor(difference / (1000 * 60 * 60 * 24)),
                 hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
                 minutes: Math.floor((difference / 1000 / 60) % 60),
-                seconds: Math.floor((difference / 1000) % 60)
-            }
+                seconds: Math.floor((difference / 1000) % 60),
+            };
         }
-        return timeLeft
-    }
-
+        return timeLeft;
+    };
 
     return (
         <>

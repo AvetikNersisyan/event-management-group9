@@ -20,14 +20,15 @@
     border-end-end-radius: 50px;
 }
 
-.form-element{
+.form-elements{
     display: flex;
     justify-content: space-between; 
     
 }
 
 .half{  
-    flex-basis: 33%;
+    width: 33%;
+    
 }
 
 input,.selectpicker{
@@ -39,23 +40,21 @@ input,.selectpicker{
 }
  .event{
      display:flex;
+     justify-content: flex-end;
+ 
    
      
     
      
  }
   .find{
+      
  
 
  }
  
  .find button{
-   /*  margin-top: 20px;
-     padding-left: 40px;
-     padding-right: 40px;
-     padding-bottom:10px;
-     padding-top:10px;
-     font-size: 20px; */
+   
      margin-top: 20px;
      padding: 12px 27px;
      border-radius: 12px;
