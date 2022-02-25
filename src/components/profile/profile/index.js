@@ -100,8 +100,10 @@ const ProfileInfo = () => {
 							<div className='interests'>
 								<h4 className='detaile-classes'>Interestes</h4>
 								<div className='interests-items'>
-									{activeUser.interests?.map((e) => (
-										<span className='interests-item'>{e}</span>
+									{activeUser.interests?.map((e, id) => (
+										<span key={id} className='interests-item'>
+											{e}
+										</span>
 									))}
 								</div>
 							</div>
@@ -113,7 +115,7 @@ const ProfileInfo = () => {
 							{activeUser.interestedEvents.length > 0 ? (
 								<>
 									{activeUser.interestedEvents?.map((item) => (
-										<ProfileEvent event={item} />
+										<ProfileEvent key={item} event={item} />
 									))}
 								</>
 							) : (
@@ -130,7 +132,7 @@ const ProfileInfo = () => {
 							{filteredGoing.length > 0 ? (
 								<>
 									{filteredGoing.map((item) => (
-										<ProfileEvent event={item} />
+										<ProfileEvent key={item} event={item} />
 									))}
 								</>
 							) : (
@@ -147,7 +149,7 @@ const ProfileInfo = () => {
 							{filteredAllreadyGone.length > 0 ? (
 								<>
 									{filteredAllreadyGone?.map((item) => (
-										<ProfileEvent event={item} />
+										<ProfileEvent key={item} event={item} />
 									))}
 								</>
 							) : (

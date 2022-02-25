@@ -48,8 +48,20 @@ const Popup = ({ close, ev }) => {
 				.then((res) => res.ok && dispatch(decreaseSeats(seatFilterEvent[0])))
 				.catch((err) => console.log(err));
 
-			// dispatch(decreaseSeats({ eventId, seats: 1 }));
-			dispatch(setGoing({ userId: activeUser.id, ev }));
+			const newActiveUser = {
+				...activeUser,
+				going: [...activeUser.going, ev],
+			};
+
+			fetch(`${api}/users/${activeUser.id}`, {
+				method: 'PUT',
+				headers: {
+					'Content-type': 'application/json',
+				},
+				body: JSON.stringify(newActiveUser),
+			});
+
+			dispatch(setGoing(newActiveUser));
 			close();
 		}
 	};

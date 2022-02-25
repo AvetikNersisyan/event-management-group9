@@ -60,45 +60,15 @@ const UserDuck = (state = initialState, { type, payload }) => {
 			return { ...state, profilePic: payload };
 
 		case ADD_GOING:
-			const activeUser = {
-				...state.activeUser,
-				going: [...state.activeUser.going, payload.ev],
-			};
-
-			fetch(`${api}/users/${payload.userId}`, {
-				method: 'PUT',
-				headers: {
-					'Content-type': 'application/json',
-				},
-				body: JSON.stringify(activeUser),
-			});
-
 			return {
 				...state,
-				activeUser: { ...activeUser },
+				activeUser: payload,
 			};
 
 		case REMOVE_LIKED_EVENT:
-			const changedLikedEvents = payload.activeUser.interestedEvents.filter(
-				({ id }) => id !== payload.eventID
-			);
-
-			const changedUser = {
-				...state.activeUser,
-				interestedEvents: changedLikedEvents,
-			};
-
-			fetch(`${api}/users/${payload.activeUser.id}`, {
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(changedUser),
-			}).catch((err) => console.warn(err));
-
 			return {
 				...state,
-				activeUser: changedUser,
+				activeUser: payload,
 			};
 
 		case SET_LIKED_EVENT:
