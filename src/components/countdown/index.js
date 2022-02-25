@@ -1,38 +1,54 @@
 import './index.css';
 import { FaCalendar } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { useSelector } from 'react-redux';
 
-const Countdown = ({ latestEvents, currentEvent }) => {
-    const [timeLeft, setTimeLeft] = useState();
+const Countdown = () => {
+    const [timerDays, setTimerDays] = useState('00');
+    const [timerHours, setTimerHours] = useState('00');
+    const [timerMinutes, setTimerMinutes] = useState('00');
+    const [timerSeconds, setTimerSeconds] = useState('00');
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setTimeLeft(calculateTimeLeft());
-        }, 1000);
+    const events = useSelector(({ EventDuck }) => EventDuck.events);
 
-        return () => clearTimeout(timer);
-    });
+    console.log(events);
 
-    const calculateTimeLeft = () => {
-        const difference = +new Date(latestEvents[currentEvent].event_details.start_date) - +new Date();
+    let interval = useRef();
+    const startTimer = () => {
+        const countdownDate = events.map((items) =>
+            new Date(items.event_details.start_date).getTime()
+        );
+        /*  const countdownDate = new Date('February 26, 2022 00:00:00').getTime(); */
+        interval = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
 
-        let timeLeft = {};
-
-        if (difference > 0) {
-            timeLeft = {
-                days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-                hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-                minutes: Math.floor((difference / 1000 / 60) % 60),
-                seconds: Math.floor((difference / 1000) % 60)
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor(
+                (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+            );
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            if (distance < 0) {
+                clearInterval(interval.current);
+            } else {
+                setTimerDays(days);
+                setTimerHours(hours);
+                setTimerMinutes(minutes);
+                setTimerSeconds(seconds);
             }
-        }
-        return timeLeft
-    }
-
+        }, 1000);
+    };
+    useEffect(() => {
+        startTimer();
+        return () => {
+            clearInterval(interval.current);
+        };
+    });
 
     return (
         <>
-            <section className='timer_container'>
+            <div className='timer_container'>
                 <section className='timer'>
                     <span className='calendar_clock'>
                         <FaCalendar />
@@ -40,35 +56,35 @@ const Countdown = ({ latestEvents, currentEvent }) => {
                     <h4>Time Left for the Event</h4>
                     <div>
                         <section>
-                            <p>{timeLeft?.days}</p>
+                            <p>{timerDays}</p>
                             <p>
                                 <small>Days</small>
                             </p>
                         </section>
                         <span>:</span>
                         <section>
-                            <p>{timeLeft?.hours}</p>
+                            <p>{timerHours}</p>
                             <p>
                                 <small>Hours</small>
                             </p>
                         </section>
                         <span>:</span>
                         <section>
-                            <p>{timeLeft?.minutes}</p>
+                            <p>{timerMinutes}</p>
                             <p>
                                 <small>Minutes</small>
                             </p>
                         </section>
                         <span>:</span>
                         <section>
-                            <p>{timeLeft?.seconds}</p>
+                            <p>{timerSeconds}</p>
                             <p>
                                 <small>Seconds</small>
                             </p>
                         </section>
                     </div>
                 </section>
-            </section>
+            </div>
         </>
     );
 };

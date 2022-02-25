@@ -120,15 +120,19 @@ const UserDuck = (state = initialState, { type, payload }) => {
 			});
 			return { ...state, users: [...changedUsers] };
 		case SET_MESSAGE_READ:
-			const readIndex = state.activeUser.messages.findIndex(item => item.id === payload)
-			state.activeUser.messages[readIndex].status = true
-			const changedReadActiveUser = state.activeUser
-			return { ...state, activeUser: changedReadActiveUser }
+			const readIndex = state.activeUser.messages.findIndex(
+				(item) => item.id === payload
+			);
+			state.activeUser.messages[readIndex].status = true;
+			const changedReadActiveUser = state.activeUser;
+			return { ...state, activeUser: changedReadActiveUser };
 		case SET_MESSAGE_UNREAD:
-			const unreadIndex = state.activeUser.messages.findIndex(item => item.id === payload)
-			state.activeUser.messages[unreadIndex].status = false
-			const changedUnreadActiveUser = state.activeUser
-			return { ...state, activeUser: changedUnreadActiveUser }
+			const unreadIndex = state.activeUser.messages.findIndex(
+				(item) => item.id === payload
+			);
+			state.activeUser.messages[unreadIndex].status = false;
+			const changedUnreadActiveUser = state.activeUser;
+			return { ...state, activeUser: changedUnreadActiveUser };
 		default:
 			return state;
 	}
