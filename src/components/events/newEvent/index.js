@@ -371,7 +371,7 @@ const NewEvent = ({ ev }) => {
 							<span>{item.name}</span>
 							<button
 								className='remove-button'
-							// onClick={() => removeSpeaker(item.name)}
+								// onClick={() => removeSpeaker(item.name)}
 							>
 								X
 							</button>
