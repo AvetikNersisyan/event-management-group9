@@ -1,15 +1,19 @@
 import './index.css';
-
-import Feedback from '../feedback';
+import Populiar from './populiar';
+import Featured from './featured';
 import Slider from './slider';
-import Countdown from '../countdown';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
+	const events = useSelector(({ EventDuck }) =>
+		EventDuck.events.filter(({ img_url }) => img_url !== '')
+	);
+
 	return (
-		<div>
-			<Slider />
-			<Countdown />
-			<Feedback />
+		<div className='home global-container' >
+			<Slider events={events} />
+			<Populiar />
+			<Featured events={events} />
 		</div>
 	);
 };
