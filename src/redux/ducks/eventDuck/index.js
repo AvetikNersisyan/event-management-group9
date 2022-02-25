@@ -1,5 +1,4 @@
 import { createAction } from '../../../helper/redux-helper';
-import { api } from '../../../api';
 
 const SET_EVENTS = 'eventDuck/SET_EVENTS';
 const ADD_EVENT = 'eventDuck/ADD_EVENT';
@@ -30,21 +29,11 @@ const EventDuck = (state = initialState, { type, payload }) => {
 			return { ...state, events: [...state.events] };
 
 		case DECREASE_SEATS:
-			const seatFilterEvent = state.events.filter(
-				({ id }) => id === payload.eventId
+			const seatFilterEvent = state.events.map((event) =>
+				event.id === payload.eventId ? payload : event
 			);
 
-			seatFilterEvent[0].event_details.available_seats -= payload.seats;
-
-			fetch(`${api}/events/${payload.eventId}`, {
-				headers: {
-					'Content-type': 'application/json',
-				},
-				method: 'PUT',
-				body: JSON.stringify(seatFilterEvent[0]),
-			}).catch((err) => console.log(err));
-
-			return { ...state, events: [...state.events] };
+			return { ...state, events: seatFilterEvent };
 		case ADD_COMMENT:
 			let newEvent = state.events.map((item) => {
 				if (item.id === payload.id) {

@@ -8,7 +8,10 @@ import { api } from '../../../api';
 
 const Popup = ({ close, ev }) => {
 	const eventId = ev.id;
-	const activeUser = useSelector(({ UserDuck }) => UserDuck.activeUser);
+	const [activeUser, events] = useSelector(({ UserDuck, EventDuck }) => [
+		UserDuck.activeUser,
+		EventDuck.events,
+	]);
 
 	const [cardNumber, setCardNumber] = useState('');
 	const [cardHolder, setCardHolder] = useState('');
@@ -29,10 +32,23 @@ const Popup = ({ close, ev }) => {
 		e.preventDefault();
 
 		const isValid = validate(cardNumber, cardHolder, cardCVV, expDate, expYear);
-		console.log(isValid, 'isValid card');
 
 		if (isValid) {
-			dispatch(decreaseSeats({ eventId, seats: 1 }));
+			const seatFilterEvent = events.filter(({ id }) => id === eventId);
+
+			seatFilterEvent[0].event_details.available_seats -= 1;
+
+			fetch(`${api}/events/${eventId}`, {
+				headers: {
+					'Content-type': 'application/json',
+				},
+				method: 'PUT',
+				body: JSON.stringify(seatFilterEvent[0]),
+			})
+				.then((res) => res.ok && dispatch(decreaseSeats(seatFilterEvent[0])))
+				.catch((err) => console.log(err));
+
+			// dispatch(decreaseSeats({ eventId, seats: 1 }));
 			dispatch(setGoing({ userId: activeUser.id, ev }));
 			close();
 		}
