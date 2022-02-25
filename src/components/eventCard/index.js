@@ -23,8 +23,8 @@ const EventCard = ({
 			<div className='event-card-footer'>
 				<div>
 					<img width={15} src={hash} />
-					{tags.map((tag) => (
-						<span className='event-tags'>
+					{tags.map((tag, idx) => (
+						<span key={idx} className='event-tags'>
 							<span className='event-footer-info'>{tag}</span>
 						</span>
 					))}
