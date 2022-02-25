@@ -11,37 +11,19 @@ const Contact = ({ loggedIn, eventId }) => {
     const userSubjectInput = useRef(null)
 
     const handleSubmit = () => {
-        let newMessage = {
-            status: "unread",
-            eventId: eventId,
-            sender: nameInput.current.value,
-            emali: emaliInput.current.value,
-            subject: subjectInput.current.value,
-            message: messageInput.current.value
-        }
-        nameInput.current.value = ''
-        emaliInput.current.value = ''
-        subjectInput.current.value = ''
-        messageInput.current.value = ''
-    }
-
-    const handleUserSubmit = () => {
-        let newMessage = {
-            status: "false",
-            eventId: eventId,
-            sender: loggedIn.firstname + ' ' + loggedIn.lastname,
-            email: loggedIn.email,
-            subject: userSubjectInput.current.value,
-            message: userMessageInput.current.value
-        };
-        userSubjectInput.current.value = '';
-        userMessageInput.current.value = '';
-
-
-        // պետքա ճշտել ճիշտա թէ չէ 
         fetch(`${api}/users/100`)
             .then((res) => res.json())
             .then((admin) => {
+                let newMessage = {
+                    id: admin.messages.length,
+                    status: false,
+                    eventId: eventId,
+                    sender: nameInput.current.value,
+                    email: emaliInput.current.value,
+                    subject: subjectInput.current.value,
+                    message: messageInput.current.value,
+                    date: Date.now()
+                }
                 fetch(`${api}/users/100`, {
                     method: 'PUT',
                     headers: {
@@ -52,6 +34,46 @@ const Contact = ({ loggedIn, eventId }) => {
                         messages: [...admin.messages, newMessage],
                     }),
                 }).then(res => res.json())
+                    .then((res) => console.log(res))
+                    .then(() => {
+                        nameInput.current.value = ''
+                        emaliInput.current.value = ''
+                        subjectInput.current.value = ''
+                        messageInput.current.value = ''
+                    })
+            });
+    }
+
+    const handleUserSubmit = () => {
+
+
+        fetch(`${api}/users/100`)
+            .then((res) => res.json())
+            .then((admin) => {
+                let newMessage = {
+                    id: admin.messages.length,
+                    status: false,
+                    eventId: eventId,
+                    sender: loggedIn.firstname + ' ' + loggedIn.lastname,
+                    email: loggedIn.email,
+                    subject: userSubjectInput.current.value,
+                    message: userMessageInput.current.value,
+                    date: Date.now()
+                };
+                fetch(`${api}/users/100`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        ...admin,
+                        messages: [...admin.messages, newMessage],
+                    }),
+                }).then(res => res.json())
+                    .then(() => {
+                        userSubjectInput.current.value = '';
+                        userMessageInput.current.value = '';
+                    })
             });
     }
 

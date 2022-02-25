@@ -1,7 +1,16 @@
-.feedback {
-    margin-top: 150px;
-    margin-bottom: 50px;
-
+.feedback-popup {
+  border: 5px solid rgb(255, 180, 180);
+  border-radius: 50px;
+  position: absolute;
+  top: 200px;
+  left: 20vw ;
+  width: 60vw;
+  min-width: 300px;
+  padding: 2em;
+  display: block;
+  z-index: 11;
+  background: rgb(172, 172, 172);
+  transition: ease-out 1s;
 }
 
    h3{
@@ -35,14 +44,13 @@
     
    
     .toggle{
-      width: 150px;
-      background-color: #fee6e3;
-      border: 2px solid #111;
-      border-radius: 8px;
+      position: fixed;
+      z-index: 20;
+      top: 45%;
+      left: 0;
+      width: 48px;
       cursor: pointer;
-      font-size: 16px;
-      height: 48px;
-      border: 1px solid gray;
+      height: 150px;
            
     }
 
@@ -81,9 +89,7 @@
      
           
    input{
-     width: 30%;
-   
-    
+     width: 70%;
    }
 
 
@@ -93,4 +99,6 @@
     font-size: 24px;
 }
    
-    
+.box {
+  border: 5px solid black;
+}

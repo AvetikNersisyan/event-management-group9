@@ -6,15 +6,18 @@ import { sliderCount } from '../../../helper/constants';
 import './style.css';
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
 import Countdown from '../../countdown'
-const Slider = () => {
-	const events = useSelector(({ EventDuck }) =>
-		EventDuck.events.filter(({ img_url }) => img_url !== '')
-	);
 
+
+const Slider = ({ events }) => {
+	const filteredEvents = events.filter(
+		(items) =>
+			new Date(items.event_details.start_date).getTime() >
+			new Date().getTime()
+	)
 	const latestEvents =
-		events.length >= sliderCount.QUANTITY
-			? events.slice(events.length - sliderCount.QUANTITY)
-			: events;
+		filteredEvents.length >= sliderCount.QUANTITY
+			? filteredEvents.slice(filteredEvents.length - sliderCount.QUANTITY)
+			: filteredEvents;
 
 	const [currentEvent, setCurrentEvent] = useState(0);
 
@@ -40,32 +43,35 @@ const Slider = () => {
 	useEffect(() => {
 		let id = setTimeout(() => {
 			nextClickHandler();
-		}, 3000);
+		}, 5000);
 
 		return () => clearTimeout(id);
 	});
 
 	return (
-		<div className={'slider-wrapper'}>
-			<FaArrowAltCircleLeft
-				onClick={prevClickHandler}
-				className={'left-arrow'}
-			/>
-			{latestEvents.map(({ img_url }, idx) => {
-				return (
-					<div className={idx === currentEvent ? 'slide active' : 'slide'}>
-						{idx === currentEvent && (
-							<img src={img_url} className={'slide-img'} />
-						)}
-					</div>
-				);
-			})}
-			<FaArrowAltCircleRight
-				onClick={nextClickHandler}
-				className={'right-arrow'}
-			/>
+		<>
+			<div className={'slider-wrapper'}>
+				<FaArrowAltCircleLeft
+					onClick={prevClickHandler}
+					className={'left-arrow'}
+				/>
+				{latestEvents.map(({ img_url }, idx) => {
+					return (
+						<div className={idx === currentEvent ? 'slide active' : 'slide'}>
+							{idx === currentEvent && (
+								<img src={img_url} className={'slide-img'} />
+							)}
+						</div>
+					);
+				})}
+				<FaArrowAltCircleRight
+					onClick={nextClickHandler}
+					className={'right-arrow'}
+				/>
 
-		</div>
+			</div>
+			<Countdown latestEvents={latestEvents} currentEvent={currentEvent} />
+		</>
 	);
 };
 

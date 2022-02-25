@@ -1,29 +1,19 @@
-import Search from './search/index';
 import './index.css';
-/* import Populiar from './populiar';
- import Featured from './featured';
-import Review from '../review';  */
-import Feedback from '../feedback';
+import Populiar from './populiar';
+import Featured from './featured';
 import Slider from './slider';
-import Countdown from '../countdown';
-
-import Categories from '../categories'
+import { useSelector } from 'react-redux';
 
 const Home = () => {
+	const events = useSelector(({ EventDuck }) =>
+		EventDuck.events.filter(({ img_url }) => img_url !== '')
+	);
+
 	return (
-		<div /* className='global-container' */>
-			{/* <div className='search_wrapper'>
-				<Search />;
-			</div> */}
-			{/* <Populiar />
-			<Featured />
-			<Review />  */}
-			<Categories />
-			<Slider />
-			<Countdown />
-
-
-			<Feedback />
+		<div className='home global-container' >
+			<Slider events={events} />
+			<Populiar />
+			<Featured events={events} />
 		</div>
 	);
 };

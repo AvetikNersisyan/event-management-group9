@@ -24,7 +24,6 @@ const EventCard = ({ ev }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const activeUser = useSelector(({ UserDuck }) => UserDuck.activeUser); //TODO: get active user to show delete button
-
 	const [isEditing, setIsEditing] = useState(false);
 	const [favBtnId, setFavBtnId] = useState('favouriteBtn');
 
@@ -116,6 +115,7 @@ const EventCard = ({ ev }) => {
 
 	return (
 		<>
+			<div></div>
 			{isEditing && <EditEventPopup editHandler={editHandler} ev={ev} />}
 
 			<div className={'event-vertical'}>

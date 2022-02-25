@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Categories from '../categories';
@@ -60,9 +60,9 @@ const AllEvents = () => {
 		filtered = filtered.filter((event) => {
 			return (
 				new Date(event.event_details.start_date).getTime() >
-					new Date(obj.start_date).getTime() &&
+				new Date(obj.start_date).getTime() &&
 				new Date(event.event_details.start_date).getTime() <
-					new Date(obj.end_date).getTime()
+				new Date(obj.end_date).getTime()
 			);
 		});
 

@@ -8,20 +8,11 @@ import { useSelector } from 'react-redux';
 const Index = () => {
 	const activeUser = useSelector((state) => state.UserDuck.activeUser);
 	const [click, setClick] = useState(false);
-	const [dropdown, setDropdown] = useState(false);
 	const handleClick = () => {
 		setClick(!click);
 	};
 	const closeMobileMenu = () => {
 		setClick(false);
-	};
-
-	const onMouseEnter = () => {
-		setDropdown(true);
-	};
-
-	const onMouseLeave = () => {
-		setDropdown(false);
 	};
 
 	return (
@@ -38,8 +29,6 @@ const Index = () => {
 					<ul className={click ? 'nav-menu-active' : 'nav-menu'}>
 						<li
 							className='nav-item'
-							onMouseEnter={onMouseEnter}
-							onMouseLeave={onMouseLeave}
 						>
 							<NavLink to={'/'} className='nav-links' onClick={closeMobileMenu}>
 								Home
@@ -81,7 +70,7 @@ const Index = () => {
 									className='nav-links'
 									onClick={closeMobileMenu}
 								>
-									Add new Event <i className='fas fa-caret-down' />
+									Add new Event
 								</NavLink>
 							</li>
 						) : (
@@ -89,20 +78,6 @@ const Index = () => {
 						)}
 					</ul>
 				</div>
-
-				{/*<div className={'scroll-fixed'}>*/}
-				{/*	<div className={'navbar'}>*/}
-				{/*		<NavLink to={'/'}> Home </NavLink>*/}
-				{/*		<NavLink to={'/events'}> Events </NavLink>*/}
-				{/*		<NavLink to={'/profile'}> Profile </NavLink>*/}
-				{/*		<NavLink to={'/categories'}> Categories </NavLink>*/}
-
-				{/*		{true && (*/}
-				{/*			<NavLink to={'/new-event'} className={'addEvent-btn btn'}>*/}
-				{/*				{' '}*/}
-				{/*				ADD EVENT{' '}*/}
-				{/*			</NavLink>*/}
-				{/*		)}*/}
 			</div>
 		</div>
 	);

@@ -5,6 +5,7 @@ import Profile from './components/profile';
 import Events from './components/events';
 import Index from './components/header';
 import Categories from './components/categories';
+import Feedback from './components/feedback'
 
 
 import { useEffect } from 'react';
@@ -24,6 +25,7 @@ import { setFeedbacks } from './redux/ducks/feedbackDuck';
 
 function App() {
 	const dispatch = useDispatch();
+	const activeUser = useSelector((state) => state.UserDuck.activeUser)
 
 	useEffect(() => {
 		fetch(`${api}/events`)
@@ -44,9 +46,9 @@ function App() {
 			})
 	}, []);
 
-	const activeUser = useSelector(({ UserDuck }) => UserDuck.activeUser); //TODO: get active user to show delete button
-
 	const isAdminLogged = activeUser && activeUser.type === 'admin';
+
+
 
 	return (
 		<div className='App'>
@@ -66,6 +68,8 @@ function App() {
 				<Route path={'*'} element={<Error404 />} />
 				<Route path={'/about'} element={<About />} />
 			</Routes>
+
+			{!isAdminLogged && <Feedback activeUser={activeUser} />}
 
 			<Footer />
 		</div>
