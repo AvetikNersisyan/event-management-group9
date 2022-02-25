@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -23,7 +23,11 @@ const EventCard = ({ ev }) => {
 	const { title, description, img_url, tags, id } = ev;
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const activeUser = useSelector(({ UserDuck }) => UserDuck.activeUser); //TODO: get active user to show delete button
+	const activeUser = useSelector(({ UserDuck }) => UserDuck.activeUser);
+
+	const changedLikedEvents = useMemo(() => {
+		return activeUser.interestedEvents.filter(({ id }) => id !== ev.id);
+	}, [ev.id]);
 
 	const [isEditing, setIsEditing] = useState(false);
 	const [favBtnId, setFavBtnId] = useState('favouriteBtn');
@@ -33,21 +37,19 @@ const EventCard = ({ ev }) => {
 	const dislikeEvent = () => {
 		setFavBtnId('favouriteBtn');
 
+		const changedUser = {
+			...activeUser,
+			interestedEvents: changedLikedEvents,
+		};
+
 		fetch(`${api}/users/${activeUser.id}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify({
-				...activeUser,
-				interestedEvents: [...activeUser.interestedEvents, ev],
-			}),
+			body: JSON.stringify(changedUser),
 		})
-			.then(
-				(res) =>
-					res.ok &&
-					dispatch(removeLike({ activeUser: activeUser, eventID: ev.id }))
-			)
+			.then((res) => res.ok && dispatch(removeLike(changedUser)))
 			.catch((err) => console.warn(err));
 	};
 
