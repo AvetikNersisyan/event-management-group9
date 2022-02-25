@@ -19,11 +19,11 @@ const ProfileInfo = () => {
 
 	const filteredAllreadyGone = activeUser?.going?.filter(
 		(items) =>
-			new Date(items.event_details.start_date).getTime() < new Date().getTime()
+			new Date(items?.event_details.start_date).getTime() < new Date().getTime()
 	);
 	const filteredGoing = activeUser?.going?.filter(
 		(items) =>
-			new Date(items.event_details.start_date).getTime() > new Date().getTime()
+			new Date(items?.event_details.start_date).getTime() > new Date().getTime()
 	);
 
 	const choosePhoto = async (e) => {
@@ -98,7 +98,7 @@ const ProfileInfo = () => {
 								{activeUser.firstname} {activeUser.lastname}
 							</h1>
 							<div className='interests'>
-								<h3 className='detaile-classes'>Interestes</h3>
+								<h4 className='detaile-classes'>Interestes</h4>
 								<div className='interests-items'>
 									{activeUser.interests?.map((e) => (
 										<span className='interests-item'>{e}</span>
@@ -117,10 +117,10 @@ const ProfileInfo = () => {
 									))}
 								</>
 							) : (
-								<h3 style={{ margin: '30px' }}>
+								<h4 style={{ margin: '30px', fontSize: '20px' }}>
 									You dont't interested in some event, but you can{' '}
 									<NavLink to={'/events'}>ADD</NavLink> it
-								</h3>
+								</h4>
 							)}
 						</div>
 					</div>
@@ -134,10 +134,10 @@ const ProfileInfo = () => {
 									))}
 								</>
 							) : (
-								<h3 style={{ margin: '30px' }}>
+								<h4 style={{ margin: '30px', fontSize: '20px' }}>
 									You dont't have any event for going, but you can{' '}
 									<NavLink to={'/events'}>ADD</NavLink> it
-								</h3>
+								</h4>
 							)}
 						</div>
 					</div>
@@ -151,10 +151,10 @@ const ProfileInfo = () => {
 									))}
 								</>
 							) : (
-								<h3 style={{ margin: '30px' }}>
+								<h4 style={{ margin: '30px', fontSize: '20px' }}>
 									You never gone at any event with this platform, but you can{' '}
 									<NavLink to={'/events'}>ADD</NavLink> it
-								</h3>
+								</h4>
 							)}
 						</div>
 					</div>
