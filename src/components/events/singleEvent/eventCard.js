@@ -82,7 +82,6 @@ const EventCard = ({ ev }) => {
 							interestedEvents: [...activeUser.interestedEvents, ev],
 						})
 					);
-					console.log(res);
 				})
 				.catch((err) => console.log(err));
 			setFavBtnId('likedBtn');
@@ -186,5 +185,3 @@ const EventCard = ({ ev }) => {
 };
 
 export default EventCard;
-
-
