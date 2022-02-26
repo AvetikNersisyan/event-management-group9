@@ -1,5 +1,4 @@
 import { createAction } from '../../../helper/redux-helper';
-import { logDOM } from '@testing-library/react';
 
 const SET_EVENTS = 'eventDuck/SET_EVENTS';
 const ADD_EVENT = 'eventDuck/ADD_EVENT';
@@ -48,15 +47,12 @@ const EventDuck = (state = initialState, { type, payload }) => {
 			});
 			return { ...state, events: newEvent };
 		case ADD_RATING:
-			console.log(payload, 'payload');
 			const newRatedEvents = state.events.map((item) => {
 				if (item.id === payload.eventId) {
 					item.rate = {
 						sum: payload.rate.sum,
 						count: payload.rate.count,
 					};
-
-					console.log(item, 'item rate changed');
 				}
 				return item;
 			});
