@@ -1,8 +1,11 @@
-import Iframe from 'react-iframe';
-import Popup from '../popup';
 import { useCallback, useState } from 'react';
-import Rating from './rating/index';
+
 import { useSelector } from 'react-redux';
+import Iframe from 'react-iframe';
+
+import Popup from '../popup';
+import Rating from './rating/index';
+
 
 const Sidebar = ({
 	ev,

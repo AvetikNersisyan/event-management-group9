@@ -1,10 +1,14 @@
 import { memo, useState, useRef, useCallback } from 'react';
+
 import { useDispatch } from 'react-redux'
+import { FaStar } from 'react-icons/fa';
+
 import { addFeedback } from '../../redux/ducks/feedbackDuck'
 import { api } from '../../api.js'
 import feedback_img from '../../assets/img/feedback.png'
+
 import './index.css';
-import { FaStar } from 'react-icons/fa';
+
 const colors = {
 	orange: '#471d1b',
 	grey: '#a9a9a9',
@@ -24,50 +28,58 @@ const Feedback = ({ activeUser }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		let today = new Date()
-		let newFeedback = {
-			sender: nameInput.current.value,
-			email: emailInput.current.value,
-			text: textInput.current.value,
-			date: Date.now(),
-			time: today.getHours() + ':' + today.getMinutes()
-		}
-		fetch(`${api}/feedbacks`, {
-			method: "POST",
-			body: JSON.stringify(newFeedback), headers: {
-				"Content-type": "application/json; charset=UTF-8"
+		if (!nameInput.current.value || !emailInput.current.value || !textInput.current.value) {
+			alert('Please fill in all fields')
+		} else {
+			let today = new Date()
+			let newFeedback = {
+				sender: nameInput.current.value,
+				email: emailInput.current.value,
+				text: textInput.current.value,
+				date: Date.now(),
+				time: today.getHours() + ':' + today.getMinutes()
 			}
-		})
-			.then(response => response.json())
-			.then(json => {
-				console.log(json);
-				dispatch(addFeedback(json))
-				setIsOpen(false)
+			fetch(`${api}/feedbacks`, {
+				method: "POST",
+				body: JSON.stringify(newFeedback), headers: {
+					"Content-type": "application/json; charset=UTF-8"
+				}
 			})
+				.then(response => response.json())
+				.then(json => {
+					console.log(json);
+					dispatch(addFeedback(json))
+					setIsOpen(false)
+				})
+		}
 	};
 
 	const handleSubmitActive = (e) => {
 		e.preventDefault();
-		let today = new Date()
-		let loggedInFeedback = {
-			sender: activeUser?.firstname + ' ' + activeUser?.lastname,
-			email: activeUser?.email,
-			text: textInput.current.value,
-			date: Date.now(),
-			time: today.getHours() + ':' + today.getMinutes()
-		}
-		fetch(`${api}/feedbacks`, {
-			method: "POST",
-			body: JSON.stringify(loggedInFeedback), headers: {
-				"Content-type": "application/json; charset=UTF-8"
+		if (!textInput.current.value) {
+			alert('Please fill in all fields')
+		} else {
+			let today = new Date()
+			let loggedInFeedback = {
+				sender: activeUser?.firstname + ' ' + activeUser?.lastname,
+				email: activeUser?.email,
+				text: textInput.current.value,
+				date: Date.now(),
+				time: today.getHours() + ':' + today.getMinutes()
 			}
-		})
-			.then(response => response.json())
-			.then(json => {
-				console.log(json);
-				dispatch(addFeedback(json))
-				setIsOpen(false)
+			fetch(`${api}/feedbacks`, {
+				method: "POST",
+				body: JSON.stringify(loggedInFeedback), headers: {
+					"Content-type": "application/json; charset=UTF-8"
+				}
 			})
+				.then(response => response.json())
+				.then(json => {
+					console.log(json);
+					dispatch(addFeedback(json))
+					setIsOpen(false)
+				})
+		}
 	}
 
 	const handleClick = (value) => {

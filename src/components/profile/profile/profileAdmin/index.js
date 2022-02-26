@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -5,7 +6,6 @@ import {
 	setMessageUnread,
 } from '../../../../redux/ducks/userDuck';
 import { api } from '../../../../api';
-import { useState } from 'react';
 
 const ProfileAdmin = ({ activeUser }) => {
 	const [messages, setMessages] = useState(activeUser.messages);

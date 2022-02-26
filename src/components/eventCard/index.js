@@ -1,6 +1,6 @@
+import { MAX_DESCRIPTION } from '../../helper/constants';
 import hash from '../../assets/img/hash.png';
 import locationCard from '../../assets/img/locationCard.png';
-import { MAX_DESCRIPTION } from '../../helper/constants';
 
 const EventCard = ({
 	item: { id, img_url, title, description, tags, event_details },

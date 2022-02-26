@@ -1,8 +1,10 @@
-import './index.css';
+import { useSelector } from 'react-redux';
+
 import Populiar from './populiar';
 import Featured from './featured';
 import Slider from './slider';
-import { useSelector } from 'react-redux';
+
+import './index.css';
 
 const Home = () => {
 	const events = useSelector(({ EventDuck }) =>

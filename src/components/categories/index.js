@@ -1,9 +1,8 @@
-/* eslint-disable react/jsx-no-undef */
-import './style.css';
-import { memo, useRef, useState } from 'react';
-import DatePicker from 'react-datepicker';
+import { memo, useRef } from 'react';
+
 import 'react-datepicker/dist/react-datepicker.css';
-import { useSelector } from 'react-redux';
+
+import './style.css';
 
 import { eventTypes } from '../../helper/constants';
 

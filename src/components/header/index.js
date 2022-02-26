@@ -1,9 +1,11 @@
-import { NavLink } from 'react-router-dom';
-import './index.css';
-
 import { useState } from 'react';
-import Logo from '../../assets/img/logo.png';
+
+import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
+import Logo from '../../assets/img/logo.png';
+
+import './index.css';
 
 const Index = () => {
 	const activeUser = useSelector((state) => state.UserDuck.activeUser);
