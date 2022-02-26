@@ -6,7 +6,6 @@ import Iframe from 'react-iframe';
 import Popup from '../popup';
 import Rating from './rating/index';
 
-
 const Sidebar = ({
 	ev,
 	start_date,
@@ -29,10 +28,11 @@ const Sidebar = ({
 
 	return (
 		<div className={'sidebar'}>
-			{
-				activeUser?.type === 'admin' ? '' : <button onClick={onBuyTicket}> ATTEND </button>
-			}
-
+			{activeUser?.type === 'admin' ? (
+				''
+			) : (
+				<button onClick={onBuyTicket}> ATTEND </button>
+			)}
 
 			<div className={'event-details'}>
 				{isOpen && <Popup ev={ev} close={onPopupClose} />}

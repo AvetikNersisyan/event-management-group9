@@ -134,7 +134,7 @@ const ProfileInfo = () => {
 							{filteredGoing.length > 0 ? (
 								<>
 									{filteredGoing.map((item) => (
-										<ProfileEvent key={item} event={item} />
+										<ProfileEvent key={item.id} event={item} />
 									))}
 								</>
 							) : (

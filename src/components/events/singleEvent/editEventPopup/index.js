@@ -1,108 +1,3 @@
-// import { useRef, useState } from 'react';
-// import './style.css';
-// import NewEvent from '../../newEvent';
-// import { eventTypes } from '../../../../helper/constants';
-//
-// const EditEventPopup = ({ ev }) => {
-// 	const [title, newTitle] = useState(ev.title || '');
-// 	const [desc, newDesc] = useState(ev.description || '');
-// 	const [image, newImage] = useState(ev.img_url || '');
-// 	const [type, newType] = useState(ev.type || '');
-// 	const [tag, setTag] = useState(ev.tags);
-//
-// 	const newTitleHandler = (e) => newTitle(e.target.value);
-//
-// 	const descHandler = (e) => newDesc(e.target.value);
-//
-// 	const handleEventType = (e) => newType(e.target.value);
-//
-// 	const removeTag = (e) => {
-// 		let id = e.item;
-// 		const newInt = tag.filter((item) => item !== id);
-// 		setTag(newInt);
-// 	};
-//
-// 	const addTag = () => {
-// 		let newTag = tagElement.current.value;
-// 		if (newTag === '') {
-// 			alert('Please type some tag');
-// 		} else {
-// 			setTag([...tag, newTag]);
-// 			tagElement.current.value = '';
-// 		}
-// 	};
-//
-// 	return (
-// 		<div className={'edit-popup'}>
-// 			{/*<NewEvent ev={ev} />*/}
-// 			<input value={title} onChange={newTitleHandler} />
-// 			<textarea value={desc} onChange={descHandler} />
-// 			<select
-// 				// className='new-event-title-inputs'
-// 				value={type}
-// 				onChange={handleEventType}
-// 			>
-// 				{eventTypes.map((type) => (
-// 					<option key={type} value={type}>
-// 						{type}
-// 					</option>
-// 				))}
-// 			</select>
-//
-// 			<div>
-// 				{tag?.map((item) => (
-// 					<span className='tag-item'>
-// 						<span>{item}</span>
-// 						<button
-// 							className='remove-button'
-// 							onClick={() => removeTag({ item })}
-// 						>
-// 							X
-// 						</button>
-// 					</span>
-// 				))}
-// 			</div>
-//
-// 			<div className='tag-input'>
-// 				<input
-// 					className='new-event-inputs'
-// 					type='search'
-// 					ref={tagElement}
-// 					placeholder='tags..'
-// 				/>
-// 				<button className='button' onClick={addTag}>
-// 					Add
-// 				</button>
-// 			</div>
-//
-// 			<div className={'new-event-stroks'}>
-// 				<input className='new-event-inputs' ref={startDate} type={'date'} />
-// 				<input className='new-event-inputs' ref={endDate} type={'date'} />
-// 				<input className='new-event-inputs' ref={startTime} type={'time'} />
-// 				<input className='new-event-inputs' ref={endTime} type={'time'} />
-// 			</div>
-// 			<div className='new-event-stroks'>
-// 				<input
-// 					className='new-event-inputs'
-// 					type='number'
-// 					ref={priceInput}
-// 					placeholder={"ticket's price"}
-// 				/>
-// 				<input
-// 					className='new-event-inputs'
-// 					min={0}
-// 					ref={ticketCountInput}
-// 					type={'number'}
-// 					placeholder={'avavilable tickets'}
-// 				/>
-// 			</div>
-// 		</div>
-// 	);
-// };
-//
-// export default EditEventPopup;
-
-
 import { useRef, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -113,25 +8,20 @@ import { eventHandler, toBase64 } from '../../../../helper/utils';
 import { addEvent } from '../../../../redux/ducks/eventDuck';
 import { eventTypes, professionTypes } from '../../../../helper/constants';
 import AddPerson from '../../newEvent/addPerson';
-import AddCompany from '../../newEvent/addCompany';
 
 import './style.css';
 
 const EditEventPopup = ({ ev, editHandler }) => {
 	const tagElement = useRef(null);
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
 	const data = useSelector(({ PersonsDuck }) => PersonsDuck.persons);
-	const state = useSelector((state) => state);
+	// const state = useSelector((state) => state);
 
-	const [persons, setPersons] = useState(
-		data.filter((item) => item.type === 'person')
-	);
-	const [companys, setCompanys] = useState(
-		data.filter((item) => item.type === 'company')
-	);
-	const [personInput, setPersonInput] = useState('');
-	const [companyInput, setCompanyInput] = useState('');
+	// const [persons] = useState(data.filter((item) => item.type === 'person'));
+	// const [companys] = useState(data.filter((item) => item.type === 'company'));
+	// const [personInput, setPersonInput] = useState('');
+	// const [companyInput, setCompanyInput] = useState('');
 
 	const [eventType, setEventType] = useState(ev.type || '');
 
@@ -164,7 +54,7 @@ const EditEventPopup = ({ ev, editHandler }) => {
 	const [addPerson, setAddPerson] = useState(false);
 	const [profession, setProfession] = useState('');
 
-	const [addOrganizator, setAddOrganizator] = useState(false);
+	// const [addOrganizator, setAddOrganizator] = useState(false);
 
 	const dispatch = useDispatch();
 
@@ -263,52 +153,52 @@ const EditEventPopup = ({ ev, editHandler }) => {
 			});
 	};
 
-	const handleAddCompany = (obj) => {
-		let newCompany = {
-			type: 'company',
-			name: obj.companyNameInput,
-			fieldOfActivity: obj.fieldOfActivityInput,
-			about: obj.aboutCompanyInput,
-		};
-		fetch(`${api}/persons`, {
-			method: 'POST',
-			body: JSON.stringify(newCompany),
-			headers: {
-				'Content-type': 'application/json',
-			},
-		})
-			.then((response) => response.json())
-			.then((json) => setNewEventSpeakers([...newEventSpeakers, json]))
-			.then(() => {
-				setAddOrganizator(false);
-			});
-	};
+	// const handleAddCompany = (obj) => {
+	// 	let newCompany = {
+	// 		type: 'company',
+	// 		name: obj.companyNameInput,
+	// 		fieldOfActivity: obj.fieldOfActivityInput,
+	// 		about: obj.aboutCompanyInput,
+	// 	};
+	// 	fetch(`${api}/persons`, {
+	// 		method: 'POST',
+	// 		body: JSON.stringify(newCompany),
+	// 		headers: {
+	// 			'Content-type': 'application/json',
+	// 		},
+	// 	})
+	// 		.then((response) => response.json())
+	// 		.then((json) => setNewEventSpeakers([...newEventSpeakers, json]))
+	// 		.then(() => {
+	// 			setAddOrganizator(false);
+	// 		});
+	// };
 
-	const changePersonInput = (e) => {
-		setPersonInput(e.target.value);
-	};
+	// const changePersonInput = (e) => {
+	// 	setPersonInput(e.target.value);
+	// };
 
-	const addSelectedPerson = () => {
-		if (personInput) {
-			let thisPerson = persons.filter((e) => e.name === personInput);
-			setNewEventSpeakers([...newEventSpeakers, thisPerson[0]]);
-		} else {
-			alert('Please choose one option');
-		}
-	};
+	// const addSelectedPerson = () => {
+	// 	if (personInput) {
+	// 		let thisPerson = persons.filter((e) => e.name === personInput);
+	// 		setNewEventSpeakers([...newEventSpeakers, thisPerson[0]]);
+	// 	} else {
+	// 		alert('Please choose one option');
+	// 	}
+	// };
 
-	const changeCompanyInput = (e) => {
-		setCompanyInput(e.target.value);
-	};
+	// const changeCompanyInput = (e) => {
+	// 	setCompanyInput(e.target.value);
+	// };
 
-	const addChosenCompany = () => {
-		if (companyInput) {
-			let thisCompany = companys.filter((e) => e.name === companyInput);
-			setNewEventSpeakers([...newEventSpeakers, thisCompany[0]]);
-		} else {
-			alert('Please choose one option');
-		}
-	};
+	// const addChosenCompany = () => {
+	// 	if (companyInput) {
+	// 		let thisCompany = companys.filter((e) => e.name === companyInput);
+	// 		setNewEventSpeakers([...newEventSpeakers, thisCompany[0]]);
+	// 	} else {
+	// 		alert('Please choose one option');
+	// 	}
+	// };
 
 	return (
 		<div className={'edit-popup'}>
@@ -445,28 +335,6 @@ const EditEventPopup = ({ ev, editHandler }) => {
 					<img className={'image-preview'} src={image} alt={'image'} />
 				</div>
 
-				{/*<div className='new-event-stroks'>*/}
-				{/*	<div>*/}
-				{/*		<select*/}
-				{/*			className='new-event-selector'*/}
-				{/*			value={personInput}*/}
-				{/*			onChange={changePersonInput}*/}
-				{/*		>*/}
-				{/*			{persons.map((person) => (*/}
-				{/*				<option key={person.id} value={person.name}>*/}
-				{/*					{person.name + ' ' + person.lastName}*/}
-				{/*				</option>*/}
-				{/*			))}*/}
-				{/*		</select>*/}
-				{/*		<button className='button' onClick={addSelectedPerson}>*/}
-				{/*			Add*/}
-				{/*		</button>*/}
-				{/*	</div>*/}
-				{/*	<button className='button' onClick={() => setAddPerson(!addPerson)}>*/}
-				{/*		{addPerson ? 'Close adding' : 'Add New Person'}*/}
-				{/*	</button>*/}
-				{/*</div>*/}
-
 				{addPerson ? (
 					<AddPerson
 						profession={profession}
@@ -477,50 +345,6 @@ const EditEventPopup = ({ ev, editHandler }) => {
 				) : (
 					''
 				)}
-
-				{/*<div className='new-event-stroks'>*/}
-				{/*	<div>*/}
-				{/*		<select*/}
-				{/*			className='new-event-selector'*/}
-				{/*			value={companyInput}*/}
-				{/*			onChange={changeCompanyInput}*/}
-				{/*		>*/}
-				{/*			{companys.map((person) => (*/}
-				{/*				<option key={person.id} value={person.name}>*/}
-				{/*					{person.name}*/}
-				{/*				</option>*/}
-				{/*			))}*/}
-				{/*		</select>*/}
-				{/*		<button className='button' onClick={addChosenCompany}>*/}
-				{/*			Add*/}
-				{/*		</button>*/}
-				{/*	</div>*/}
-				{/*	<button*/}
-				{/*		className='button'*/}
-				{/*		onClick={() => setAddOrganizator(!addOrganizator)}*/}
-				{/*	>*/}
-				{/*		{addOrganizator ? 'Close adding' : 'Add New Organizator'}*/}
-				{/*	</button>*/}
-				{/*</div>*/}
-				{/*{addOrganizator ? (*/}
-				{/*	<AddCompany handleAddCompany={(obj) => handleAddCompany(obj)} />*/}
-				{/*) : (*/}
-				{/*	''*/}
-				{/*)}*/}
-
-				{/*<div>*/}
-				{/*	{newEventSpeakers?.map((item, index) => (*/}
-				{/*		<span className='tag-item' key={index}>*/}
-				{/*			<span>{item.name}</span>*/}
-				{/*			<button*/}
-				{/*				className='remove-button'*/}
-				{/*				// onClick={() => removeSpeaker(item.name)}*/}
-				{/*			>*/}
-				{/*				X*/}
-				{/*			</button>*/}
-				{/*		</span>*/}
-				{/*	))}*/}
-				{/*</div>*/}
 
 				<button className={'button'} type={'submit'} onClick={submitHandler}>
 					Save event

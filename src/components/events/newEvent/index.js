@@ -17,12 +17,8 @@ const NewEvent = () => {
 	const navigate = useNavigate();
 
 	const data = useSelector((state) => state.PersonsDuck.persons);
-	const [persons, setPersons] = useState(
-		data.filter((item) => item.type === 'person')
-	);
-	const [companys, setCompanys] = useState(
-		data.filter((item) => item.type === 'company')
-	);
+	const [persons] = useState(data.filter((item) => item.type === 'person'));
+	const [companys] = useState(data.filter((item) => item.type === 'company'));
 	const [personInput, setPersonInput] = useState('');
 	const [companyInput, setCompanyInput] = useState('');
 
@@ -40,6 +36,10 @@ const NewEvent = () => {
 	const addressInput = useRef(null);
 	const ticketCountInput = useRef(null);
 	const priceInput = useRef(null);
+	const selectRef = useRef(null);
+
+	console.log(selectRef, 'selectRef');
+
 	const [image, setImage] = useState('');
 	const [newEventSpeakers, setNewEventSpeakers] = useState([]);
 
@@ -177,7 +177,7 @@ const NewEvent = () => {
 		setPersonInput(e.target.value);
 	};
 
-	const addChoosenPerson = () => {
+	const addChosenPerson = () => {
 		if (personInput) {
 			let thisPerson = persons.filter((e) => e.name === personInput);
 			setNewEventSpeakers([...newEventSpeakers, thisPerson[0]]);
@@ -310,6 +310,7 @@ const NewEvent = () => {
 				<div className='new-event-stroks'>
 					<div>
 						<select
+							ref={selectRef}
 							className='new-event-selector'
 							value={personInput}
 							onChange={changePersonInput}
@@ -320,7 +321,7 @@ const NewEvent = () => {
 								</option>
 							))}
 						</select>
-						<button className='button' onClick={addChoosenPerson}>
+						<button className='button' onClick={addChosenPerson}>
 							Add
 						</button>
 					</div>
@@ -373,12 +374,7 @@ const NewEvent = () => {
 					{newEventSpeakers?.map((item, index) => (
 						<span className='tag-item' key={index}>
 							<span>{item.name}</span>
-							<button
-								className='remove-button'
-							// onClick={() => removeSpeaker(item.name)}
-							>
-								X
-							</button>
+							<button className='remove-button'>X</button>
 						</span>
 					))}
 				</div>
