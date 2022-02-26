@@ -442,8 +442,8 @@
         }
       ],
       "rate": {
-        "sum": 17.6,
-        "count": 8
+        "sum": 24.2,
+        "count": 11
       },
       "id": 4
     },
@@ -803,11 +803,7 @@
       "interestedEvents": [],
       "allreadyGone": [],
       "going": [],
-      "rated_events": [
-        5,
-        2,
-        4
-      ]
+      "rated_events": []
     },
     {
       "id": 2,
@@ -899,9 +895,7 @@
           ]
         }
       ],
-      "rated_events": [
-        4
-      ]
+      "rated_events": []
     },
     {
       "id": 3,
