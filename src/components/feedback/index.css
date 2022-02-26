@@ -79,8 +79,8 @@
          .submit:hover{
           background:#331e21;;
           color:#fff;
-          border:1pxsolid#eee;
-          box-shadow:5px5px5px#eee;
+          border:1px solid #eee;
+          box-shadow:5px 5px 5px #eee;
           text-shadow:none;
          }
   
@@ -98,7 +98,3 @@
    
 }
 
-   
-.box {
-  border: 5px solid black;
-}

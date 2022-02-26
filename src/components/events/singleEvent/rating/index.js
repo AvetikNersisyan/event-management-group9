@@ -8,6 +8,7 @@ import {
 	setRatedEvents,
 } from '../../../../redux/ducks/userDuck';
 import { api } from '../../../../api';
+import { addRating } from '../../../../redux/ducks/eventDuck';
 
 const colors = {
 	orange: '#471d1b',
@@ -16,10 +17,16 @@ const colors = {
 
 const Rating = ({ ev, activeUser }) => {
 	const { count, sum } = ev.rate;
+
+	console.log(count, 'count');
+	console.log(sum, 'sum');
+
 	const isAlreadyRated = useMemo(
 		() => activeUser?.rated_events?.some((id) => id === ev.id),
 		[activeUser?.rated_events?.length]
 	);
+
+	const dispatch = useDispatch();
 
 	const [rating, setRating] = useState(sum / count || 0);
 	const [currentValue, setCurrentValue] = useState(sum / count || 0);
@@ -29,7 +36,6 @@ const Rating = ({ ev, activeUser }) => {
 	useEffect(() => {
 		setRating((sum + currentValue) / (count + 1));
 	}, [currentValue]);
-	const dispatch = useDispatch();
 
 	const stars = Array(5).fill(0);
 
@@ -50,11 +56,19 @@ const Rating = ({ ev, activeUser }) => {
 			body: JSON.stringify({
 				rate: { sum: sum + currentValue, count: count + 1 },
 			}),
-		});
+		}).then((res) =>
+			dispatch(
+				addRating({
+					eventId: ev.id,
+					rate: { sum: sum + currentValue, count: count + 1 },
+				})
+			)
+		);
 	}, [currentValue]);
 
 	const handleClick = (value) => {
 		setCurrentValue(value);
+
 		const changedActiveUser = {
 			...activeUser,
 		};
@@ -76,7 +90,9 @@ const Rating = ({ ev, activeUser }) => {
 	};
 	return (
 		<div>
-			{activeUser?.type === 'admin' ? '' :
+			{activeUser?.type === 'admin' ? (
+				''
+			) : (
 				<div className='box'>
 					{!isRated && activeUser && (
 						<div className='stars'>
@@ -98,8 +114,8 @@ const Rating = ({ ev, activeUser }) => {
 						</div>
 					)}
 				</div>
-			}
-			<p> {rating}/5</p>
+			)}
+			<p> {rating.toFixed(2)}/5</p>
 		</div>
 	);
 };

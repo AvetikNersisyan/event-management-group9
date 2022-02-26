@@ -1,16 +1,19 @@
 import { createAction } from '../../../helper/redux-helper';
+import { logDOM } from '@testing-library/react';
 
 const SET_EVENTS = 'eventDuck/SET_EVENTS';
 const ADD_EVENT = 'eventDuck/ADD_EVENT';
 const DELETE_EVENT = 'eventDuck/DELETE_EVENT';
 const DECREASE_SEATS = 'eventDuck/DECREASE_SEATS';
 const ADD_COMMENT = 'eventDuck/ADD_COMMENT';
+const ADD_RATING = 'eventDuck/ADD_RATING';
 
 export const setEvents = createAction(SET_EVENTS);
 export const addEvent = createAction(ADD_EVENT);
 export const deleteEvent = createAction(DELETE_EVENT);
 export const decreaseSeats = createAction(DECREASE_SEATS);
 export const addComment = createAction(ADD_COMMENT);
+export const addRating = createAction(ADD_RATING);
 
 const initialState = {
 	events: [{ event_detail: {} }],
@@ -44,6 +47,20 @@ const EventDuck = (state = initialState, { type, payload }) => {
 				}
 			});
 			return { ...state, events: newEvent };
+		case ADD_RATING:
+			console.log(payload, 'payload');
+			const newRatedEvents = state.events.map((item) => {
+				if (item.id === payload.eventId) {
+					item.rate = {
+						sum: payload.rate.sum,
+						count: payload.rate.count,
+					};
+
+					console.log(item, 'item rate changed');
+				}
+				return item;
+			});
+			return { ...state, events: newRatedEvents };
 		default:
 			return state;
 	}
