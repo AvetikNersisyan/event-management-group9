@@ -5,8 +5,10 @@ import { sliderCount } from '../../../helper/constants';
 import Countdown from '../../countdown';
 
 import './style.css';
+import { useNavigate } from 'react-router-dom';
 
 const Slider = ({ events }) => {
+	const navigate = useNavigate();
 	const filteredEvents = events.filter(
 		(items) =>
 			new Date(items.event_details.start_date).getTime() > new Date().getTime()
@@ -52,14 +54,18 @@ const Slider = ({ events }) => {
 					onClick={prevClickHandler}
 					className={'left-arrow'}
 				/>
-				{latestEvents.map(({ img_url }, idx) => {
+				{latestEvents.map(({ img_url, id }, idx) => {
 					return (
 						<div
 							className={idx === currentEvent ? 'slide active' : 'slide'}
 							key={idx}
 						>
 							{idx === currentEvent && (
-								<img src={img_url} className={'slide-img'} />
+								<img
+									onClick={() => navigate(`/events/${id}`)}
+									src={img_url}
+									className={'slide-img'}
+								/>
 							)}
 						</div>
 					);
