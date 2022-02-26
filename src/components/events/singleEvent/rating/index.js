@@ -19,9 +19,6 @@ const colors = {
 const Rating = ({ ev, activeUser }) => {
 	const { count, sum } = ev.rate;
 
-	console.log(count, 'count');
-	console.log(sum, 'sum');
-
 	const isAlreadyRated = useMemo(
 		() => activeUser?.rated_events?.some((id) => id === ev.id),
 		[activeUser?.rated_events?.length]
