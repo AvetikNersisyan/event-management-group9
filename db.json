@@ -442,8 +442,8 @@
         }
       ],
       "rate": {
-        "sum": 12.600000000000001,
-        "count": 7
+        "sum": 30.799999999999997,
+        "count": 14
       },
       "id": 4
     },
@@ -785,7 +785,7 @@
         }
       ],
       "rated_events": [
-
+        4
       ]
     },
     {
@@ -803,9 +803,7 @@
       "interestedEvents": [],
       "allreadyGone": [],
       "going": [],
-      "rated_events": [
-
-      ]
+      "rated_events": []
     },
     {
       "id": 2,
@@ -897,9 +895,7 @@
           ]
         }
       ],
-      "rated_events": [
-
-      ]
+      "rated_events": []
     },
     {
       "id": 3,

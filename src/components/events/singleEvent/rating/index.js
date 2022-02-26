@@ -1,12 +1,13 @@
-import { useEffect, useMemo, useState } from 'react';
-
-import { FaStar } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
+import { memo, useEffect, useMemo, useState } from 'react';
 
 import {
 	setActiveUser,
 	setRatedEvents,
 } from '../../../../redux/ducks/userDuck';
+
+import { FaStar } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+
 import { api } from '../../../../api';
 import { addRating } from '../../../../redux/ducks/eventDuck';
 
@@ -17,9 +18,6 @@ const colors = {
 
 const Rating = ({ ev, activeUser }) => {
 	const { count, sum } = ev.rate;
-
-	console.log(count, 'count');
-	console.log(sum, 'sum');
 
 	const isAlreadyRated = useMemo(
 		() => activeUser?.rated_events?.some((id) => id === ev.id),
@@ -120,4 +118,4 @@ const Rating = ({ ev, activeUser }) => {
 	);
 };
 
-export default Rating;
+export default memo(Rating);
