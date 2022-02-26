@@ -1,6 +1,6 @@
+import { MAX_DESCRIPTION } from '../../helper/constants';
 import hash from '../../assets/img/hash.png';
 import locationCard from '../../assets/img/locationCard.png';
-import { MAX_DESCRIPTION } from '../../helper/constants';
 
 const EventCard = ({
 	item: { id, img_url, title, description, tags, event_details },
@@ -23,8 +23,8 @@ const EventCard = ({
 			<div className='event-card-footer'>
 				<div>
 					<img width={15} src={hash} />
-					{tags.map((tag) => (
-						<span className='event-tags'>
+					{tags.map((tag, idx) => (
+						<span key={idx} className='event-tags'>
 							<span className='event-footer-info'>{tag}</span>
 						</span>
 					))}

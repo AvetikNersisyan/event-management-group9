@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react';
+
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+
 import { api } from '../../../../api';
 import { addComment } from '../../../../redux/ducks/eventDuck';
 

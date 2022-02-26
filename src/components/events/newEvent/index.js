@@ -1,15 +1,19 @@
-import './index.css';
 import { useRef, useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import { api } from '../../../api';
 import { addEvent } from '../../../redux/ducks/eventDuck';
 import { toBase64 } from '../../../helper/utils';
 import { eventTypes, professionTypes } from '../../../helper/constants';
+
 import AddCompany from './addCompany';
 import AddPerson from './addPerson';
-import { useNavigate } from 'react-router-dom';
 
-const NewEvent = ({ ev }) => {
+import './index.css';
+
+const NewEvent = () => {
 	const navigate = useNavigate();
 
 	const data = useSelector((state) => state.PersonsDuck.persons);

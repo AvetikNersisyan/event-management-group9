@@ -66,8 +66,6 @@ const AllEvents = () => {
 			);
 		});
 
-		console.log(filtered, 'filtered');
-
 		setEventsList(filtered);
 	};
 

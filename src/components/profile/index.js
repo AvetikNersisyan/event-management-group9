@@ -1,9 +1,10 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './index.css';
+
 import LogIn from './login';
 import ProfileInfo from './profile';
+
+import './index.css';
 
 const Profile = () => {
     const loggedIn = useSelector((state) => state.UserDuck.activeUser)

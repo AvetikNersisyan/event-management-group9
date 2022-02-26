@@ -1,6 +1,5 @@
 import { useRef } from "react";
 
-
 const AddCompany = ({
     handleAddCompany,
 }) => {

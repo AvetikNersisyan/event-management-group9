@@ -1,19 +1,16 @@
-import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
 
 import { sliderCount } from '../../../helper/constants';
-import './style.css';
-import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
-import Countdown from '../../countdown'
+import Countdown from '../../countdown';
 
+import './style.css';
 
 const Slider = ({ events }) => {
 	const filteredEvents = events.filter(
 		(items) =>
-			new Date(items.event_details.start_date).getTime() >
-			new Date().getTime()
-	)
+			new Date(items.event_details.start_date).getTime() > new Date().getTime()
+	);
 	const latestEvents =
 		filteredEvents.length >= sliderCount.QUANTITY
 			? filteredEvents.slice(filteredEvents.length - sliderCount.QUANTITY)
@@ -57,7 +54,10 @@ const Slider = ({ events }) => {
 				/>
 				{latestEvents.map(({ img_url }, idx) => {
 					return (
-						<div className={idx === currentEvent ? 'slide active' : 'slide'}>
+						<div
+							className={idx === currentEvent ? 'slide active' : 'slide'}
+							key={idx}
+						>
 							{idx === currentEvent && (
 								<img src={img_url} className={'slide-img'} />
 							)}
@@ -68,7 +68,6 @@ const Slider = ({ events }) => {
 					onClick={nextClickHandler}
 					className={'right-arrow'}
 				/>
-
 			</div>
 			<Countdown latestEvents={latestEvents} currentEvent={currentEvent} />
 		</>

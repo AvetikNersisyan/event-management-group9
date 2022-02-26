@@ -1,9 +1,8 @@
-/* eslint-disable react/jsx-no-undef */
-import './style.css';
-import { memo, useRef, useState } from 'react';
-import DatePicker from 'react-datepicker';
+import { memo, useRef } from 'react';
+
 import 'react-datepicker/dist/react-datepicker.css';
-import { useSelector } from 'react-redux';
+
+import './style.css';
 
 import { eventTypes } from '../../helper/constants';
 
@@ -45,7 +44,7 @@ const Categories = ({ handleFilter, cancelSearch }) => {
 						<div className='form_element half'>
 							<select
 								name='name'
-								selected='selected'
+								defaultValue={'All Categories'}
 								className='selectpicker'
 								ref={filterCategories}
 							>
@@ -64,9 +63,7 @@ const Categories = ({ handleFilter, cancelSearch }) => {
 								className='selectpicker'
 								ref={filterCities}
 							>
-								<option value='' selected='selected'>
-									All Cities
-								</option>
+								<option value=''>All Cities</option>
 								<option value='yerevan'>Yerevan</option>
 								<option value='los angeles'>Los Angeles</option>
 								<option value='tsaghkadzor'>Tsaghkadzor</option>

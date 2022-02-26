@@ -1,27 +1,27 @@
-import './App.css';
+import React, { useEffect } from 'react';
+
 import { Routes, Route } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
 import Home from './components/home';
 import Profile from './components/profile';
 import Events from './components/events';
 import Index from './components/header';
 import Categories from './components/categories';
 import Feedback from './components/feedback'
-
-
-import { useEffect } from 'react';
 import SignUp from './components/profile/signUp';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import SingleEvent from './components/events/singleEvent';
-import { setEvents } from './redux/ducks/eventDuck';
-import { api } from './api';
 import Error404 from './components/error404';
 import NewEvent from './components/events/newEvent';
 import Footer from './components/footer';
-
-import { setPersons } from './redux/ducks/personsDuck';
 import About from './components/about';
+
+import { setEvents } from './redux/ducks/eventDuck';
+import { api } from './api';
+import { setPersons } from './redux/ducks/personsDuck';
 import { setFeedbacks } from './redux/ducks/feedbackDuck';
+
+import './App.css';
 
 function App() {
 	const dispatch = useDispatch();

@@ -1,10 +1,13 @@
-import './index.css';
 import { useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
+
 import { decreaseSeats } from '../../../redux/ducks/eventDuck';
 import { validate } from '../../../helper/utils';
 import { setGoing } from '../../../redux/ducks/userDuck';
 import { api } from '../../../api';
+
+import './index.css';
 
 const Popup = ({ close, ev }) => {
 	const eventId = ev.id;
@@ -48,8 +51,20 @@ const Popup = ({ close, ev }) => {
 				.then((res) => res.ok && dispatch(decreaseSeats(seatFilterEvent[0])))
 				.catch((err) => console.log(err));
 
-			// dispatch(decreaseSeats({ eventId, seats: 1 }));
-			dispatch(setGoing({ userId: activeUser.id, ev }));
+			const newActiveUser = {
+				...activeUser,
+				going: [...activeUser.going, ev],
+			};
+
+			fetch(`${api}/users/${activeUser.id}`, {
+				method: 'PUT',
+				headers: {
+					'Content-type': 'application/json',
+				},
+				body: JSON.stringify(newActiveUser),
+			});
+
+			dispatch(setGoing(newActiveUser));
 			close();
 		}
 	};
