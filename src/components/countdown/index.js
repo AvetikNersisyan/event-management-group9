@@ -7,13 +7,16 @@ import './index.css';
 const Countdown = ({ latestEvents, currentEvent }) => {
 	const [timeLeft, setTimeLeft] = useState();
 
+
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setTimeLeft(calculateTimeLeft());
 		}, 1000);
 
+
 		return () => clearTimeout(timer);
 	});
+
 
 	const calculateTimeLeft = () => {
 		const difference =
@@ -31,6 +34,7 @@ const Countdown = ({ latestEvents, currentEvent }) => {
 		}
 		return timeLeft;
 	};
+
 
 	return (
 		<>

@@ -1,5 +1,6 @@
 import { memo, useState, useRef, useCallback } from 'react';
 
+
 import { useDispatch } from 'react-redux'
 import { FaStar } from 'react-icons/fa';
 
@@ -7,27 +8,29 @@ import { addFeedback } from '../../redux/ducks/feedbackDuck'
 import { api } from '../../api.js'
 import feedback_img from '../../assets/img/feedback.png'
 
+
 import './index.css';
 
 const colors = {
 	orange: '#471d1b',
-	grey: '#a9a9a9',
+	grey: '#696969',
 };
 
 const Feedback = ({ activeUser }) => {
 	const [currentValue, setCurrentValue] = useState(0);
 	const [hoverValue, setHoverValue] = useState(undefined);
 	const [isOpen, setIsOpen] = useState(false);
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
 
-	const nameInput = useRef(null)
-	const emailInput = useRef(null)
-	const textInput = useRef(null)
+	const nameInput = useRef(null);
+	const emailInput = useRef(null);
+	const textInput = useRef(null);
 
 	const stars = Array(5).fill(0);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
 		if (!nameInput.current.value || !emailInput.current.value || !textInput.current.value) {
 			alert('Please fill in all fields')
 		} else {
@@ -52,10 +55,12 @@ const Feedback = ({ activeUser }) => {
 					setIsOpen(false)
 				})
 		}
+
 	};
 
 	const handleSubmitActive = (e) => {
 		e.preventDefault();
+
 		if (!textInput.current.value) {
 			alert('Please fill in all fields')
 		} else {
@@ -99,13 +104,20 @@ const Feedback = ({ activeUser }) => {
 	};
 	return (
 		<div onClick={onOverlayClick} className='feedback'>
-			{!isOpen ?
-				<img src={feedback_img} className='toggle' onClick={() => setIsOpen(true)} /> : ''}
+			{!isOpen ? (
+				<img
+					src={feedback_img}
+					className='toggle'
+					onClick={() => setIsOpen(true)}
+				/>
+			) : (
+				''
+			)}
 
-			{isOpen ? <div className='background-popup'>
-				<div className='feedback-popup'>
-					{
-						!activeUser ?
+			{isOpen ? (
+				<div className='background-popup'>
+					<div className='feedback-popup'>
+						{!activeUser ? (
 							<>
 								<div>
 									<input
@@ -124,42 +136,54 @@ const Feedback = ({ activeUser }) => {
 										ref={emailInput}
 									/>
 								</div>
-							</> :
+							</>
+						) : (
 							<>
-								<h4>from: {activeUser?.firstname + ' ' + activeUser?.lastname}</h4>
+								<h4>
+									from: {activeUser?.firstname + ' ' + activeUser?.lastname}
+								</h4>
 								<h4>email: {activeUser?.email}</h4>
 							</>
-					}
-					<div>
-						<input
-							className='msginput'
-							type='text'
-							placeholder='LEAVE YOUR MESSAGE'
-							name='feedback'
-							ref={textInput}
-						/>
+						)}
+						<div>
+							<input
+								className='msginput'
+								type='text'
+								placeholder='LEAVE YOUR MESSAGE'
+								name='feedback'
+								ref={textInput}
+							/>
+						</div>
+						<div className='stars'>
+							<h3>Rate our service</h3>
+							{stars.map((_, index) => {
+								return (
+									<FaStar
+										key={index}
+										onClick={() => handleClick(index + 1)}
+										onMouseOver={() => handleMouseOver(index + 1)}
+										onMouseLeave={handleMouseLeave}
+										color={
+											(hoverValue || currentValue) > index
+												? colors.orange
+												: colors.grey
+										}
+									/>
+								);
+							})}
+						</div>
+						<button
+							className='button'
+							style={{ width: '200px' }}
+							onClick={!activeUser ? handleSubmit : handleSubmitActive}
+						>
+							SUBMIT FEEDBACK
+						</button>
 					</div>
-					<div className='stars'>
-						<h3>Rate our service</h3>
-						{stars.map((_, index) => {
-							return (
-								<FaStar
-									key={index}
-									onClick={() => handleClick(index + 1)}
-									onMouseOver={() => handleMouseOver(index + 1)}
-									onMouseLeave={handleMouseLeave}
-									color={
-										(hoverValue || currentValue) > index
-											? colors.orange
-											: colors.grey
-									}
-								/>
-							);
-						})}
-					</div>
-					<button className='button' style={{ width: '200px' }} onClick={!activeUser ? handleSubmit : handleSubmitActive}>SUBMIT FEEDBACK</button>
 				</div>
-			</div> : ''}
+			) : (
+				''
+			)}
 		</div>
 	);
 };

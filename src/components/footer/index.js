@@ -68,8 +68,9 @@ const Footer = () => {
 							</li>
 						</ul>
 					</div>
+
 					<div className='contacts'>
-						<h2 className='title'>Contact Us</h2>
+						<h2>Contact Us</h2>
 						<div className='contact_items'>
 							<div className='contact_item-info'>
 								<div className='contact_info'>
@@ -105,6 +106,7 @@ const Footer = () => {
 						</div>
 					</div>
 				</div>
+
 				<div className='web_info'>All rights are preserved &copy; 2022</div>
 			</div>
 		</>

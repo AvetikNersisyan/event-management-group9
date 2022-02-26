@@ -114,7 +114,18 @@
   height: 150px;
   border-radius: 75px;
   overflow: hidden;
+  display: block;
+
 }
+
+.profilePhoto img{
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
 
 .admin-message-details{
   margin: 5px;
