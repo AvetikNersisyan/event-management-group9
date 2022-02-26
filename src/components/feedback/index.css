@@ -9,7 +9,7 @@
   padding: 2em;
   display: block;
   z-index: 11;
-  background: rgb(172, 172, 172);
+  background: rgb(250, 235, 235);
   transition: ease-out 1s;
 }
 
@@ -41,8 +41,6 @@
   
     }
        
-    
-   
     .toggle{
       position: fixed;
       z-index: 20;
@@ -97,7 +95,9 @@
     margin-top: 25px;
     cursor: pointer;
     font-size: 24px;
+   
 }
+
    
 .box {
   border: 5px solid black;

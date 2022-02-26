@@ -1,36 +1,15 @@
-/* .footer {
-  margin-top: 150px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  background-color: blanchedalmond;
-  padding: 20px 50px;
-} 
 
-
-ul {
-  list-style-type: none;
-}
-
-
-.icon{
-  margin: 5px;
- 
-  
-}
-
-.icon:hover {
-  cursor: pointer;
-} */
 
 .title{
   margin-bottom:25px;
   color:white;
+ 
+
 }
 
 .contact{
   margin-top: 100px;
+  text-align: left;
 
 
 }
@@ -39,17 +18,16 @@ ul {
   justify-content: space-between;
   align-items: center;
   flex-flow: row wrap;
-  flex-basis: 50%;
+  
 }
-.info{
-  color: white;
-}
+
 .icon{
   width: 30px;
   height: 30px;
 }
 .contact_item-info {
-  flex-basis: 28%;
+  flex-basis: 30%;
+  margin-left: 80px;
 }
 
 .contact_info {
@@ -89,7 +67,6 @@ font-weight: bold;
 .footer_top_item_title {
   font-size: 24px;
   margin-bottom: 12px;
-  padding-bottom: 12px;
   border-bottom: 2px solid rgba(255, 255, 255, .1);
 }
 
@@ -117,3 +94,13 @@ font-weight: bold;
   padding: 10px 0 5px 0;
 
 }
+ 
+.MobileStoreButton{
+  width: 120px;
+  height: 50px;
+
+}
+.mobile{
+       padding: 5px;
+       width: 100%;
+} 

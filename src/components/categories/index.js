@@ -1,9 +1,8 @@
-/* eslint-disable react/jsx-no-undef */
-import './style.css';
-import { memo, useRef, useState } from 'react';
-import DatePicker from 'react-datepicker';
+import { memo, useRef } from 'react';
+
 import 'react-datepicker/dist/react-datepicker.css';
-import { useSelector } from 'react-redux';
+
+import './style.css';
 
 import { eventTypes } from '../../helper/constants';
 
@@ -33,9 +32,10 @@ const Categories = ({ handleFilter, cancelSearch }) => {
 		<div className='wrapper'>
 			<form className='container'>
 				<div action='' method='GET' name='search_event'>
-					<div className='form-element'>
+					<div className='form-elements'>
 						<div className='form_element half'>
 							<input
+								className='selectpicker'
 								placeholder='By title'
 								name='name_event'
 								ref={filterTitle}
@@ -70,12 +70,18 @@ const Categories = ({ handleFilter, cancelSearch }) => {
 							</select>
 						</div>
 					</div>
-					<div className='form-element'>
+					<div className='form-elements'>
 						<div className='form_element half'>
-							<input placeholder='By tag' name='name_event' ref={filterTeg} />
+							<input
+								placeholder='By tag'
+								name='name_event'
+								ref={filterTeg}
+								className='selectpicker'
+							/>
 						</div>
 						<div className='form_element half '>
 							<input
+								className='selectpicker'
 								defaultValue={'1900-01-01'}
 								ref={filterStartDate}
 								type={'date'}
@@ -84,6 +90,7 @@ const Categories = ({ handleFilter, cancelSearch }) => {
 
 						<div className='form-element half'>
 							<input
+								className='selectpicker'
 								defaultValue={'2030-01-01'}
 								ref={filterEndDate}
 								type={'date'}

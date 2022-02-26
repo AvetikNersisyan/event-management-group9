@@ -102,17 +102,20 @@
 //
 // export default EditEventPopup;
 
-import './style.css';
+
 import { useRef, useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { api } from '../../../../api';
-import { useNavigate } from 'react-router-dom';
 import { eventHandler, toBase64 } from '../../../../helper/utils';
 import { addEvent } from '../../../../redux/ducks/eventDuck';
 import { eventTypes, professionTypes } from '../../../../helper/constants';
 import AddPerson from '../../newEvent/addPerson';
 import AddCompany from '../../newEvent/addCompany';
+
+import './style.css';
 
 const EditEventPopup = ({ ev, editHandler }) => {
 	const tagElement = useRef(null);
