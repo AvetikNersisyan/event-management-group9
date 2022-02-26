@@ -1,10 +1,10 @@
-import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
 
 import { sliderCount } from '../../../helper/constants';
-import './style.css';
-import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
 import Countdown from '../../countdown';
+
+import './style.css';
 
 const Slider = ({ events }) => {
 	const filteredEvents = events.filter(

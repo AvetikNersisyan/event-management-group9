@@ -1,7 +1,10 @@
 import React, { useRef } from 'react';
+
 import { useDispatch } from 'react-redux';
-import { setActiveUser, setLoggedIn } from '../../../redux/ducks/userDuck';
 import { NavLink } from 'react-router-dom';
+
+import { setActiveUser, setLoggedIn } from '../../../redux/ducks/userDuck';
+
 import { api } from '../../../api';
 
 const LogIn = () => {

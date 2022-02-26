@@ -1,12 +1,13 @@
+import { useCallback, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import './index.css';
-import { useCallback, useRef, useState } from 'react';
 import Popup from '../events/popup';
+
+import './index.css';
+
 const Checkout = () => {
 	const { eventID } = useParams();
-	const popupRef = useRef(null);
 
 	const event = useSelector(
 		({ EventDuck }) =>

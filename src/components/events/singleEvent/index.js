@@ -1,11 +1,13 @@
+import { useEffect, useState } from 'react';
+
 import { useSelector } from 'react-redux';
-import EventCard from './eventCard';
-import './index.css';
 import { useParams } from 'react-router-dom';
-import './index.css';
+
 import Sidebar from './sidebar';
-import { useCallback, useEffect, useState } from 'react';
+import EventCard from './eventCard';
 import Index from '../../error404';
+
+import './index.css';
 
 const backGroundImage =
 	'https://ovatheme.com/em4u/wp-content/themes/em4u/assets/img/bg_heading-compressor.jpg';

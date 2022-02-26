@@ -1,5 +1,7 @@
-import errorImageUrl from '../../assets/img/error.png';
 import { NavLink } from 'react-router-dom';
+
+import errorImageUrl from '../../assets/img/error.png';
+
 import './index.css';
 
 const Index = () => {

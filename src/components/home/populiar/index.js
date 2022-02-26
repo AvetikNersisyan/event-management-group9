@@ -1,9 +1,11 @@
-import "./index.css";
+import { useNavigate } from "react-router-dom";
+
 import concert from '../../../assets/img/Home_img/concert.jpg'
 import cinema from '../../../assets/img/Home_img/cinema.jpg'
 import presentation from '../../../assets/img/Home_img/presentation.jpg'
 import sport from '../../../assets/img/Home_img/sport.jpg'
-import { useNavigate } from "react-router-dom";
+
+import "./index.css";
 
 const Populiar = () => {
   const navigate = useNavigate();

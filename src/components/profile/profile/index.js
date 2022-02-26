@@ -1,5 +1,8 @@
 import React, { useRef, useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+
 import {
 	setActiveUser,
 	setLoggedIn,
@@ -7,7 +10,6 @@ import {
 } from '../../../redux/ducks/userDuck';
 import { api } from '../../../api';
 import ProfileEvent from './profileEvent';
-import { NavLink } from 'react-router-dom';
 import { toBase64 } from '../../../helper/utils';
 import ProfileAdmin from './profileAdmin';
 

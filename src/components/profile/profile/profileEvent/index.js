@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import './profileEvent.css';
+
 import hash from '../../../../assets/img/hash.png';
 import locationCard from '../../../../assets/img/locationCard.png';
+
+import './profileEvent.css';
 
 const ProfileEvent = ({
 	event: { id, img_url, title, description, tags, event_details },

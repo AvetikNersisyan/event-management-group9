@@ -1,8 +1,11 @@
 import React, { useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import { setActiveUser, setLoggedIn } from '../../../redux/ducks/userDuck';
 import { api } from '../../../api'
-import { useNavigate } from 'react-router-dom';
+
 
 const SignUp = () => {
     const navigate = useNavigate();
